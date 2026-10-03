@@ -29,7 +29,7 @@ try {
   await page.waitForFunction(() => document.querySelector('[data-hero-shader]').dataset.shaderState === 'paused');
   check('WebGL compiles the supplied Mesh drift and draws below the content', await page.locator('[data-hero-shader]').evaluate(canvas => {
     const gl = canvas.getContext('webgl'), box = canvas.getBoundingClientRect(), parent = canvas.parentElement.getBoundingClientRect();
-    return gl.getProgramParameter(gl.getParameter(gl.CURRENT_PROGRAM), gl.LINK_STATUS) && canvas.closest('.hero-surface').hasAttribute('data-shader-ready') && Math.abs(box.width - parent.width) < 1 && Math.abs(box.height - parent.height) < 1 && getComputedStyle(canvas).pointerEvents === 'none' && getComputedStyle(canvas).zIndex === '0' && gl.getError() === gl.NO_ERROR;
+    return gl.getProgramParameter(gl.getParameter(gl.CURRENT_PROGRAM), gl.LINK_STATUS) && canvas.closest('.hero-surface').hasAttribute('data-shader-ready') && canvas.width * canvas.height <= 320_000 && Math.abs(box.width - parent.width) < 1 && Math.abs(box.height - parent.height) < 1 && getComputedStyle(canvas).pointerEvents === 'none' && getComputedStyle(canvas).zIndex === '0' && gl.getError() === gl.NO_ERROR;
   }));
   check('the palette contains only the four requested brand blues', await page.locator('[data-hero-shader]').evaluate(canvas => {
     const gl = canvas.getContext('webgl'), program = gl.getParameter(gl.CURRENT_PROGRAM);
@@ -71,7 +71,7 @@ try {
     await phone.waitForFunction(() => document.querySelector('[data-hero-shader]').dataset.shaderState === 'paused');
     check(`mobile ${width}px keeps content in bounds and caps the rendering budget`, await phone.evaluate(() => {
       const canvas = document.querySelector('[data-hero-shader]');
-      return document.documentElement.scrollWidth <= innerWidth && canvas.width * canvas.height <= 450_000 && canvas.getAttribute('aria-hidden') === 'true' && [...document.querySelectorAll('.hero-buttons>a')].every(button => { const r=button.getBoundingClientRect(); return r.left>=0 && r.right<=innerWidth; });
+      return document.documentElement.scrollWidth <= innerWidth && canvas.width * canvas.height <= 160_000 && canvas.getAttribute('aria-hidden') === 'true' && [...document.querySelectorAll('.hero-buttons>a')].every(button => { const r=button.getBoundingClientRect(); return r.left>=0 && r.right<=innerWidth; });
     }));
     if (width===390) await phone.screenshot({ path:path.join(output,'hero-shader-mobile.png') });
     await context.close();

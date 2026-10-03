@@ -36,9 +36,27 @@ export function initHeroMotion() {
   const grid = hero.querySelector('.hero-grid');
   const canvas = hero.querySelector('.hero-grid-canvas');
   const art = hero.querySelector('.hero-art');
-  const context = canvas?.getContext('2d');
-  if (grid && context && art) {
+  if (grid && canvas && art) {
     const width = 1509, height = 929, cell = 116;
+    const rasterScale = Math.min(1, Math.sqrt(500_000 / (width * height)));
+    let context = null, raster = null;
+    function prepareRaster() {
+      if (raster) return true;
+      canvas.width = Math.floor(width * rasterScale);
+      canvas.height = Math.floor(height * rasterScale);
+      context = canvas.getContext('2d');
+      if (!context) return false;
+      context.setTransform(rasterScale, 0, 0, rasterScale, 0, 0);
+      // Rasterise the final SVG once, only when a fine pointer needs it.
+      // Repeated drawImage(SVG) calls made every interactive frame expensive.
+      const texture = document.createElement('canvas');
+      texture.width = canvas.width; texture.height = canvas.height;
+      const textureContext = texture.getContext('2d');
+      if (!textureContext) return false;
+      textureContext.drawImage(grid, 0, 0, width * rasterScale, height * rasterScale);
+      raster = texture;
+      return true;
+    }
     const tiles = [];
     for (let y = 0; y < height; y += cell) for (let x = 0; x < width; x += cell) {
       tiles.push({ ox: x, oy: y, x, y, w: Math.min(cell, width - x), h: Math.min(cell, height - y) });
@@ -52,6 +70,7 @@ export function initHeroMotion() {
     }
     function draw(time) {
       if (!active()) { reset(); return; }
+      if (!prepareRaster()) { reset(); return; }
       const ticks = Math.min(lastTime ? (time - lastTime) / frameDuration : 1, 3);
       const returnRate = 1 - Math.pow(.92, ticks);
       lastTime = time;
@@ -77,7 +96,7 @@ export function initHeroMotion() {
         displaced ||= Math.abs(tile.x - tile.ox) + Math.abs(tile.y - tile.oy) > .08;
         // Reuse the final Figma grid itself, including its gradient and rounded
         // corners; only its cells' positions respond to the pointer.
-        context.drawImage(grid, tile.ox, tile.oy, tile.w, tile.h, tile.x, tile.y, tile.w, tile.h);
+        context.drawImage(raster, tile.ox * rasterScale, tile.oy * rasterScale, tile.w * rasterScale, tile.h * rasterScale, tile.x, tile.y, tile.w, tile.h);
       });
       art.toggleAttribute('data-grid-active', displaced);
       if (moving || (!mouse && displaced)) frame = requestAnimationFrame(draw);

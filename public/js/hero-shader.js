@@ -279,12 +279,13 @@ void main() {
 const palette = ['#062b5c', '#004cd3', '#6ba5ef', '#a8d0f3'];
 // The supplied recipe disables these builder features. Compile their values
 // as constants so drivers can eliminate unused noise, blur and cursor work.
-// The original GLSL stays above; the mesh, grain and contrast are unchanged.
+// The original GLSL stays above. Grain is now a cached CSS texture so the
+// shader only renders the soft colour field, at a smaller pixel budget.
 const fixedFeatures = {
   u_colorCount: `${palette.length}.0`, u_warp: '0.0', u_brightness: '0.0',
   u_saturation: '1.0', u_hue: '0.0', u_vignette: '0.0', u_blur: '0.0',
   u_rotate: '0.0', u_drift: '0.0', u_oklab: '0.0', u_offset: 'vec2(0.0)',
-  u_cursorPresence: '0.0',
+  u_cursorPresence: '0.0', u_grain: '0.0',
 };
 const MESH_FRAGMENT = FRAG.replace(/^#define (\w+) .+$/gm,
   (definition, name) => name in fixedFeatures ? `#define ${name} ${fixedFeatures[name]}` : definition);
@@ -301,7 +302,7 @@ export function initHeroShader() {
   const coarse = matchMedia('(pointer: coarse)');
   let gl;
   try { gl = canvas.getContext('webgl', { antialias: false, alpha: false, depth: false, stencil: false }); }
-  catch { /* The static sky remains visible if WebGL is unavailable. */ }
+  catch { /* The matching static mesh remains visible without WebGL. */ }
   if (!gl) { canvas.dataset.shaderState = 'fallback'; return; }
 
   let program = null, buffer = null, uniforms = null;
@@ -352,10 +353,10 @@ export function initHeroShader() {
       gl.enableVertexAttribArray(position); gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
       uniforms = Object.fromEntries(['scene', 'shape', 'surface', 'finish', 'transform', 'space', 'cursor'].map(name => [name, gl.getUniformLocation(program, 'u_' + name)]));
       gl.uniform3fv(gl.getUniformLocation(program, 'u_colors[0]'), colors);
-      // Exact recipe parameters and speed; only the palette changes.
+      // Keep the recipe's colour field and speed. Grain is handled in CSS.
       gl.uniform4f(uniforms.shape, 1.160, .340, .500, 0);
       gl.uniform4f(uniforms.surface, 2.400, 1.158, 0, 1);
-      gl.uniform4f(uniforms.finish, 0, 0, 0, .091);
+      gl.uniform4f(uniforms.finish, 0, 0, 0, 0);
       gl.uniform4f(uniforms.transform, 1453, 0, 0, 0);
       gl.uniform4f(uniforms.space, 0, 0, 0, 0);
       gl.uniform4f(uniforms.cursor, 0, 2, .650, .460);
@@ -371,12 +372,12 @@ export function initHeroShader() {
   function resize() {
     if (disposed || lost || !program) return;
     const bounds = canvas.getBoundingClientRect();
-    const dpr = Math.min(devicePixelRatio || 1, 2);
+    const dpr = Math.min(devicePixelRatio || 1, 1);
     const rawWidth = Math.max(1, Math.round(bounds.width * dpr));
     const rawHeight = Math.max(1, Math.round(bounds.height * dpr));
     // A soft mesh needs fewer pixels than text or photography. Keep GPU work
     // bounded even on laptops and phones with a very dense screen.
-    const budget = coarse.matches ? 450_000 : 900_000;
+    const budget = coarse.matches ? 160_000 : 320_000;
     const scale = Math.min(1, Math.sqrt(budget / (rawWidth * rawHeight)));
     const width = Math.max(1, Math.floor(rawWidth * scale));
     const height = Math.max(1, Math.floor(rawHeight * scale));
@@ -393,8 +394,8 @@ export function initHeroShader() {
   function render(now) {
     frame = 0;
     if (!live()) return;
-    // This slow decorative movement remains smooth at 30fps on every device.
-    if (lastNow !== null && now - lastNow < 1000 / 30) { requestRender(); return; }
+    // The slow mesh does not need to repaint at the interface's frame rate.
+    if (lastNow !== null && now - lastNow < 1000 / 20 - .5) { requestRender(); return; }
     if (lastNow !== null) elapsed += Math.min((now - lastNow) / 1000, .1) * .727;
     lastNow = now;
     draw(); requestRender();

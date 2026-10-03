@@ -2,6 +2,7 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
 const allowed = () => !reduced.matches && !document.documentElement.hasAttribute('data-motion-paused');
 
 export function initAboutMotion() {
+  initValueMarquees();
   // Apply the same WhisperText entrance to section titles, preserving inline
   // emphasis, line breaks and the exact copy. About already has its own markup.
   document.querySelectorAll('.section-heading h2,.section-heading h1').forEach(heading => {
@@ -78,4 +79,39 @@ export function initAboutMotion() {
       animations.forEach(animation => document.hidden ? animation.pause() : animation.play());
     });
   });
+}
+
+// Repeat each complete pattern until one half of the loop covers its viewport.
+// Two identical halves keep translateX(-50%) seamless at every breakpoint.
+function initValueMarquees() {
+ document.querySelectorAll('.values-card').forEach(card => {
+  const rows = [...card.querySelectorAll('.marquee-row')].map(row => {
+   const track = row.querySelector('.marquee-track');
+   const groups = [...track.querySelectorAll('.marquee-group')];
+   const pattern = [...groups[0].children].slice(0, Number(track.dataset.patternLength));
+   return { row, track, groups, pattern, repeats: 4 };
+  });
+  function fit() {
+   rows.forEach(item => {
+    const { row, track, groups, pattern } = item;
+    const gap = parseFloat(getComputedStyle(groups[0]).columnGap) || 0;
+    const patternWidth = pattern.reduce((width, pill) => width + pill.getBoundingClientRect().width + gap, 0);
+    if (!patternWidth) return;
+    const repeats = Math.max(1, Math.ceil(row.clientWidth / patternWidth));
+    if (repeats === item.repeats) return;
+    const animation = track.getAnimations()[0];
+    const phase = animation ? Number(animation.currentTime || 0) / animation.effect.getTiming().duration : 0;
+    groups.forEach(group => group.replaceChildren(...Array.from({ length: repeats }, () => pattern.map(pill => pill.cloneNode(true))).flat()));
+    item.pattern = [...groups[0].children].slice(0, pattern.length);
+    item.repeats = repeats;
+    const duration = repeats * (row.classList.contains('marquee-row--reverse') ? 29000 : 24000);
+    track.style.animationDuration = duration + 'ms';
+    if (animation) animation.currentTime = phase * duration;
+   });
+  }
+  fit();
+  if ('ResizeObserver' in window) new ResizeObserver(fit).observe(card);
+  else window.addEventListener('resize', fit, { passive: true });
+  document.fonts?.ready.then(fit);
+ });
 }

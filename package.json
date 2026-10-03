@@ -13,6 +13,8 @@
     "test:hero": "node scripts/check-hero.mjs",
     "test:hero-shader": "node scripts/check-hero-shader.mjs",
     "test:hero-startup": "node scripts/check-hero-startup.mjs",
+    "test:hero-performance": "node scripts/check-hero-performance.mjs",
+    "test:about-highlight": "node scripts/check-about-highlight.mjs",
     "test:process": "node scripts/check-process.mjs"
   },
   "engines": { "node": ">=22" },

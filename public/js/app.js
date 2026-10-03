@@ -1,3 +1,4 @@
+import { initIntegrationMotion } from './integration-motion.js';
 import { initSectionMotion } from './section-motion.js';
 import { initAboutMotion } from './about-motion.js';
 import { initMotion } from './motion.js';
@@ -15,6 +16,7 @@ initSectionMotion();
 initConsent();
 initNavigation();
 initHeroMotion();
+initIntegrationMotion();
 
 const menu = document.querySelector('[data-menu-dialog]');
 const menuToggle = document.querySelector('[data-menu-toggle]');

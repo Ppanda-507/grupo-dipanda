@@ -54,21 +54,28 @@ try {
   check('three-card hero image has been removed', await page.locator('.hero-visual').count() === 0 && !await page.locator('img[src*="2-57-3e780"]').count());
   check('hero badge uses the new consulting and technology message', await page.locator('.hero-badge').textContent() === 'CONSULTORIA · TECNOLOGIA');
   check('consulting is the first hero action and demo remains the second', await page.locator('.hero-buttons>a').evaluateAll(actions => actions[0].getAttribute('href') === '/#contacto' && actions[1].getAttribute('href') === '/#demonstracao'));
-  check('hero subtitle remains at the reference 16px size', await page.locator('.hero-copy p').evaluate(element => getComputedStyle(element).fontSize === '16px'));
+  check('desktop hero subtitle follows the reference 18px size', await page.locator('.hero-copy p').evaluate(element => getComputedStyle(element).fontSize === '18px'));
   check('subtitle copy remains unchanged', await page.locator('.hero-copy p').textContent() === 'Cruze os dados da tua empresa e descubra exatamente onde está a perder tempo e dinheiro para maximizar os seus ganhos');
+  check('Transforme reveals inside a fixed word slot without moving the title', await page.locator('.hero-text-loop').evaluate(word => {
+    const reveal = word.querySelector('.hero-text-loop-reveal'), animation = reveal.getAnimations()[0];
+    if (!animation || word.textContent !== 'Transforme') return false;
+    const time = animation.currentTime, state = animation.playState;
+    animation.pause(); animation.currentTime = 0;
+    const before = word.getBoundingClientRect(), titleBefore = word.closest('h1').getBoundingClientRect(), full = getComputedStyle(reveal).clipPath;
+    animation.currentTime = 2200;
+    const after = word.getBoundingClientRect(), titleAfter = word.closest('h1').getBoundingClientRect(), clipped = getComputedStyle(reveal).clipPath;
+    animation.currentTime = time; if (state === 'running') animation.play();
+    return full !== clipped && Math.abs(before.width - after.width) < .1 && Math.abs(titleBefore.height - titleAfter.height) < .1 && Math.abs(titleBefore.top - titleAfter.top) < .1;
+  }));
+  check('hero arrows and scroll cue are removed', await page.locator('.hero-direction,.hero-scroll-cue').count() === 0);
   check('hero occupies the full viewport like ResponsiveHeroBanner', await page.locator('.hero').evaluate(element => Math.abs(element.getBoundingClientRect().height - innerHeight) < 1));
   check('the matching mesh replaces the scene and compact tools remain inside the hero', await page.evaluate(() => {
     const surface = document.querySelector('.hero-surface');
     const hero = surface.getBoundingClientRect();
     const tools = document.querySelector('.hero-tools').getBoundingClientRect();
     const caption = document.querySelector('.hero-tools>p').getBoundingClientRect();
-    return !surface.querySelector('.hero-scene, [data-hero-flow]') && !surface.querySelector('img[src^="/assets/hero/"]') && !!surface.querySelector('.hero-static-mesh image') && tools.bottom <= hero.bottom && caption.top > document.querySelector('.hero-buttons').getBoundingClientRect().bottom;
+    return !surface.querySelector('.hero-scene, [data-hero-flow]') && !surface.querySelector('img[src^="/assets/hero/"]') && !!surface.querySelector('.hero-static-mesh image') && tools.bottom <= hero.bottom && Math.abs(caption.top - document.querySelector('.hero-buttons').getBoundingClientRect().bottom - 80) < 1;
   }));
-  const arrows = page.locator('.hero-direction-track');
-  const arrowBefore = await arrows.evaluate(element => new DOMMatrixReadOnly(getComputedStyle(element).transform).m41);
-  await page.waitForTimeout(160);
-  const arrowAfter = await arrows.evaluate(element => new DOMMatrixReadOnly(getComputedStyle(element).transform).m41);
-  check('decorative arrows travel left to right on a continuous linear loop', await arrows.evaluate(element => getComputedStyle(element).animationTimingFunction === 'linear' && getComputedStyle(element).animationPlayState === 'running') && (arrowAfter > arrowBefore || arrowBefore - arrowAfter > 60));
   check('initial menu uses the supplied compact pill geometry and stays centred', await page.locator('.desktop-nav').evaluate(element => {
     const r = element.getBoundingClientRect();
     return Math.abs((r.left + r.right) / 2 - innerWidth / 2) < .5 && r.width < 720 && r.height === 48 && getComputedStyle(element).borderRadius === '999px';
@@ -143,32 +150,26 @@ try {
   await page.waitForFunction(() => !document.querySelector('.hero-art').hasAttribute('data-grid-active'), null, { timeout: 10_000 });
   check('grid returns when the pointer leaves', await page.locator('.hero-art').evaluate(element => !element.hasAttribute('data-grid-active')));
 
-  const names = await page.locator('.integration-group').first().locator('.integration-tool>span:last-child').allTextContents();
-  check('eleven real tool names remain in the marquee', ['Power BI', 'Python', 'Microsoft Fabric', 'Azure SQL', 'Microsoft Azure', 'Databricks', 'SQL Server', 'PostgreSQL', 'MySQL', 'Oracle', 'Microsoft'].every(name => names.includes(name)));
-  check('carousel uses a shorter 420px capsule and overlapping 64px icons', await page.locator('.integration-strip').evaluate(element => {
-    const circle = element.querySelector('.integration-tool'), style = getComputedStyle(circle);
-    return element.getBoundingClientRect().width <= 420 && element.getBoundingClientRect().height === 74 && style.width === '64px' && style.marginRight === '-16px' && getComputedStyle(element).borderRadius === '999px';
-  }));
-  await page.locator('.integration-strip img').evaluateAll(images => images.forEach(image => { image.loading = 'eager'; }));
-  await page.waitForFunction(() => [...document.querySelectorAll('.integration-strip img')].every(image => image.complete && image.naturalWidth > 0));
-  check('all eleven tools have working logos and no initials placeholders', await page.locator('.integration-group').first().locator('img').count() === 11 && await page.locator('.integration-icon--initials').count() === 0);
-  const marquee = page.locator('.integration-track');
-  await page.locator('.integration-strip').scrollIntoViewIfNeeded();
+  const selector = page.locator('[data-tool-selector]');
+  const activeName = () => selector.locator('.is-active').getAttribute('aria-label');
+  const names = await selector.locator('.integration-tool').evaluateAll(items => items.map(item => item.getAttribute('aria-label')));
+  check('only the four requested tools appear', JSON.stringify(names) === JSON.stringify(['Power BI','Microsoft','Azure','Python']));
+  check('tool selector is compact without the old overlapping circles', await selector.evaluate(element => element.getBoundingClientRect().width <= 340 && element.getBoundingClientRect().height === 60 && [...element.querySelectorAll('.integration-tool')].every(item => getComputedStyle(item).marginRight === '0px')));
+  await page.waitForFunction(() => [...document.querySelectorAll('[data-tool-selector] img')].every(image => image.complete && image.naturalWidth > 0));
+  check('four real logos load without placeholders', await selector.locator('img').count() === 4);
+  await selector.scrollIntoViewIfNeeded();
   await page.mouse.move(1279, 0);
-  const xBefore = await marquee.evaluate(element => new DOMMatrixReadOnly(getComputedStyle(element).transform).m41);
-  await page.waitForTimeout(250);
-  const xAfter = await marquee.evaluate(element => new DOMMatrixReadOnly(getComputedStyle(element).transform).m41);
-  check('tools keep travelling from right to left', xAfter < xBefore);
-  await page.locator('.integration-strip').hover();
-  const pausedX = await marquee.evaluate(element => new DOMMatrixReadOnly(getComputedStyle(element).transform).m41);
-  await page.waitForTimeout(250);
-  const pausedLater = await marquee.evaluate(element => new DOMMatrixReadOnly(getComputedStyle(element).transform).m41);
-  check('tools pause on hover as in the supplied component', Math.abs(pausedLater - pausedX) < .1);
-  await page.mouse.move(1279, 0);
-  await page.waitForTimeout(250);
-  check('tools resume after pointer leave', await marquee.evaluate(element => getComputedStyle(element).animationPlayState === 'running'));
-  await page.locator('.integration-strip').screenshot({ path: path.join(output, 'tools-marquee.png') });
-
+  const beforeName = await activeName();
+  await page.waitForFunction(name => document.querySelector('[data-tool-selector] .is-active')?.getAttribute('aria-label') !== name, beforeName);
+  check('selection rotates automatically without hover', await activeName() !== beforeName);
+  await page.waitForTimeout(550);
+  check('active tool expands its name in a white capsule', await selector.locator('.is-active').evaluate(element => getComputedStyle(element).backgroundColor === 'rgb(255, 255, 255)' && getComputedStyle(element.querySelector('.integration-name')).opacity === '1'));
+  await selector.hover();
+  const hoveredName = await activeName();
+  await page.waitForFunction(name => document.querySelector('[data-tool-selector] .is-active')?.getAttribute('aria-label') !== name, hoveredName);
+  check('automatic selection continues while the pointer rests on the tools', await activeName() !== hoveredName);
+  await page.waitForTimeout(550);
+  await selector.screenshot({ path: path.join(output, 'tools-automatic-selector.png') });
   await page.evaluate(() => window.scrollTo({ top: 300, behavior: 'instant' }));
   await page.waitForTimeout(950);
   const header = page.locator('[data-header]');
@@ -184,12 +185,10 @@ try {
   }
   await page.locator('.site-footer').scrollIntoViewIfNeeded();
   check('navigation remains visible at the footer', await header.evaluate(element => { const r = element.getBoundingClientRect(); return r.top >= 0 && r.bottom < 120; }));
-  check('tools pause outside the viewport', await marquee.evaluate(element => getComputedStyle(element).animationPlayState === 'paused'));
-  check('decorative arrows pause outside the viewport', await arrows.evaluate(element => getComputedStyle(element).animationPlayState === 'paused'));
+  { const name = await activeName(); await page.waitForTimeout(3200); check('tools pause outside the viewport', await activeName() === name); }
   await page.locator('[data-motion-toggle]').click();
-  check('manual motion preference stops continuous tool motion', await marquee.evaluate(element => getComputedStyle(element).animationPlayState === 'paused'));
+  { const name = await activeName(); await page.waitForTimeout(3200); check('manual motion preference stops continuous tool motion', await activeName() === name); }
   await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
-  check('manual motion preference keeps hero arrows still on return', await arrows.evaluate(element => getComputedStyle(element).animationPlayState === 'paused'));
   await demo.hover();
   await page.waitForTimeout(150);
   check('manual motion preference removes button scaling', await demo.evaluate(element => Math.abs(new DOMMatrixReadOnly(getComputedStyle(element).transform).m11 - 1) < .001));
@@ -198,7 +197,6 @@ try {
   await page.mouse.move(1279, 0);
   await page.waitForTimeout(950);
   check('menu returns to the original hero presentation at the top', await header.evaluate(element => !element.hasAttribute('data-scrolled')));
-  check('decorative arrows resume after motion is enabled again', await arrows.evaluate(element => getComputedStyle(element).animationPlayState === 'running'));
   await page.screenshot({ path: path.join(output, 'hero-desktop-updated.png'), fullPage: false });
   await consulting.focus();
   await page.keyboard.press('Enter');
@@ -207,11 +205,11 @@ try {
   check('anchor target is readable below the fixed menu', await page.locator('#contacto .section-heading').evaluate(element => element.getBoundingClientRect().top >= document.querySelector('[data-header]').getBoundingClientRect().bottom));
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto(base, { waitUntil: 'networkidle' });
-  check('reduced motion keeps content readable and tools static', await page.evaluate(() => getComputedStyle(document.querySelector('.hero-copy h1')).opacity === '1' && getComputedStyle(document.querySelector('.integration-track')).animationPlayState === 'paused'));
+  check('reduced motion keeps content readable and tools static', await page.evaluate(() => getComputedStyle(document.querySelector('.hero-copy h1')).opacity === '1' && document.querySelectorAll('[data-tool-selector] .is-active').length === 1));
   await page.mouse.move(40, 300);
   await page.waitForTimeout(150);
   check('reduced motion disables grid repulsion', await page.locator('.hero-art').evaluate(element => !element.hasAttribute('data-grid-active')));
-  check('reduced motion removes the continuous hero arrow animation', await arrows.evaluate(element => getComputedStyle(element).animationName === 'none'));
+  check('reduced motion leaves Transforme visible', await page.evaluate(() => getComputedStyle(document.querySelector('.hero-text-loop-reveal')).opacity === '1' && document.querySelector('.hero-text-loop-reveal').getAnimations().length === 0 && document.querySelector('.hero-text-loop-cursor').getAnimations().length === 0));
 
   const mobile = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, reducedMotion: 'no-preference' });
   await mobile.addInitScript(staticHeroBackground);

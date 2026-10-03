@@ -201,3 +201,9 @@ button,[role=button]{user-select:none;-webkit-user-select:none;-webkit-touch-cal
 .mobile-navigation{padding:max(24px,env(safe-area-inset-top,0px)) max(24px,env(safe-area-inset-right,0px)) max(24px,env(safe-area-inset-bottom,0px)) max(24px,env(safe-area-inset-left,0px))}
 @media(pointer:coarse){.menu-toggle,.close-button{min-height:44px;min-width:44px}}
 @media(min-width:641px){.site-header--hero,.site-header--inner{top:calc(16px + env(safe-area-inset-top,0px))}}
+
+/* Full-width value rows, including the wide tablet layout and no-JS fallback. */
+.values-card .marquee-row{width:100%;min-width:0;overflow:hidden;flex:none}
+.values-card .marquee-group{flex:none}
+.values-card .marquee-track{animation-duration:96s}
+.values-card .marquee-row--reverse .marquee-track{animation-duration:116s}
