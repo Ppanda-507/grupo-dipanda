@@ -1,0 +1,54 @@
+{
+  "generator": "Built-in image_gen",
+  "purpose": "Original illustrative images for Nossa solução and Processo de trabalho; not client project screenshots.",
+  "prompts": [
+    {
+      "file": "requirements.png",
+      "prompt": "Use case: ads-marketing. Asset type: image for the requirements stage of a Portuguese business intelligence consultancy landing page. Create an original polished square editorial composition inspired by a purple conference poster: overhead photograph of a diverse small team seated around one dark round table with laptops, notebooks and hands discussing a project. Central subject fills most of the square, clean violet gradient backdrop, subtle lime green paper-like diagonal bands framing the table. Rich realistic textures, premium art direction, natural people, uncluttered. No text, no logos, no watermark. The image must look great cropped landscape as a thumbnail and portrait as a large card image, keep the full table centrally framed."
+    },
+    {
+      "file": "blueprint.png",
+      "prompt": "Use case: product-mockup. Asset type: original business planning image for a Business blueprint and MVP process card. Square premium editorial product photography: close-up human hands opening a beautiful deep forest green textured envelope, revealing a pale lime project plan card with a refined printed miniature dashboard diagram, timeline, three connected milestones and a small green checkmark. Inspired by tactile green invitation stationery; make the subject a project blueprint rather than a party invitation. Rich layered green paper, subtle embossed details, natural soft light, shallow depth of field, envelope and plan fill the composition edge to edge. No readable words, no logos, no numbers, no watermark. Strong centrally framed subject for landscape thumbnail and portrait card crops."
+    },
+    {
+      "file": "delivery.png",
+      "prompt": "Use case: product-mockup. Asset type: original visual for iterations and delivery in a consultancy process card. Square premium tactile editorial composition inspired by a red poster with layered file folders. Three elegant ivory paper folders with staggered rounded tabs on a rich deep red background. On their visible surfaces embossed minimalist icons: dashboard bars, a checked checklist, and a connected loop; a tiny warm orange paper tab and black paperclip. Folder layers and shadows communicate organized delivery, validation and handover. Closely composed, layers fill frame, real paper texture, warm studio lighting. No words, no logos, no watermark. Central subject suitable for portrait and landscape crops."
+    },
+    {
+      "file": "bi-finance.png",
+      "prompt": "Use case: ui-mockup. Asset type: high-fidelity illustrative Power BI finance dashboard screenshot for a business intelligence consultancy portfolio preview. Original wide 4:3 interface, edge-to-edge sharp screenshot without device or external margin. Refined green and warm white dashboard inspired by premium financial management products: left navigation, header 'Visão financeira', 3 KPI cards 'Receita', 'Custos', 'Resultado'; large grouped monthly bar chart in forest green and lime, donut breakdown on right, small transaction table below. Sample data only, clean crisp typography, realistic well-organized Power BI style analytics. Financial charts must be sensible, abundant balanced white space. No external brands or logos, no watermark, no invented client names. Screenshot is an illustrative concept, not a real customer project."
+    },
+    {
+      "file": "bi-performance.png",
+      "prompt": "Use case: ui-mockup. Asset type: illustrative Power BI management dashboard screenshot. Create a beautiful original wide 4:3 full-screen analytics interface, edge-to-edge, no device, no outer background: off-white rounded cards, sophisticated coral-orange accents, thin gray dividers and restrained charcoal typography. Header 'Controlo de gestão'. Top KPI cards for 'Receita', 'Margem', 'Objetivo'. Main smooth monthly line chart with two series, semicircle target indicator, category bars and compact data table. Sample euro amounts and Portuguese labels, coherent but illustrative data. Crisp high fidelity, airy balanced grid, sensible chart forms, premium financial dashboard inspired by orange-and-white analytics references. No external brand, logo, watermark or customer project claims."
+    },
+    {
+      "file": "bi-operations.png",
+      "prompt": "Use case: ui-mockup. Asset type: illustrative Power BI operations dashboard screenshot. Original wide 4:3 edge-to-edge sharp dashboard without device or external margin. A clean light gray and white UI with lime green, charcoal and soft peach accents, dark narrow sidebar. Header 'Visão operacional'. Rounded KPI cards 'Pedidos', 'Concluídos', 'Tempo médio'. A large monthly productivity bar chart with a smooth overlaid line, team performance bars, donut showing task completion and a small table of tasks. Refined editorial data visualization, readable Portuguese labels, sensible fictional sample data. Balanced premium layout. No external brands, no client names, no watermark."
+    },
+    {
+      "file": "web-portfolio.png",
+      "prompt": "Use case: ui-mockup. Asset type: illustrative original portfolio website design screenshot. Wide 4:3 edge-to-edge full website screenshot, no browser chrome or device. Inspired by editorial black and white designer portfolio sites with huge confident typography. White background, small monochrome navigation, huge headline 'Ideias que ganham forma.' laid out over two strong lines. Below and partly overlapping headline a natural black-and-white portrait of a young adult creative wearing a dark shirt. Refined grid, subtle thin line, black capsule button 'Vamos conversar' and small project preview tiles along bottom. Clean sophisticated original design, not a copy of any reference person or brand. Sharp website typography, premium art direction. No external logo or watermark."
+    },
+    {
+      "file": "web-platform.png",
+      "prompt": "Use case: ui-mockup. Asset type: illustrative original wellness web application screenshot. Wide 4:3 edge-to-edge crisp interface screenshot with no device, browser chrome or outer background. Calm light gray dashboard with a realistic centered portrait of a friendly adult man in a warm sand shirt against circular charcoal background. Header 'O seu bem-estar, num só lugar'. Six floating rounded white cards and small colored icons for sleep, activity, nutrition and hydration. Left vertical navigation, restrained violet and blue accents, bottom week progress strip, uncluttered rounded layout, elegant Portuguese labels. Inspired by a smart wellness display, but make an original responsive web platform design. No branding, no medical treatment claims, no watermark."
+    },
+    {
+      "file": "web-shop.png",
+      "prompt": "Use case: ui-mockup. Asset type: illustrative original cafe ecommerce website screenshot. Wide 4:3 edge-to-edge elegant ecommerce webpage without device or browser chrome. White and very pale mint background, dark forest green typography. Small generic navigation with 'Menu', 'Novidades', 'Contacto'. Main headline 'Um momento só seu.' Next to a realistic chilled coffee in a clear cup, no logos. Below three product cards with realistic iced coffees: caramel, mocha, vanilla. The middle card has forest green background and a white pill button 'Escolher'. Stylish layered product photography in the UI, crisp typography, tasteful original premium design inspired by coffee retail websites. Do not reproduce Starbucks or any external brand or logo. No watermark."
+    },
+    {
+      "file": "automation-assistant.png",
+      "prompt": "Use case: stylized-concept. Asset type: original chatbot service preview image. Wide 4:3 clean studio 3D illustration inspired by a friendly robot and speech bubbles. A glossy soft white rounded friendly robot with dark face, glowing lime green eyes and a smile, standing in front of a pale green smartphone shape. Floating white and lime speech bubbles, green connecting lines and subtle rounded geometry. Bright ivory background, central subject fills frame, tasteful high quality materials and soft shadows. Cute but premium business automation visual, balanced uncluttered composition. No text, no branding, no watermark."
+    },
+    {
+      "file": "automation-flow.png",
+      "prompt": "Use case: stylized-concept. Asset type: original automation service preview. Wide 4:3 premium isometric 3D illustration: a small friendly white and forest green chatbot robot on a tilted smartphone with neat stacked chat message cards. Three small floating rounded squares representing calendar, database and email connected by lime green lines to the phone. Crisp white studio background, subtle mint shadows, green accent colors, smooth ceramic materials. Central workflow fills most of frame, clearly shows connected systems and automated messages. No text, no logos, no watermark."
+    },
+    {
+      "file": "automation-support.png",
+      "prompt": "Use case: ads-marketing. Asset type: original chatbot customer service illustrative preview. Wide 4:3 polished editorial composite: smiling Black woman with natural curly hair and glasses, wearing a mustard knit sweater, holding a smartphone. Soft warm pale yellow background with elegant concentric arc shapes. A white chat bubble near the top reads 'Posso alterar a marcação?' and a royal blue reply bubble below reads 'Claro. Vamos escolher um novo horário.' A small rounded blue chat icon, natural photo texture, soft lighting and welcoming expression. Typography clear and restrained, photograph fills composition, balanced text and subject. Original fictional customer interaction, no external brands, no logos, no watermark."
+    }
+  ]
+}

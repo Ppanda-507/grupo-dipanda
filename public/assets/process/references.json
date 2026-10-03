@@ -1,0 +1,19 @@
+{
+  "source": "Nine original images supplied by the user in the conversation; decoded unchanged, no image generation or editing.",
+  "files": [
+    { "file": "reference-bi-finance.png", "width": 1199, "height": 861, "bytes": 541843, "sha256": "43ec1039066cab8ce826a2db7d60245ea04e012e113f3e61a072b9e89bc6413f" },
+    { "file": "reference-bi-performance.png", "width": 1200, "height": 900, "bytes": 372978, "sha256": "00b36d709d7ab5616cc4844c3ba301ad461c2be5ef32dab096a3fdc91e41dd8d" },
+    { "file": "reference-bi-operations.png", "width": 1200, "height": 900, "bytes": 524985, "sha256": "8ee96abb1b21888dfd98c5f8f33aff6ba9474bcff9dfed01b0679f853297e102" },
+    { "file": "reference-web-portfolio.png", "width": 1000, "height": 750, "bytes": 245012, "sha256": "a58414321205fa3acfd602a6f8f65392aa9f8c6ecc68cd787b5b49060df58775" },
+    { "file": "reference-web-platform.png", "width": 735, "height": 547, "bytes": 232133, "sha256": "2e9cfe91ce63545011a602615f23918a03eb523df67b41164dd1e97f30506222" },
+    { "file": "reference-web-shop.png", "width": 1080, "height": 1080, "bytes": 451024, "sha256": "1b2ec06e14a88e7751070f939e0dd75f462d1c82c97d8287b594a71e6d15eb6e" },
+    { "file": "reference-automation-assistant.png", "width": 1199, "height": 1501, "bytes": 744570, "sha256": "8009a0a27f311f1c50c2176b14a95b1ce5391cfdb9ffee9e3e584c25bab7e651" },
+    { "file": "reference-automation-flow.png", "width": 736, "height": 552, "bytes": 408527, "sha256": "cefb8e1ee3ac58f8e29ff300ed8ad161fa70729481709c538fa1ada065813b28" },
+    { "file": "reference-automation-support.png", "width": 1200, "height": 1139, "bytes": 1203152, "sha256": "9051054ddba7e39efe26c968ce6c6b5d4e024a4dfb797c5501e0e75454e1f57e" }
+  ],
+  "preserved_process_images": {
+    "requirements.png": "7cd8aa4248ecf9556a7a4e1caa25d96fede497834501f36f158fc3d1a5d51410",
+    "blueprint.png": "5931dd86168672ee25831ce3d2dc8911e71797ab3a2682792c5b7086b399dc61",
+    "delivery.png": "dfff54b041aba465f7c90327da9270a94c5d769713c93e04610fcfb0c59327fe"
+  }
+}

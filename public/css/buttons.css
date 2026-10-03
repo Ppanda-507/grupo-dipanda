@@ -1,0 +1,32 @@
+/* FlowButton timings, shared by every action. */
+:root{--button-duration:600ms;--button-content-duration:800ms;--ease-button-fill:cubic-bezier(.19,1,.22,1);--ease-button-arrow:cubic-bezier(.34,1.56,.64,1)}
+.button,.pill-link,.plain-button,.text-button,.carousel-arrow,.service-link,.close-button,.motion-toggle,.problem-tabs button{transition:background-color var(--button-duration) var(--ease),color var(--button-duration) var(--ease),border-color var(--button-duration) var(--ease),box-shadow var(--button-duration) var(--ease),transform var(--button-duration) var(--ease)}
+.button::before{transition:transform var(--button-content-duration) var(--ease-button-fill)}
+.button-label{transition:transform var(--button-content-duration) var(--ease)}
+.button-arrow,.button-arrow img{transition:transform var(--button-content-duration) var(--ease-button-arrow)}
+.service-link>span:last-child{transition:transform var(--button-content-duration) var(--ease-button-arrow),opacity var(--button-content-duration) var(--ease)}
+.flow-button{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;overflow:hidden;gap:4px;border:1.5px solid #33333333;border-radius:100px;font-size:14px;line-height:20px;font-weight:600;white-space:nowrap;cursor:pointer;transition:border-radius var(--button-duration) var(--ease),color var(--button-duration) var(--ease),border-color var(--button-duration) var(--ease),box-shadow var(--button-duration) var(--ease),transform var(--button-duration) var(--ease)}
+.flow-fill{position:absolute;z-index:-1;inset:0;border-radius:inherit;background:#111;clip-path:circle(0% at 50% 50%);transition:clip-path var(--button-content-duration) var(--ease-button-fill)}
+.flow-label{display:block;transform:translateX(-4px);transition:transform var(--button-content-duration) ease-out}
+.flow-arrow{position:absolute;top:50%;width:16px;height:16px;transform:translateY(-50%);transition:transform var(--button-content-duration) var(--ease-button-arrow),opacity var(--button-content-duration) var(--ease);pointer-events:none}
+.flow-arrow svg{width:16px;height:16px}
+.flow-arrow--outgoing{right:12px}
+.flow-arrow--incoming{left:12px;transform:translate(-36px,-50%);opacity:0}
+.site-header .desktop-nav .flow-button:focus-visible{color:#fff;border-color:transparent;border-radius:12px;box-shadow:0 5px 12px #00000020}
+.flow-button:focus-visible .flow-fill{clip-path:circle(75% at 50% 50%)}
+.flow-button:focus-visible .flow-label{transform:translateX(8px)}
+.flow-button:focus-visible .flow-arrow--outgoing{transform:translate(40px,-50%);opacity:0}
+.flow-button:focus-visible .flow-arrow--incoming{transform:translate(0,-50%);opacity:1}
+@media(hover:hover) and (pointer:fine){
+  .site-header .desktop-nav .flow-button:hover{border-color:transparent;color:#fff;border-radius:12px;box-shadow:0 6px 14px #00000024,0 2px 3px #00000012;transform:translateY(-1px)}
+  .flow-button:hover .flow-fill{clip-path:circle(75% at 50% 50%)}
+  .flow-button:hover .flow-label{transform:translateX(8px)}
+  .flow-button:hover .flow-arrow--outgoing{transform:translate(40px,-50%);opacity:0}
+  .flow-button:hover .flow-arrow--incoming{transform:translate(0,-50%);opacity:1}
+}
+.flow-button:active{transform:translateY(1px) scale(.95)!important;box-shadow:0 1px 2px #00000012!important;transition-duration:140ms}
+html[data-motion-paused] .flow-button,html[data-motion-paused] .flow-button *{transition:none!important;transform:none!important}
+html[data-motion-paused] .flow-button .flow-arrow{transform:translateY(-50%)!important}
+html[data-motion-paused] :is(.button,.button-label,.button-arrow,.pill-link,.plain-button,.text-button,.carousel-arrow,.service-link,.close-button,.motion-toggle,.problem-tabs button),html[data-motion-paused] .service-link>span:last-child{transition:none!important}
+@media(hover:hover) and (pointer:fine){.service-card:hover .service-link>span:last-child{transition:transform var(--button-content-duration) var(--ease-button-arrow),opacity var(--button-content-duration) var(--ease)}}
+@media(prefers-reduced-motion:reduce){.flow-button{transform:none!important}.flow-button *{transition:none!important}.flow-button:active{transform:none!important}}

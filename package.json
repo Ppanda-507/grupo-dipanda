@@ -1,0 +1,20 @@
+{
+  "name": "dipanda-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/serve.mjs --production",
+    "test": "node --test tests/*.test.mjs",
+    "test:e2e": "node scripts/check-browser.mjs",
+    "test:motion": "node scripts/check-motion.mjs",
+    "test:hero": "node scripts/check-hero.mjs",
+    "test:hero-shader": "node scripts/check-hero-shader.mjs",
+    "test:hero-startup": "node scripts/check-hero-startup.mjs",
+    "test:process": "node scripts/check-process.mjs"
+  },
+  "engines": { "node": ">=22" },
+  "devDependencies": { "playwright-core": "1.58.0" }
+}

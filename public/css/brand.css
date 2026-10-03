@@ -1,0 +1,5 @@
+.brand .brand-mark{width:36px;height:38px;object-fit:contain;filter:brightness(0) invert(1)}
+.brand--dark .brand-mark{filter:brightness(0)}
+.site-header>.header-shell>.brand .brand-mark{width:30px;height:32px;filter:brightness(0) invert(1)}
+.site-header--inner>.header-shell>.brand .brand-mark,.site-header[data-scrolled]>.header-shell>.brand .brand-mark{filter:brightness(0)}
+.site-header .mobile-navigation .brand .brand-mark{width:36px;height:38px;filter:brightness(0) invert(1)}

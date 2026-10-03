@@ -1,0 +1,11 @@
+/* Align the rotating word with the phrase's baseline. */
+.about-statement [data-whisper-word]{display:inline-block;position:relative;white-space:nowrap}
+.about-statement .word-rotator{height:1.17em;line-height:1.17;vertical-align:bottom;overflow:hidden;text-align:center}
+.about-statement [data-word-fit] .word-current,.about-statement [data-word-fit] .word-next{justify-content:flex-start;text-align:left}
+.word-width{display:block;line-height:1.17}
+.word-current,.word-next{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;line-height:1.17;text-align:center}
+.word-next{opacity:0}
+.about-statement .inline-symbol{transform:none;vertical-align:middle}
+.about-statement[data-whisper-state="pending"] [data-whisper-word],.about-statement[data-whisper-state="pending"] [data-whisper-icon]{opacity:0}
+html[data-motion-paused] [data-whisper-word],html[data-motion-paused] [data-whisper-icon]{opacity:1!important;transform:none!important}
+@media(prefers-reduced-motion:reduce){[data-whisper-word],[data-whisper-icon]{opacity:1!important;transform:none!important}}

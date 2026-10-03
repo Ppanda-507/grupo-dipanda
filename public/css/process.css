@@ -1,0 +1,131 @@
+/* Only Nossa solução and Processo de trabalho. */
+.process-section .container{max-width:1280px}
+.process-section .solution-heading{max-width:880px}
+.process-section .solution-heading>p:not(.eyebrow){max-width:720px;margin-left:auto;margin-right:auto}
+/* Start with a phone-sized card; wider layouts opt in below. */
+.process-section .solution-grid{display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;gap:20px}
+.process-section .solution-card{position:relative;display:flex;flex-direction:column;width:100%;max-width:384px;min-width:0;padding:24px;border:1px solid #e4e4e4;border-radius:16px;background:#fff;color:var(--ink);box-shadow:0 2px 6px #13131306;touch-action:manipulation;transition:transform 300ms var(--ease),box-shadow 300ms var(--ease),border-color 300ms var(--ease)}
+.process-section .solution-card[data-reveal]{transition:transform 300ms var(--ease),box-shadow 300ms var(--ease),border-color 300ms var(--ease),opacity 650ms var(--ease) var(--stagger,0ms)}
+.process-section .solution-card-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px;margin-bottom:24px}
+.process-section .solution-card h3{font-size:30px;line-height:36px;letter-spacing:-1.5px;font-weight:500;margin:0;min-width:0;overflow-wrap:break-word}
+.process-section .solution-arrow{display:flex;align-items:center;justify-content:center;flex:none;width:24px;height:24px;transition:transform 300ms var(--ease)}
+.process-section .solution-card:first-child{border-color:#c5e785}
+.process-section .solution-images{position:relative;height:128px;margin:0 0 24px;isolation:isolate}
+/* Animate the frame; preserve the original source and leave the image untransformed. */
+.process-section .solution-image{position:absolute;top:0;left:0;width:40%;height:100%;overflow:hidden;border:2px solid #fff;border-radius:8px;box-shadow:0 5px 15px #13131320;transition:transform 300ms var(--ease);transform-origin:center}
+.process-section .solution-image>img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;image-rendering:auto}
+.process-section .solution-image:nth-child(1){z-index:3;transform:translateX(0)}
+.process-section .solution-image:nth-child(2){z-index:2;transform:translateX(32px)}
+.process-section .solution-image:nth-child(3){z-index:1;transform:translateX(64px)}
+.process-section .solution-features{display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;margin-bottom:16px;font-size:14px;line-height:20px;color:#585858}
+.process-section .solution-features .icon-tile{width:28px;height:28px;border-radius:8px;background:var(--lime);flex:none}
+.process-section .solution-features .icon-tile img{width:16px;height:16px;filter:brightness(0)}
+.process-section .solution-description{font-size:14px;line-height:22px;text-align:left;margin:0;color:#585858}
+.process-section .solution-card:active{border-color:#a5cb5f;background:#fbfdf7}
+.process-section .solution-card:focus-visible{outline:2px solid var(--ink);outline-offset:4px;box-shadow:0 10px 24px #13131312}
+.process-section .solution-card:focus-visible .solution-arrow{transform:translateX(4px)}
+.process-section .solution-card:focus-visible .solution-image:nth-child(1){transform:translateX(0) rotate(-5deg)}
+.process-section .solution-card:focus-visible .solution-image:nth-child(2){transform:translateX(min(80px,60%)) rotate(0deg)}
+.process-section .solution-card:focus-visible .solution-image:nth-child(3){transform:translateX(min(160px,120%)) rotate(5deg)}
+@media(hover:hover) and (pointer:fine){
+  .process-section .solution-card:hover{transform:translateY(-4px);border-color:#b7b7b7;box-shadow:0 12px 28px #13131312}
+  .process-section .solution-card:first-child:hover{border-color:#a5cb5f}
+  .process-section .solution-card:hover .solution-arrow{transform:translateX(4px)}
+  .process-section .solution-card:hover .solution-image:nth-child(1){transform:translateX(0) rotate(-5deg)}
+  .process-section .solution-card:hover .solution-image:nth-child(2){transform:translateX(min(80px,60%)) rotate(0deg)}
+  .process-section .solution-card:hover .solution-image:nth-child(3){transform:translateX(min(160px,120%)) rotate(5deg)}
+}
+/* Touch visitors see the references without needing hover. */
+@media(hover:none),(pointer:coarse){
+  .process-section .solution-image:nth-child(2){transform:translateX(min(80px,60%))}
+  .process-section .solution-image:nth-child(3){transform:translateX(min(160px,120%))}
+}
+@media(min-width:768px){
+  .process-section .solution-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .process-section .solution-card:last-child{grid-column:1/-1;width:calc((100% - 20px)/2)}
+}
+@media(min-width:1024px){.process-section .solution-card{max-width:448px}}
+@media(min-width:1200px){
+  .process-section .solution-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .process-section .solution-card:last-child{grid-column:auto;width:100%}
+}
+.process-section .process-heading{margin-top:96px}
+.process-section .process-rotator{height:1.24em;line-height:1.24;max-width:100%;color:inherit;vertical-align:bottom;text-align:center}
+.process-section .process-rotator .word-width{line-height:1.24}
+.process-section .process-rotator .word-current,.process-section .process-rotator .word-next{inset:0;display:flex;align-items:center;justify-content:center;line-height:1.24}
+.process-section .process-steps{display:flex;gap:12px;min-height:0;padding:12px;border:1px solid #f2f2f2;border-radius:24px;background:#f2f2f2;align-items:stretch;container-type:inline-size}
+.process-section .process-steps .process-card{display:flex;flex:0 0 calc((100% - 24px)/4);height:456px;min-height:456px;padding:24px;position:relative;border-radius:16px;overflow:hidden;transition:flex-basis 500ms cubic-bezier(.62,.05,.1,1)}
+.process-section .process-steps .process-card.is-active{flex-basis:calc((100% - 24px)/2)}
+.process-section .process-copy{position:relative;display:flex;flex-direction:column;justify-content:space-between;align-self:stretch;gap:24px;width:100%;max-width:none;flex:1;pointer-events:none}
+.process-section .process-card-top{justify-content:flex-start}
+.process-section .process-text{width:100%;margin-top:auto}
+/* Reserve the final copy width while the card expands, avoiding text reflow. */
+.process-section .process-card.is-active .process-text{width:calc((100cqw - 24px)/4 - 42px)}
+.process-section .process-steps h3{font-size:20px;line-height:26px;letter-spacing:-.8px;margin:0 0 10px}
+.process-section .process-steps p{font-size:16px;line-height:24px;margin:0;text-align:left}
+.process-section .process-card.is-active .process-summary{display:none}
+.process-section .process-detail[hidden]{display:none}
+.process-section .process-detail:not([hidden]){animation:process-detail-in 300ms 150ms var(--ease) both}
+@keyframes process-detail-in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.process-section .process-detail .process-outcome{margin-top:16px;font-size:13px;line-height:20px;color:#585858}
+.process-section .process-outcome strong{display:block;font-weight:500;color:var(--ink);margin-bottom:3px}
+.process-section .process-card-image{position:absolute;top:88px;left:24px;right:auto;bottom:auto;width:calc(100% - 48px);height:156px;max-width:none;opacity:1;transform:none;pointer-events:none;border-radius:12px;overflow:hidden;background:#eef2f8;transition:top 500ms cubic-bezier(.62,.05,.1,1),left 500ms cubic-bezier(.62,.05,.1,1),width 500ms cubic-bezier(.62,.05,.1,1),height 500ms cubic-bezier(.62,.05,.1,1)}
+.process-section .process-card-image>img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.process-section .process-card.is-active .process-card-image{top:24px;left:calc(50% + 6px);width:calc(50% - 30px);height:calc(100% - 48px);opacity:1;transform:none}
+.process-section .process-card-toggle{position:absolute;inset:0;z-index:3;width:100%;height:100%;padding:0;border:0;border-radius:16px;background:transparent;color:inherit;cursor:pointer;touch-action:manipulation}
+.process-section .process-card-toggle:focus-visible{outline:2px solid var(--ink);outline-offset:-4px}
+.process-section .process-cta{max-width:none;width:100%}
+@media(max-width:1100px) and (min-width:992px){
+  .process-section .process-steps .process-card{padding:20px;height:560px;min-height:560px}
+  .process-section .process-card-image{left:20px;width:calc(100% - 40px)}
+  .process-section .process-card.is-active .process-text{width:calc((100cqw - 24px)/4 - 32px)}
+  .process-section .process-card.is-active .process-card-image{top:20px;left:calc(50% + 6px);width:calc(50% - 26px);height:calc(100% - 40px)}
+}
+@media(max-width:991px){
+  .process-section .process-steps{display:grid;grid-template-columns:1fr}
+  .process-section .process-steps .process-card{display:block;height:auto;min-height:0;padding:24px}
+  .process-section .process-copy{display:block;width:calc(100% - 184px)}
+  .process-section .process-card-top{margin-bottom:20px}
+  .process-section .process-text,.process-section .process-card.is-active .process-text{width:100%}
+  .process-section .process-card-image,.process-section .process-card.is-active .process-card-image{position:absolute;top:24px;left:auto;right:24px;bottom:24px;width:160px;height:calc(100% - 48px);min-height:96px;max-width:none;transition:none}
+}
+@media(max-width:640px){
+  .process-section .process-heading{margin-top:64px}
+  .process-section .process-heading h2{font-size:28px;line-height:36px;letter-spacing:-1.3px}
+  .process-section .process-steps .process-card{padding:20px}
+  .process-section .process-copy{width:100%}
+  .process-section .process-card-top{margin-bottom:156px}
+  .process-section .process-card-image,.process-section .process-card.is-active .process-card-image{top:76px;left:20px;right:20px;bottom:auto;width:calc(100% - 40px);height:120px;min-height:0}
+  .process-section .process-steps h3{font-size:20px;line-height:26px}
+  .process-section .process-card.is-active .process-summary{display:block}
+  .process-section .process-detail{margin-top:16px;padding-top:16px;border-top:1px solid #e8e8e8}
+}
+/* No hover-only content: touch, keyboard and no-JS visitors can open details. */
+.process-section .process-steps:not([data-process-ready]){display:grid;grid-template-columns:1fr}
+.process-section .process-steps:not([data-process-ready]) .process-card{height:auto;min-height:0;padding:24px}
+.process-section .process-steps:not([data-process-ready]) .process-copy{display:block;width:calc(100% - 184px)}
+.process-section .process-steps:not([data-process-ready]) .process-card-top{margin-bottom:20px}
+.process-section .process-steps:not([data-process-ready]) .process-text{width:100%}
+.process-section .process-steps:not([data-process-ready]) .process-detail[hidden]{display:block}
+.process-section .process-steps:not([data-process-ready]) .process-summary{display:none!important}
+.process-section .process-steps:not([data-process-ready]) .process-card-toggle{display:none}
+.process-section .process-steps:not([data-process-ready]) .process-card-image{top:24px;left:auto;right:24px;bottom:24px;width:160px;height:calc(100% - 48px)}
+@media(max-width:640px){
+  .process-section .process-steps:not([data-process-ready]) .process-copy{width:100%}
+  .process-section .process-steps:not([data-process-ready]) .process-card-top{margin-bottom:156px}
+  .process-section .process-steps:not([data-process-ready]) .process-card-image{top:76px;left:24px;right:24px;bottom:auto;width:calc(100% - 48px);height:120px}
+}
+html[data-motion-paused] .process-section .solution-card,html[data-motion-paused] .process-section .solution-arrow{transition:none!important;transform:none!important}
+html[data-motion-paused] .process-section .solution-image{transition:none!important}
+html[data-motion-paused] .process-section .solution-image:nth-child(1){transform:translateX(0)!important}
+html[data-motion-paused] .process-section .solution-image:nth-child(2){transform:translateX(32px)!important}
+html[data-motion-paused] .process-section .solution-image:nth-child(3){transform:translateX(64px)!important}
+html[data-motion-paused] .process-section .process-detail{animation:none!important}
+@media(prefers-reduced-motion:reduce){
+  .process-section .solution-card,.process-section .solution-arrow{transition:none!important;transform:none!important}
+  .process-section .solution-image{transition:none!important}
+  .process-section .solution-image:nth-child(1){transform:translateX(0)!important}
+  .process-section .solution-image:nth-child(2){transform:translateX(32px)!important}
+  .process-section .solution-image:nth-child(3){transform:translateX(64px)!important}
+  .process-section .process-detail{animation:none!important}
+}

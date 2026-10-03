@@ -1,0 +1,76 @@
+/* The outer consulting button stays still; only its inset black fill moves. */
+.hero-copy{animation:none;position:relative;top:auto;left:auto;transform:none;width:874px;max-width:100%;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;min-height:32px;padding:6px 14px;margin-bottom:28px;border:1px solid #ffffff33;border-radius:999px;background:#ffffff0d;font:400 11px/18px var(--mono);letter-spacing:1.2px}
+.hero-surface{height:auto;min-height:calc(100svh - 24px);display:flex;flex-direction:column;isolation:isolate;padding:clamp(128px,18vh,160px) 0 40px}
+.hero-tools{position:relative;z-index:1;width:calc(100% - 48px);max-width:1024px;margin: auto auto 0;padding-top:64px;text-align:center}
+.hero-tools>p{font-size:14px;line-height:22px;color:#fff;margin:0 0 16px}
+.hero-tools .integration-strip{border:1px solid #ffffff40;border-radius:24px;background:#ffffffb8;backdrop-filter:blur(10px)}
+.hero-copy p{font-size:16px;line-height:24px;max-width:499px}
+.hero-buttons{gap:20px}
+.hero-buttons [data-soft-hover]{scale:1;transform:none;transition:transform var(--button-duration) var(--ease),background-color var(--button-duration) var(--ease),color var(--button-duration) var(--ease)}
+.hero-buttons .pill-link--glass{position:relative;overflow:hidden}
+.hero-buttons .button--motion{padding:4px;gap:0;background:var(--button-lime);overflow:visible;isolation:isolate;transform:none}
+.hero-buttons .button--motion::before{display:none}
+.button--motion .button-inner{position:relative;isolation:isolate;display:flex;align-items:center;gap:12px;padding-left:16px;min-height:40px;border-radius:999px;overflow:hidden}
+.button--motion .button-inner::before{content:'';position:absolute;inset:0;z-index:-1;background:#000;border-radius:999px;clip-path:inset(0 0 0 calc(100% - 40px) round 999px);transition:clip-path var(--button-content-duration) var(--ease-button-fill)}
+.hero-buttons .button--motion .button-arrow{width:40px;height:40px;background:transparent;transform:none;transition:none}
+.hero-buttons .button--motion .button-arrow img{transition:transform var(--button-content-duration) var(--ease-button-arrow)}
+.hero-buttons .button--motion .button-label{transition:color var(--button-duration) var(--ease),transform var(--button-content-duration) var(--ease)}
+.hero-buttons .button--motion:focus-visible{color:#fff}
+.hero-buttons .button--motion:focus-visible .button-inner::before{clip-path:inset(0 round 999px)}
+.hero-buttons .pill-link--glass:focus-visible{background:#000;color:#fff}
+.hero-grid-canvas{position:absolute;left:-145px;top:-97.5px;width:1509px;height:929px;display:none;pointer-events:none}
+.hero-art[data-grid-active] .hero-grid{visibility:hidden}
+.hero-art[data-grid-active] .hero-grid-canvas{display:block}
+
+.integration-strip{height:96px;overflow:hidden;display:flex;align-items:center;mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
+.integration-track{display:flex;width:max-content;animation:integration-scroll 64s linear infinite;animation-play-state:paused}
+.integration-strip[data-in-view] .integration-track{animation-play-state:running}
+.integration-group{display:flex;align-items:center;gap:40px;flex:none;list-style:none;margin:0;padding:0 40px 0 0}
+.integration-tool{display:flex;align-items:center;gap:12px;white-space:nowrap;color:#585858;font-size:16px;font-weight:500;line-height:32px}
+.integration-icon{display:inline-flex;align-items:center;justify-content:center;flex:none;width:32px;height:32px}
+.integration-icon--crop{overflow:hidden;position:relative}
+.integration-icon--crop img{position:absolute;left:0;top:0;width:auto;height:32px;max-width:none}
+.integration-icon--logo img{width:32px;height:32px;object-fit:contain}
+.integration-icon--oracle{width:64px}
+.integration-icon--oracle img{width:64px;height:32px}
+@keyframes integration-scroll{to{transform:translateX(-50%)}}
+html[data-page-hidden] .integration-track,html[data-motion-paused] .integration-track{animation-play-state:paused!important}
+
+@media(hover:hover) and (pointer:fine){
+  .hero-buttons .pill-link--glass:hover{background:#000;color:#fff;transform:scale(1.025)}
+  .hero-buttons .button--motion:hover{color:#fff;transform:none}
+  .hero-buttons .button--motion:hover .button-inner::before{clip-path:inset(0 round 999px)}
+  .hero-buttons .button--motion:hover .button-label{transform:translateX(2px)}
+  .hero-buttons .button--motion:hover .button-arrow{transform:none}
+  .hero-buttons .button--motion:hover .button-arrow img{transform:translateX(-3px)}
+  .integration-strip:hover .integration-track{animation-play-state:paused}
+}
+.hero-buttons .pill-link--glass:active{transform:scale(.99);transition-duration:140ms}
+.hero-buttons .button--motion:active{transform:none;scale:1}
+@media(max-width:640px){
+  .hero-surface{min-height:calc(100svh - 16px);padding:116px 0 24px}
+  .hero-copy{margin:0 auto}
+  .hero-badge{font-size:9px;letter-spacing:.8px;margin-bottom:24px}
+  .hero-tools{width:calc(100% - 24px);padding-top:48px}
+  .hero-tools>p{font-size:12px}
+  .hero-tools .integration-strip{border-radius:16px}
+  .hero-buttons{gap:12px}
+  .hero-buttons .button--motion{padding:4px;gap:0}
+  .button--motion .button-inner{padding-left:12px;gap:12px}
+  .hero-copy p{font-size:16px;line-height:24px}
+  .integration-strip{height:80px}
+  .integration-group{gap:28px;padding-right:28px}
+  .integration-tool{font-size:16px;gap:8px}
+}
+@media(max-width:370px){.button--motion .button-inner{padding-left:8px;gap:8px}}
+html[data-motion-paused] .hero-buttons [data-soft-hover]{transform:none!important;transition:none!important}
+html[data-motion-paused] .button--motion .button-inner::before,html[data-motion-paused] .button--motion .button-label,html[data-motion-paused] .button--motion .button-arrow img{transition:none!important;transform:none!important}
+@media(prefers-reduced-motion:reduce){
+  .integration-track{animation-play-state:paused!important}
+  .hero-grid-canvas{display:none!important}
+  .hero-grid{visibility:visible!important}
+  .hero-buttons [data-soft-hover]{transform:none!important}
+}
+html[data-motion-paused] .hero-grid-canvas{display:none!important}
+html[data-motion-paused] .hero-grid{visibility:visible!important}
