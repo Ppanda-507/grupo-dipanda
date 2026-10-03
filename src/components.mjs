@@ -72,7 +72,7 @@ export function process() {
     <div class="section-heading solution-heading" data-reveal>${tag('Nossa solução')}<h2>A nossa especialidade é<br><em>Business Intelligence.</em></h2><p>Complementamos essa capacidade com desenvolvimento web e automação, de acordo com as necessidades da sua empresa.</p></div>
     <div class="solution-grid">${solutions.map(solution => `<a class="solution-card" href="${solution.href}" aria-label="Saiba mais sobre ${escape(solution.title)}" data-reveal>
       <div class="solution-card-heading"><h3>${escape(solution.title)}</h3><span class="solution-arrow" aria-hidden="true">${arrow()}</span></div>
-      <div class="solution-images">${solution.images.map(([file, alt, width, height]) => `<span class="solution-image"><img src="/assets/process/${file}" alt="${escape(alt)}" width="${width}" height="${height}" loading="lazy" decoding="async"></span>`).join('')}</div>
+      <div class="solution-images">${solution.images.map(([file, alt, width, height]) => `<span class="solution-image"><img src="/assets/process/responsive/${file.replace(/\.png$/, '')}-160.png" srcset="${[160, 240, 320, 480].map(size => `/assets/process/responsive/${file.replace(/\.png$/, '')}-${size}.png ${size}w`).join(', ')}, /assets/process/${file} ${width}w" sizes="auto, 160px" alt="${escape(alt)}" width="${width}" height="${height}" loading="lazy" decoding="async"></span>`).join('')}</div>
       <div class="solution-features">${icon(solution.icon)}${solution.features.map(feature => `<span>${escape(feature)}</span>`).join('')}</div>
       <p class="solution-description">${escape(solution.description)}</p>
     </a>`).join('')}</div>

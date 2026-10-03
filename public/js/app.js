@@ -35,7 +35,19 @@ if (menu && menuToggle) {
 
 document.querySelectorAll('[data-problem-tabs]').forEach(tablist => {
   const tabs = [...tablist.querySelectorAll('[role="tab"]')];
+  const section = tablist.closest('.problems-section');
+  const previous = section.querySelector('[data-problem-prev]');
+  const next = section.querySelector('[data-problem-next]');
+  const counter = section.querySelector('[data-problem-count]');
+  let current = 0;
+  section.dataset.problemReady = '';
+
   function select(index, focus = false) {
+    current = index;
+    previous.disabled = index === 0;
+    next.disabled = index === tabs.length - 1;
+    counter.textContent = String(index + 1).padStart(2, '0') + ' \u2014 ' + String(tabs.length).padStart(2, '0');
+    counter.setAttribute('aria-label', 'Problema ' + (index + 1) + ' de ' + tabs.length + ': ' + tabs[index].textContent);
     tabs.forEach((tab, i) => {
       tab.setAttribute('aria-selected', String(i === index));
       tab.tabIndex = i === index ? 0 : -1;
@@ -43,6 +55,9 @@ document.querySelectorAll('[data-problem-tabs]').forEach(tablist => {
     });
     if (focus) tabs[index].focus();
   }
+  previous.addEventListener('click', () => select(Math.max(0, current - 1)));
+  next.addEventListener('click', () => select(Math.min(tabs.length - 1, current + 1)));
+  select(0);
   tabs.forEach((tab, index) => {
     tab.addEventListener('click', () => select(index));
     tab.addEventListener('keydown', event => {

@@ -207,3 +207,25 @@ button,[role=button]{user-select:none;-webkit-user-select:none;-webkit-touch-cal
 .values-card .marquee-group{flex:none}
 .values-card .marquee-track{animation-duration:96s}
 .values-card .marquee-row--reverse .marquee-track{animation-duration:116s}
+
+/* Problem: bottom-aligned desktop CTA and image-first mobile navigation. */
+.problem-controls{display:none}
+.problem-panel{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+.problem-panel>.problem-image{grid-column:2;grid-row:1;height:auto;min-height:345px;align-self:stretch}
+.problem-panel>.problem-content{grid-column:1;grid-row:1;align-self:stretch}
+.problem-content .problem-description{margin-bottom:24px}
+.problem-content .button--motion{margin-top:auto}
+.problem-illustration>img{object-position:center}
+@media(max-width:767px){
+ .problems-section .problem-tabs{display:none}
+ .problems-section[data-problem-ready] .problem-controls{display:flex;gap:16px;justify-content:center;margin:20px auto 0}
+ .problem-controls .carousel-arrow{width:44px;height:44px;flex:none;touch-action:manipulation;user-select:none}
+ .problem-controls .carousel-progress{min-width:54px;text-align:center}
+ .problem-panel{display:flex;flex-direction:column;gap:24px;padding:20px}
+ .problem-panel>.problem-image{width:100%;height:auto;min-height:0;aspect-ratio:4/3;flex:none}
+ .problem-panel>.problem-content{width:100%;padding:0;gap:0}
+ .problem-content>.icon-tile{margin-bottom:16px}
+ .problem-content h3{font-size:28px;line-height:36px}
+ .problem-content .problem-description{margin-bottom:24px}
+ .problem-content .button--motion{margin-top:0}
+}
