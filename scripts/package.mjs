@@ -21,7 +21,7 @@ const heroChecks = path.join(os.tmpdir(), 'dipanda-browser-checks', 'hero-result
 if ((await stat(heroChecks).catch(() => null))?.isFile()) await cp(heroChecks, path.join(destination, 'tests', 'hero-results.json'));
 const processChecks = path.join(os.tmpdir(), 'dipanda-browser-checks', 'process-results.json');
 if ((await stat(processChecks).catch(() => null))?.isFile()) await cp(processChecks, path.join(destination, 'tests', 'process-results.json'));
-for (const report of ['image-quality-results.json', 'manual-report-image-results.json', 'problem-responsive-results.json', 'values-marquee-results.json', 'image-reference-results.json', 'compact-solution-results.json', 'about-problem-results.json', 'hero-shader-results.json', 'hero-startup-results.json', 'hero-performance-before.json', 'hero-performance-after.json', 'about-highlight-results.json']) {
+for (const report of ['people-problem-images-results.json', 'editorial-problem-images-results.json', 'solution-cover-gallery-results.json', 'adapted-problem-images-results.json', 'image-quality-results.json', 'manual-report-image-results.json', 'problem-responsive-results.json', 'values-marquee-results.json', 'image-reference-results.json', 'compact-solution-results.json', 'about-problem-results.json', 'hero-shader-results.json', 'hero-startup-results.json', 'hero-performance-before.json', 'hero-performance-after.json', 'about-highlight-results.json']) {
   const reportPath = path.join(os.tmpdir(), 'dipanda-browser-checks', report);
   if ((await stat(reportPath).catch(() => null))?.isFile()) await cp(reportPath, path.join(destination, 'tests', report));
 }

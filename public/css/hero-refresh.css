@@ -63,3 +63,12 @@ html[data-motion-paused] .integration-strip--selector *{transition:none!importan
 .integration-strip--selector .integration-tool{gap:0}
 .integration-strip--selector .integration-icon{width:32px;height:32px}
 .integration-strip--selector .integration-icon--crop img{left:4px;top:4px}
+
+/* Keep the mobile headline on the four requested lines. */
+@media(max-width:640px){
+.hero-copy h1{font-size:clamp(32px,10.2vw,40px);line-height:1.2;letter-spacing:-.06em;text-wrap:initial}
+.hero-copy h1>.hero-data-line{display:block;color:#fff;white-space:nowrap}
+.hero-copy h1>.hero-decisions{display:block}
+.hero-decisions>span{display:block;white-space:nowrap}
+.hero-copy h1 br{display:none}
+}

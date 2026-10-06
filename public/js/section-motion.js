@@ -3,6 +3,20 @@ const compact = window.matchMedia('(max-width: 767px)');
 const allowed = () => !reduced.matches && !document.documentElement.hasAttribute('data-motion-paused');
 
 export function initSectionMotion() {
+  document.querySelectorAll('[data-animated-src]').forEach(image => {
+    let visible = false;
+    const update = () => {
+      const src = allowed() && visible && !document.hidden ? image.dataset.animatedSrc : image.dataset.stillSrc;
+      if (image.getAttribute('src') !== src) image.src = src;
+    };
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(entries => { visible = entries[0].isIntersecting; update(); }).observe(image);
+    } else { visible = true; }
+    document.addEventListener('dipanda:motion-change', update);
+    document.addEventListener('visibilitychange', update);
+    reduced.addEventListener('change', update);
+    update();
+  });
   const animations = new Set();
   document.querySelectorAll('[data-pricing-group]').forEach(group => {
     const cards = [...group.querySelectorAll('[data-pricing-card]')];

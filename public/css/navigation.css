@@ -26,3 +26,6 @@
 @media(max-width:640px){.site-header--hero{top:8px;left:8px;right:8px;padding:12px 20px}.site-header--inner{top:8px;margin:8px;padding:12px 20px}}
 html[data-motion-paused] .site-header,html[data-motion-paused] .desktop-nav,html[data-motion-paused] .menu-toggle{transition:none}
 @media(prefers-reduced-motion:reduce){.site-header,.desktop-nav,.menu-toggle{transition:none}}
+
+/* Keep the longer main menu clear of the brand on narrower screens. */
+@media(min-width:1024px) and (max-width:1199px){.site-header .desktop-nav{display:none}.site-header .menu-toggle{display:flex}}

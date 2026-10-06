@@ -1,0 +1,7 @@
+Built-in imagegen edits. Text is rendered as HTML with the site's typography, not inside the image.
+
+Web background:
+Edit target: web cover image, smiling woman holding laptop. Remove ONLY the large promotional text on the left ('Se o nosso site é assim, imagina como será o seu.') and restore clean plain white background in its place. Preserve the exact woman, face, green clothing and sunglasses, pose, green splash accents, laptop and its website screen content, lighting, shadows and landscape composition 1881x836. Keep left half blank for HTML text overlay. No new lettering, no logos, no new elements. All typography outside laptop must be absent.
+
+Chatbot background:
+Edit target: nighttime woman in bed with phone, headline and chatbot bubbles. Remove ALL graphical overlays: headline, all chat bubbles and their letters, time 02:00, moon icon, robot icon, customer avatar. Restore seamless dark navy photographic background in their place, retaining empty dark area on left half for later HTML text. Preserve exact woman, face, smartphone, blanket, bedding, lamp, nighttime lighting, photographic composition, colors, landscape 1881x836. No new elements, no text, no logos. This is only a clean background plate so typography and chat bubbles can be rendered in HTML.

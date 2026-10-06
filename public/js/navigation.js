@@ -4,7 +4,7 @@ export function initNavigation() {
   const header = document.querySelector('[data-header]');
   if (!header) return;
   const links = [...header.querySelectorAll('.desktop-nav>a,.mobile-navigation nav>a')];
-  const sections = ['home', 'sobre', 'problema', 'processo', 'demonstracao', 'servicos', 'contacto'].map(id => document.getElementById(id)).filter(Boolean);
+  const sections = ['home', 'sobre', 'problema', 'solucao', 'processo', 'demonstracao', 'servicos', 'contacto'].map(id => document.getElementById(id)).filter(Boolean);
   const landing = document.body.dataset.page === '/';
   let frame = null, entrance = null, selected = null;
   const motionAllowed = () => !reduced.matches && !document.documentElement.hasAttribute('data-motion-paused');

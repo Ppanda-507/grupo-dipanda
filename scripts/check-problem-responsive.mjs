@@ -29,7 +29,7 @@ try {
  await tabs.nth(0).click();
  const image=page.locator('#panel-informacao-dispersa .problem-image img');
  await image.scrollIntoViewIfNeeded();await page.waitForFunction(()=>document.querySelector('#panel-informacao-dispersa .problem-image img').complete);
- check('first problem loads the adapted reference illustration without an underlay',await image.evaluate(img=>img.getAttribute('src')==='/assets/problems/informacao-dispersa-v2.png'&&img.naturalWidth>1000&&getComputedStyle(img).objectFit==='cover')&&await page.locator('.problem-underlay').count()===0);
+ check('first problem loads the editorial photograph with people without an underlay',await image.evaluate(img=>img.getAttribute('src')==='/assets/problems/informacao-dispersa-pessoas-v1.png'&&img.naturalWidth>0&&getComputedStyle(img).objectFit==='cover')&&await page.locator('.problem-underlay').count()===0);
  await page.locator('.problem-panels').screenshot({path:path.join(output,'problem-desktop-aligned.png')});
  await desktop.close();
  for(const width of [390,320,767]){

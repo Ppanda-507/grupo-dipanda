@@ -10,13 +10,8 @@
 .process-section .solution-card h3{font-size:30px;line-height:36px;letter-spacing:-1.5px;font-weight:500;margin:0;min-width:0;overflow-wrap:break-word}
 .process-section .solution-arrow{display:flex;align-items:center;justify-content:center;flex:none;width:24px;height:24px;transition:transform 300ms var(--ease)}
 .process-section .solution-card:first-child{border-color:#c5e785}
-.process-section .solution-images{position:relative;height:128px;margin:0 0 24px;isolation:isolate}
+.process-section .solution-images{position:relative;height:160px;margin:0 0 24px;isolation:isolate}
 /* Animate the frame; preserve the original source and leave the image untransformed. */
-.process-section .solution-image{position:absolute;top:0;left:0;width:40%;height:100%;overflow:hidden;border:2px solid #fff;border-radius:8px;box-shadow:0 5px 15px #13131320;transition:transform 300ms var(--ease);transform-origin:center}
-.process-section .solution-image>img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;image-rendering:auto}
-.process-section .solution-image:nth-child(1){z-index:3;transform:translateX(0)}
-.process-section .solution-image:nth-child(2){z-index:2;transform:translateX(32px)}
-.process-section .solution-image:nth-child(3){z-index:1;transform:translateX(64px)}
 .process-section .solution-features{display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;margin-bottom:16px;font-size:14px;line-height:20px;color:#585858}
 .process-section .solution-features .icon-tile{width:28px;height:28px;border-radius:8px;background:var(--lime);flex:none}
 .process-section .solution-features .icon-tile img{width:16px;height:16px;filter:brightness(0)}
@@ -24,21 +19,10 @@
 .process-section .solution-card:active{border-color:#a5cb5f;background:#fbfdf7}
 .process-section .solution-card:focus-visible{outline:2px solid var(--ink);outline-offset:4px;box-shadow:0 10px 24px #13131312}
 .process-section .solution-card:focus-visible .solution-arrow{transform:translateX(4px)}
-.process-section .solution-card:focus-visible .solution-image:nth-child(1){transform:translateX(0) rotate(-5deg)}
-.process-section .solution-card:focus-visible .solution-image:nth-child(2){transform:translateX(min(80px,60%)) rotate(0deg)}
-.process-section .solution-card:focus-visible .solution-image:nth-child(3){transform:translateX(min(160px,120%)) rotate(5deg)}
 @media(hover:hover) and (pointer:fine){
   .process-section .solution-card:hover{transform:translateY(-4px);border-color:#b7b7b7;box-shadow:0 12px 28px #13131312}
   .process-section .solution-card:first-child:hover{border-color:#a5cb5f}
   .process-section .solution-card:hover .solution-arrow{transform:translateX(4px)}
-  .process-section .solution-card:hover .solution-image:nth-child(1){transform:translateX(0) rotate(-5deg)}
-  .process-section .solution-card:hover .solution-image:nth-child(2){transform:translateX(min(80px,60%)) rotate(0deg)}
-  .process-section .solution-card:hover .solution-image:nth-child(3){transform:translateX(min(160px,120%)) rotate(5deg)}
-}
-/* Touch visitors see the references without needing hover. */
-@media(hover:none),(pointer:coarse){
-  .process-section .solution-image:nth-child(2){transform:translateX(min(80px,60%))}
-  .process-section .solution-image:nth-child(3){transform:translateX(min(160px,120%))}
 }
 @media(min-width:768px){
   .process-section .solution-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -116,16 +100,21 @@
   .process-section .process-steps:not([data-process-ready]) .process-card-image{top:76px;left:24px;right:24px;bottom:auto;width:calc(100% - 48px);height:120px}
 }
 html[data-motion-paused] .process-section .solution-card,html[data-motion-paused] .process-section .solution-arrow{transition:none!important;transform:none!important}
-html[data-motion-paused] .process-section .solution-image{transition:none!important}
-html[data-motion-paused] .process-section .solution-image:nth-child(1){transform:translateX(0)!important}
-html[data-motion-paused] .process-section .solution-image:nth-child(2){transform:translateX(32px)!important}
-html[data-motion-paused] .process-section .solution-image:nth-child(3){transform:translateX(64px)!important}
 html[data-motion-paused] .process-section .process-detail{animation:none!important}
 @media(prefers-reduced-motion:reduce){
   .process-section .solution-card,.process-section .solution-arrow{transition:none!important;transform:none!important}
-  .process-section .solution-image{transition:none!important}
-  .process-section .solution-image:nth-child(1){transform:translateX(0)!important}
-  .process-section .solution-image:nth-child(2){transform:translateX(32px)!important}
-  .process-section .solution-image:nth-child(3){transform:translateX(64px)!important}
   .process-section .process-detail{animation:none!important}
 }
+
+/* Keep the full-width image visible while the card is highlighted. */
+.process-section .solution-cover{position:absolute;inset:0;z-index:4;overflow:hidden;border-radius:8px;background:#fff;opacity:1;pointer-events:none}
+.process-section .solution-cover>img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;image-rendering:auto}
+
+html[data-motion-paused] .process-section .solution-cover{transition:none!important}
+@media(prefers-reduced-motion:reduce){.process-section .solution-cover{transition:none!important}}
+
+@media(prefers-reduced-motion:reduce){
+ .process-section .process-steps .process-card,.process-section .process-card-image{transition:none!important}
+}
+html[data-motion-paused] .process-section .process-steps .process-card,html[data-motion-paused] .process-section .process-card-image{transition:none!important}
+

@@ -13,7 +13,7 @@ export const icon = (src, type = '') => `<span class="icon-tile ${type}" aria-hi
 export const logo = (dark = false) => `<a class="brand ${dark ? 'brand--dark' : ''}" href="/" aria-label="Dipanda — página inicial"><img class="brand-mark" src="/assets/brand/dipanda-mark.svg" width="36" height="38" alt=""><span>dipanda</span></a>`;
 
 export function header(home = false) {
-  const links = [['Home', '/'], ['Sobre', '/#sobre'], ['Problema', '/#problema'], ['Processo', '/#processo'], ['Demonstração', '/#demonstracao'], ['Serviços', '/#servicos']];
+  const links = [['Home', '/'], ['Sobre', '/#sobre'], ['Problema', '/#problema'], ['Nossa solução', '/#solucao'], ['Processo', '/#processo'], ['Demonstração', '/#demonstracao'], ['Serviços', '/#servicos']];
   return `<header class="site-header ${home ? 'site-header--hero' : 'site-header--inner'}" data-header>
     <div class="header-shell">
     ${logo(!home)}
@@ -24,13 +24,23 @@ export function header(home = false) {
   </header>`;
 }
 
+const footerIcon = name => {
+  const paths = {
+    location: '<path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>',
+    mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
+    phone: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.1Z"/>',
+    clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  };
+  return '<span class="footer-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+paths[name]+'</svg></span>';
+};
+
 export function footer() {
   return `<footer class="site-footer"><div class="footer-surface"><div class="footer-grid">
     <div class="footer-brand">${logo()}<a href="/#contacto">Conectar-se</a><button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false"><span class="pause-icon" aria-hidden="true">Ⅱ</span><span data-motion-label>Pausar animações</span></button></div>
     <div><h2>Links principais</h2><a href="/">Home</a><a href="/sobre/">Sobre nós</a><a href="/#problema">Problema</a><a href="/#demonstracao">Demonstração</a><a href="/servicos/">Solução e Serviços</a></div>
     <div><h2>Serviços</h2>${services.map(s => `<a href="/servicos/${s.slug}/">${escape(s.title === 'Desenvolvimento SaaS' ? 'Desenvolvimento Saas' : s.title)}</a>`).join('')}</div>
-    <div><h2>Localização</h2><p>Porto, Portugal</p><p>Luanda, Angola</p><p>Houston, Estados unidos</p></div>
-  </div><div class="footer-bottom"><div class="footer-legal"><a href="/termos-e-condicoes/">Termos e Condições</a><a href="/politica-de-privacidade/">Políticas de Privacidade</a><a href="/politica-de-cookies/">Políticas de Cookies</a><button type="button" data-cookie-settings>Gerir cookies</button></div><p>© 2025 Grupo dipanda. Todos os direitos reservados.</p></div></div></footer>`;
+    <div><h2>Localização</h2><p class="footer-location">${footerIcon('location')}<span>Porto, Portugal</span></p><p class="footer-location">${footerIcon('location')}<span>Luanda, Angola</span></p><p class="footer-location">${footerIcon('location')}<span>Houston, Estados unidos</span></p></div>
+  </div><div class="footer-contact"><h2>Contactos</h2><dl><div><dt>${footerIcon('mail')}<span>E-mail</span></dt><dd><a href="mailto:${escape(site.email)}">${escape(site.email)}</a></dd></div><div><dt>${footerIcon('phone')}<span>Telefone</span></dt><dd><a href="tel:${escape(site.phoneHref)}">${escape(site.phone)}</a></dd></div><div><dt>${footerIcon('clock')}<span>Horário</span></dt><dd>${escape(site.hours)}</dd></div></dl></div><div class="footer-bottom"><div class="footer-legal"><a href="/termos-e-condicoes/">Termos e Condições</a><a href="/politica-de-privacidade/">Políticas de Privacidade</a><a href="/politica-de-cookies/">Políticas de Cookies</a><button type="button" data-cookie-settings>Gerir cookies</button></div><p>© 2025 Grupo dipanda. Todos os direitos reservados.</p></div></div></footer>`;
 }
 
 export function cookieUI() {
@@ -51,8 +61,6 @@ export function cookieUI() {
 }
 
 export function contact(section = true, standalone = false) {
-  const socialIcons = [['instagram', '6b185', 'Instagram'], ['facebook', '16cf4', 'Facebook'], ['linkedin', '5bedc', 'LinkedIn'], ['x', 'a462f', 'X']];
-  const socials = socialIcons.filter(([key]) => site.socials[key]).map(([key, file, label]) => `<a class="social-link" href="${escape(site.socials[key])}" target="_blank" rel="noopener noreferrer" aria-label="Dipanda no ${label}"><img src="/assets/figma/2-905-${file}.svg" width="20" height="20" alt=""></a>`).join('');
   return `<${section ? 'section' : 'div'} class="section contact-section" id="contacto"><div class="container">
     <div class="section-heading" data-reveal>${tag('CONTACTOS')}<${standalone ? 'h1' : 'h2'}>Vamos falar sobre os seus <em>dados.</em></${standalone ? 'h1' : 'h2'}><p>${escape(figmaText('5598:3849'))}</p></div>
     <div class="contact-shell" data-reveal><form class="contact-form" data-contact-form action="/api/contact" method="post">
@@ -63,26 +71,26 @@ export function contact(section = true, standalone = false) {
       <input type="hidden" name="startedAt" value="" data-started-at>
       <button class="button button--dark button--motion" data-soft-hover type="submit"><span class="button-inner"><span class="button-label" data-submit-label>Enviar</span><span class="button-arrow" aria-hidden="true">${arrow()}</span></span></button>
       <p class="contact-consent">${escape(figmaText('5598:4846'))} <a href="/politica-de-privacidade/">Política de privacidade</a>.</p><div class="form-status" role="status" aria-live="polite" data-contact-status></div>
-    </form><aside class="contact-aside"><img class="contact-photo" src="/assets/figma/2-905-0e839.png" alt="Paisagem com céu azul e vegetação" loading="lazy" width="352" height="665"><div class="contact-details"><dl><dt>E-mail:</dt><dd><a href="mailto:${site.email}">${site.email}</a></dd><dt>Telefone:</dt><dd><a href="tel:${site.phoneHref}">${site.phone}</a></dd><dt>Horário:</dt><dd>${site.hours}</dd></dl>${socials ? `<p>Siga-nos</p><div class="socials">${socials}</div>` : ''}</div></aside></div>
+    </form></div>
   </div></${section ? 'section' : 'div'}>`;
 }
 
 export function process() {
-  return `<section class="section process-section" id="processo"><div class="container">
+  return `<section class="section process-section" id="solucao"><div class="container">
     <div class="section-heading solution-heading" data-reveal>${tag('Nossa solução')}<h2>A nossa especialidade é<br><em>Business Intelligence.</em></h2><p>Complementamos essa capacidade com desenvolvimento web e automação, de acordo com as necessidades da sua empresa.</p></div>
     <div class="solution-grid">${solutions.map(solution => `<a class="solution-card" href="${solution.href}" aria-label="Saiba mais sobre ${escape(solution.title)}" data-reveal>
       <div class="solution-card-heading"><h3>${escape(solution.title)}</h3><span class="solution-arrow" aria-hidden="true">${arrow()}</span></div>
-      <div class="solution-images">${solution.images.map(([file, alt, width, height]) => `<span class="solution-image"><img src="/assets/process/responsive/${file.replace(/\.png$/, '')}-160.png" srcset="${[160, 240, 320, 480].map(size => `/assets/process/responsive/${file.replace(/\.png$/, '')}-${size}.png ${size}w`).join(', ')}, /assets/process/${file} ${width}w" sizes="auto, 160px" alt="${escape(alt)}" width="${width}" height="${height}" loading="lazy" decoding="async"></span>`).join('')}</div>
+      <div class="solution-images"><span class="solution-cover">${solutionImage(solution.cover || solution.images[0], 'auto, 400px')}</span></div>
       <div class="solution-features">${icon(solution.icon)}${solution.features.map(feature => `<span>${escape(feature)}</span>`).join('')}</div>
       <p class="solution-description">${escape(solution.description)}</p>
     </a>`).join('')}</div>
-    <div class="section-heading process-heading">${tag('Processo de trabalho')}<h2 data-whisper><span data-whisper-word>Clareza</span> <span data-whisper-word>em</span> <span data-whisper-word>cada</span> <span data-whisper-word>etapa.</span><br><em class="orange-bright"><span class="word-rotator process-rotator" data-whisper-word data-word-rotator data-words='["Valor em cada entrega.","Desde o primeiro dia"]'><span class="word-width" aria-hidden="true">Valor em cada entrega.</span><span class="word-current" data-word-current aria-hidden="true">Valor em cada entrega.</span><span class="word-next" data-word-next aria-hidden="true"></span><span class="sr-only">Valor em cada entrega. Desde o primeiro dia.</span></span></em></h2><p>Da primeira conversa à entrega, alinhamos objetivos, validamos a solução consigo e preparamos a sua equipa para a utilizar.</p></div>
+    <div class="section-heading process-heading" id="processo">${tag('Processo de trabalho')}<h2 data-whisper><span data-whisper-word>Clareza</span> <span data-whisper-word>em</span> <span data-whisper-word>cada</span> <span data-whisper-word>etapa.</span><br><em class="orange-bright"><span class="word-rotator process-rotator" data-whisper-word data-word-rotator data-words='["Valor em cada entrega.","Desde o primeiro dia"]'><span class="word-width" aria-hidden="true">Valor em cada entrega.</span><span class="word-current" data-word-current aria-hidden="true">Valor em cada entrega.</span><span class="word-next" data-word-next aria-hidden="true"></span><span class="sr-only">Valor em cada entrega. Desde o primeiro dia.</span></span></em></h2><p>Da primeira conversa à entrega, alinhamos objetivos, validamos a solução consigo e preparamos a sua equipa para a utilizar.</p></div>
     <ol class="process-steps" data-process-cards data-reveal>${processSteps.map((step, index) => `<li class="process-card ${index === 0 ? 'is-active' : ''}" data-process-card>
       <div class="process-copy"><div class="process-card-top">${icon(step.icon)}</div><div class="process-text"><h3 id="process-title-${index}">${escape(step.title)}</h3><p class="process-summary">${escape(step.summary)}</p><div class="process-detail" id="process-detail-${index}"><p>${escape(step.description)}</p><p class="process-outcome"><strong>O que fica consigo</strong>${escape(step.outcome)}</p></div></div></div>
       <div class="process-card-image" aria-hidden="true"><img src="/assets/process/${step.image}" alt="" width="1254" height="1254" loading="lazy"></div>
       <button class="process-card-toggle" type="button" data-process-toggle aria-labelledby="process-title-${index}" aria-controls="process-detail-${index}" aria-expanded="${index === 0}"><span class="sr-only">Ver detalhes da etapa</span></button>
     </li>`).join('')}</ol>
-    <div class="process-cta" data-reveal><div><h3>O próximo passo começa com uma conversa.</h3><p>Conte-nos o desafio do seu negócio. Vamos definir consigo o melhor ponto de partida.</p></div>${motionButton('Agendar consultoria gratuita', '/#contacto')}</div></div></section>`;
+    <div class="process-cta" data-reveal><div><h3>O próximo passo começa com uma conversa.</h3><p>Conte-nos o desafio do seu negócio. Vamos definir consigo o melhor ponto de partida.</p></div>${motionButton('Agendar consultoria', '/#contacto')}</div></div></section>`;
 }
 
 export function serviceCard(service) {
@@ -97,4 +105,18 @@ export function serviceCard(service) {
     <ul class="service-benefits">${service.benefits.map(b => `<li><img src="/assets/figma/2-687-7b108.svg" width="20" height="20" alt="">${escape(b)}</li>`).join('')}</ul>
     <details class="service-details"><summary>Detalhes e indicação <span aria-hidden="true">+</span></summary><div class="service-copy">${paragraphs(service.description)}<h4>Para quem é indicado?</h4><p>${escape(service.audience)}</p></div></details>
   </article>`;
+}
+
+export function solutionImage([file, alt, width, height], sizes, decorative = false) {
+  if (file.endsWith('.gif')) {
+    const poster = '/assets/process/' + file.replace(/\.gif$/, '.png');
+    return `<img src="${poster}" data-animated-src="/assets/process/${file}" data-still-src="${poster}" alt="${decorative ? '' : escape(alt)}" width="${width}" height="${height}" loading="lazy" decoding="async">`;
+  }
+  const base = file.replace(/\.png$/, '');
+  return `<img src="/assets/process/${file}" srcset="${((['bi-cover-campaign-v3.png', 'web-cover-campaign-v4.png', 'chatbot-night-cover-v4.png', 'chatbot-night-photo-v3.png'].includes(file) || file.startsWith('service-')) ? [160, 240, 320, 480, 960, 1280] : [160, 240, 320, 480]).map(size => `/assets/process/responsive/${base}-${size}.png ${size}w`).join(', ')}, /assets/process/${file} ${width}w" sizes="${sizes}" alt="${decorative ? '' : escape(alt)}" width="${width}" height="${height}" loading="lazy" decoding="async">`;
+}
+
+export function solutionGallery(solution, { includeCover = true, title = '', embedded = false } = {}) {
+  if (!solution) return '';
+  return `<section class="solution-gallery${embedded ? ' solution-gallery--projects' : ''}" aria-label="${escape(title || solution.title)}">${embedded ? '' : '<div class="container">'}${title ? `<div class="section-heading"><h2>${escape(title)}</h2></div>` : ''}${includeCover && solution.cover ? `<figure class="solution-gallery-cover">${solutionImage(solution.cover, 'auto, (min-width: 1280px) 1280px, calc(100vw - 48px)')}</figure>` : ''}<div class="solution-gallery-grid">${solution.images.map(image => `<figure>${solutionImage(image, 'auto, (min-width: 900px) 400px, calc(100vw - 48px)')}</figure>`).join('')}</div>${embedded ? '' : '</div>'}</section>`;
 }
