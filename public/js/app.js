@@ -35,38 +35,55 @@ if (menu && menuToggle) {
 
 document.querySelectorAll('[data-problem-tabs]').forEach(tablist => {
   const tabs = [...tablist.querySelectorAll('[role="tab"]')];
+  const panels = tabs.map(tab => document.getElementById(tab.getAttribute('aria-controls')));
   const section = tablist.closest('.problems-section');
+  const surface = section.querySelector('.problem-panels');
   const previous = section.querySelector('[data-problem-prev]');
   const next = section.querySelector('[data-problem-next]');
   const counter = section.querySelector('[data-problem-count]');
-  let current = 0;
+  const mobile = matchMedia('(max-width:767px)');
+  let current = 0, scrollFrame = null;
   section.dataset.problemReady = '';
-
-  function select(index, focus = false) {
+  const offset = index => panels[index].offsetLeft - panels[0].offsetLeft;
+  function select(index, focus = false, move = true, instant = false) {
     current = index;
     previous.disabled = index === 0;
     next.disabled = index === tabs.length - 1;
-    counter.textContent = String(index + 1).padStart(2, '0') + ' \u2014 ' + String(tabs.length).padStart(2, '0');
-    counter.setAttribute('aria-label', 'Problema ' + (index + 1) + ' de ' + tabs.length + ': ' + tabs[index].textContent);
-    tabs.forEach((tab, i) => {
-      tab.setAttribute('aria-selected', String(i === index));
+    counter.textContent = String(index + 1).padStart(2,'0') + ' \u2014 ' + String(tabs.length).padStart(2,'0');
+    counter.setAttribute('aria-label','Problema ' + (index + 1) + ' de ' + tabs.length + ': ' + tabs[index].textContent);
+    tabs.forEach((tab,i) => {
+      tab.setAttribute('aria-selected',String(i === index));
       tab.tabIndex = i === index ? 0 : -1;
-      document.getElementById(tab.getAttribute('aria-controls')).hidden = i !== index;
+      panels[i].hidden = !mobile.matches && i !== index;
     });
-    if (focus) tabs[index].focus();
+    if (mobile.matches && move) {
+      const reduced = document.documentElement.hasAttribute('data-motion-paused') || matchMedia('(prefers-reduced-motion: reduce)').matches;
+      surface.scrollTo({left:offset(index),behavior:instant || focus || reduced ? 'instant' : 'smooth'});
+    }
+    if (focus) tabs[index].focus({preventScroll:true});
   }
-  previous.addEventListener('click', () => select(Math.max(0, current - 1)));
-  next.addEventListener('click', () => select(Math.min(tabs.length - 1, current + 1)));
-  select(0);
-  tabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => select(index));
-    tab.addEventListener('keydown', event => {
+  previous.addEventListener('click',event => select(Math.max(0,current-1),false,true,event.detail===0));
+  next.addEventListener('click',event => select(Math.min(tabs.length-1,current+1),false,true,event.detail===0));
+  surface.addEventListener('scroll',() => {
+    if (!mobile.matches) return;
+    cancelAnimationFrame(scrollFrame);
+    scrollFrame = requestAnimationFrame(() => {
+      const index = panels.reduce((closest,panel,i) => Math.abs(offset(i)-surface.scrollLeft)<Math.abs(offset(closest)-surface.scrollLeft)?i:closest,0);
+      if (index !== current) select(index,false,false);
+    });
+  },{passive:true});
+  mobile.addEventListener('change',() => {surface.scrollLeft=0;select(current,false,true,true);});
+  new ResizeObserver(() => {if(mobile.matches)select(current,false,true,true);}).observe(surface);
+  select(0,false,true,true);
+  tabs.forEach((tab,index) => {
+    tab.addEventListener('click',event => select(index,false,true,event.detail===0));
+    tab.addEventListener('keydown',event => {
       let next;
-      if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
-      if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
-      if (event.key === 'Home') next = 0;
-      if (event.key === 'End') next = tabs.length - 1;
-      if (next !== undefined) { event.preventDefault(); select(next, true); }
+      if(event.key==='ArrowRight')next=(index+1)%tabs.length;
+      if(event.key==='ArrowLeft')next=(index+tabs.length-1)%tabs.length;
+      if(event.key==='Home')next=0;
+      if(event.key==='End')next=tabs.length-1;
+      if(next!==undefined){event.preventDefault();select(next,true);}
     });
   });
 });
@@ -165,4 +182,29 @@ document.querySelectorAll('[data-dashboard]').forEach(dashboard => {
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   });
   render();
+});
+
+// Demo explorer: select with touch, mouse or keyboard.
+document.querySelectorAll('[data-demo-explorer]').forEach(explorer => {
+ const tabs = [...explorer.querySelectorAll('[role="tab"]')];
+ const panels = [...explorer.querySelectorAll('[role="tabpanel"]')];
+ const preview = explorer.querySelector('[data-demo-preview]');
+ const select = (index, focus = false) => {
+  tabs.forEach((tab,i) => {tab.setAttribute('aria-selected',String(i===index));tab.tabIndex=i===index?0:-1;panels[i].hidden=i!==index;});
+  preview.src=tabs[index].dataset.demoImage;
+  preview.alt='Pré-visualização de '+tabs[index].dataset.demoTitle;
+  if(focus)tabs[index].focus({preventScroll:true});
+ };
+ tabs.forEach((tab,index)=>{
+  tab.addEventListener('click',()=>select(index));
+  tab.addEventListener('keydown',event=>{
+   let next=index;
+   if(event.key==='ArrowRight'||event.key==='ArrowDown')next=(index+1)%tabs.length;
+   else if(event.key==='ArrowLeft'||event.key==='ArrowUp')next=(index+tabs.length-1)%tabs.length;
+   else if(event.key==='Home')next=0;
+   else if(event.key==='End')next=tabs.length-1;
+   else return;
+   event.preventDefault();select(next,true);
+  });
+ });
 });

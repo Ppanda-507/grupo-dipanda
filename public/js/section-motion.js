@@ -18,6 +18,94 @@ export function initSectionMotion() {
     update();
   });
   const animations = new Set();
+  document.querySelectorAll('[data-problem-entry]').forEach(surface => {
+    if (!allowed() || !('IntersectionObserver' in window)) return;
+    if (surface.getBoundingClientRect().top >= innerHeight) surface.dataset.problemPending='';
+    const observer = new IntersectionObserver(entries => {
+      const entry = entries[0];
+      // Wait until the panel is visibly inside the viewport, not just touching it.
+      if (!entry.isIntersecting || entry.intersectionRatio < .12) return;
+      observer.disconnect();
+      const pending=surface.hasAttribute('data-problem-pending');
+      surface.removeAttribute('data-problem-pending');
+      if (!pending || !allowed()) return;
+      const animation=surface.animate([{opacity:0,transform:'translateY(32px)'},{opacity:1,transform:'translateY(0)'}],
+        {duration:550,easing:getComputedStyle(surface).getPropertyValue('--ease').trim(),fill:'backwards'});
+      animations.add(animation);
+      animation.finished.then(()=>animations.delete(animation)).catch(()=>{});
+    },{threshold:.12,rootMargin:'0px 0px -64px 0px'});
+    observer.observe(surface);
+    const show=()=>{if(!allowed()){observer.disconnect();surface.removeAttribute('data-problem-pending');}};
+    document.addEventListener('dipanda:motion-change',show);
+    reduced.addEventListener('change',show);
+  });
+
+  const demoCards = [...document.querySelectorAll('[data-demo-entry]')];
+  if (allowed() && 'IntersectionObserver' in window) {
+    const demoObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const card = entry.target, pending = card.hasAttribute('data-demo-pending');
+        demoObserver.unobserve(card);
+        card.removeAttribute('data-demo-pending');
+        if (!pending || !allowed()) return;
+        const animation = card.animate([{opacity:0,transform:'translateY(10px)'},{opacity:1,transform:'translateY(0)'}],
+          {duration:350,easing:getComputedStyle(card).getPropertyValue('--ease').trim(),fill:'backwards'});
+        animations.add(animation);
+        animation.finished.then(() => animations.delete(animation)).catch(() => {});
+      });
+    }, {threshold:.12,rootMargin:'0px 0px -20px 0px'});
+    demoCards.forEach(card => {
+      if (card.getBoundingClientRect().top >= innerHeight) card.dataset.demoPending = '';
+      demoObserver.observe(card);
+    });
+    const showDemos = () => {
+      if (allowed()) return;
+      demoObserver.disconnect();
+      demoCards.forEach(card => card.removeAttribute('data-demo-pending'));
+    };
+    document.addEventListener('dipanda:motion-change', showDemos);
+    reduced.addEventListener('change', showDemos);
+  }
+
+  const workflowRows = [...document.querySelectorAll('[data-workflow-entry]')];
+  if (allowed() && 'IntersectionObserver' in window) {
+    let workflowScrollDown = true, previousWorkflowScroll = scrollY;
+    window.addEventListener('scroll', () => {
+      if (scrollY !== previousWorkflowScroll) workflowScrollDown = scrollY > previousWorkflowScroll;
+      previousWorkflowScroll = scrollY;
+    }, {passive:true});
+    const workflowObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const row = entry.target;
+        workflowObserver.unobserve(row);
+        const pending = row.hasAttribute('data-workflow-pending');
+        row.removeAttribute('data-workflow-pending');
+        row.dataset.workflowEntered = '';
+        if (!pending || !allowed() || !workflowScrollDown) return;
+        const phone = matchMedia('(max-width: 767px)').matches;
+        const direction = workflowRows.indexOf(row) % 2 === 0 ? 1 : -1;
+        const from = phone ? 'translateX(' + (direction * 64) + 'px)' : 'translateY(20px)';
+        const animation = row.animate([{opacity:0,transform:from},{opacity:1,transform:'translate(0,0)'}],
+          {duration:500,easing:getComputedStyle(row).getPropertyValue('--ease').trim(),fill:'backwards'});
+        animations.add(animation);
+        animation.finished.then(() => animations.delete(animation)).catch(() => {});
+      });
+    }, {threshold:.18,rootMargin:'0px 0px -24px 0px'});
+    workflowRows.forEach(row => {
+      if (row.getBoundingClientRect().top >= innerHeight) row.dataset.workflowPending = '';
+      workflowObserver.observe(row);
+    });
+    const showWorkflow = () => {
+      if (allowed()) return;
+      workflowObserver.disconnect();
+      workflowRows.forEach(row => row.removeAttribute('data-workflow-pending'));
+    };
+    document.addEventListener('dipanda:motion-change', showWorkflow);
+    reduced.addEventListener('change', showWorkflow);
+  }
+
   document.querySelectorAll('[data-pricing-group]').forEach(group => {
     const cards = [...group.querySelectorAll('[data-pricing-card]')];
     const seen = new Set();
@@ -52,28 +140,6 @@ export function initSectionMotion() {
     compact.addEventListener('change', observe);
     document.addEventListener('dipanda:motion-change', observe);
     reduced.addEventListener('change', observe);
-  });
-  document.querySelectorAll('[data-process-cards]').forEach(group => {
-    const cards = [...group.querySelectorAll('[data-process-card]')];
-    group.dataset.processReady = '';
-    const select = card => cards.forEach(item => {
-      const active = item === card;
-      item.classList.toggle('is-active', active);
-      item.querySelector('[data-process-toggle]').setAttribute('aria-expanded', String(active));
-      item.querySelector('.process-detail').hidden = !active;
-    });
-    select(cards[0]);
-    cards.forEach(card => {
-      card.addEventListener('pointerenter', event => {
-        if (event.pointerType === 'mouse' && matchMedia('(hover: hover) and (pointer: fine)').matches) select(card);
-      });
-      card.querySelector('[data-process-toggle]').addEventListener('focus', () => select(card));
-      card.querySelector('[data-process-toggle]').addEventListener('click', () => select(card));
-    });
-    group.addEventListener('pointerleave', event => {
-      if (event.pointerType === 'mouse') select(document.activeElement.closest('[data-process-card]') || cards[0]);
-    });
-    group.addEventListener('focusout', event => { if (!group.contains(event.relatedTarget)) select(cards[0]); });
   });
   function preferenceChanged() {
     if (!allowed()) { animations.forEach(animation => animation.cancel()); animations.clear(); }

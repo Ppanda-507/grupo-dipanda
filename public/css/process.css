@@ -37,68 +37,7 @@
 .process-section .process-rotator{height:1.24em;line-height:1.24;max-width:100%;color:inherit;vertical-align:bottom;text-align:center}
 .process-section .process-rotator .word-width{line-height:1.24}
 .process-section .process-rotator .word-current,.process-section .process-rotator .word-next{inset:0;display:flex;align-items:center;justify-content:center;line-height:1.24}
-.process-section .process-steps{display:flex;gap:12px;min-height:0;padding:12px;border:1px solid #f2f2f2;border-radius:24px;background:#f2f2f2;align-items:stretch;container-type:inline-size}
-.process-section .process-steps .process-card{display:flex;flex:0 0 calc((100% - 24px)/4);height:456px;min-height:456px;padding:24px;position:relative;border-radius:16px;overflow:hidden;transition:flex-basis 500ms cubic-bezier(.62,.05,.1,1)}
-.process-section .process-steps .process-card.is-active{flex-basis:calc((100% - 24px)/2)}
-.process-section .process-copy{position:relative;display:flex;flex-direction:column;justify-content:space-between;align-self:stretch;gap:24px;width:100%;max-width:none;flex:1;pointer-events:none}
-.process-section .process-card-top{justify-content:flex-start}
-.process-section .process-text{width:100%;margin-top:auto}
-/* Reserve the final copy width while the card expands, avoiding text reflow. */
-.process-section .process-card.is-active .process-text{width:calc((100cqw - 24px)/4 - 42px)}
-.process-section .process-steps h3{font-size:20px;line-height:26px;letter-spacing:-.8px;margin:0 0 10px}
-.process-section .process-steps p{font-size:16px;line-height:24px;margin:0;text-align:left}
-.process-section .process-card.is-active .process-summary{display:none}
-.process-section .process-detail[hidden]{display:none}
-.process-section .process-detail:not([hidden]){animation:process-detail-in 300ms 150ms var(--ease) both}
-@keyframes process-detail-in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
-.process-section .process-detail .process-outcome{margin-top:16px;font-size:13px;line-height:20px;color:#585858}
-.process-section .process-outcome strong{display:block;font-weight:500;color:var(--ink);margin-bottom:3px}
-.process-section .process-card-image{position:absolute;top:88px;left:24px;right:auto;bottom:auto;width:calc(100% - 48px);height:156px;max-width:none;opacity:1;transform:none;pointer-events:none;border-radius:12px;overflow:hidden;background:#eef2f8;transition:top 500ms cubic-bezier(.62,.05,.1,1),left 500ms cubic-bezier(.62,.05,.1,1),width 500ms cubic-bezier(.62,.05,.1,1),height 500ms cubic-bezier(.62,.05,.1,1)}
-.process-section .process-card-image>img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
-.process-section .process-card.is-active .process-card-image{top:24px;left:calc(50% + 6px);width:calc(50% - 30px);height:calc(100% - 48px);opacity:1;transform:none}
-.process-section .process-card-toggle{position:absolute;inset:0;z-index:3;width:100%;height:100%;padding:0;border:0;border-radius:16px;background:transparent;color:inherit;cursor:pointer;touch-action:manipulation}
-.process-section .process-card-toggle:focus-visible{outline:2px solid var(--ink);outline-offset:-4px}
 .process-section .process-cta{max-width:none;width:100%}
-@media(max-width:1100px) and (min-width:992px){
-  .process-section .process-steps .process-card{padding:20px;height:560px;min-height:560px}
-  .process-section .process-card-image{left:20px;width:calc(100% - 40px)}
-  .process-section .process-card.is-active .process-text{width:calc((100cqw - 24px)/4 - 32px)}
-  .process-section .process-card.is-active .process-card-image{top:20px;left:calc(50% + 6px);width:calc(50% - 26px);height:calc(100% - 40px)}
-}
-@media(max-width:991px){
-  .process-section .process-steps{display:grid;grid-template-columns:1fr}
-  .process-section .process-steps .process-card{display:block;height:auto;min-height:0;padding:24px}
-  .process-section .process-copy{display:block;width:calc(100% - 184px)}
-  .process-section .process-card-top{margin-bottom:20px}
-  .process-section .process-text,.process-section .process-card.is-active .process-text{width:100%}
-  .process-section .process-card-image,.process-section .process-card.is-active .process-card-image{position:absolute;top:24px;left:auto;right:24px;bottom:24px;width:160px;height:calc(100% - 48px);min-height:96px;max-width:none;transition:none}
-}
-@media(max-width:640px){
-  .process-section .process-heading{margin-top:64px}
-  .process-section .process-heading h2{font-size:28px;line-height:36px;letter-spacing:-1.3px}
-  .process-section .process-steps .process-card{padding:20px}
-  .process-section .process-copy{width:100%}
-  .process-section .process-card-top{margin-bottom:156px}
-  .process-section .process-card-image,.process-section .process-card.is-active .process-card-image{top:76px;left:20px;right:20px;bottom:auto;width:calc(100% - 40px);height:120px;min-height:0}
-  .process-section .process-steps h3{font-size:20px;line-height:26px}
-  .process-section .process-card.is-active .process-summary{display:block}
-  .process-section .process-detail{margin-top:16px;padding-top:16px;border-top:1px solid #e8e8e8}
-}
-/* No hover-only content: touch, keyboard and no-JS visitors can open details. */
-.process-section .process-steps:not([data-process-ready]){display:grid;grid-template-columns:1fr}
-.process-section .process-steps:not([data-process-ready]) .process-card{height:auto;min-height:0;padding:24px}
-.process-section .process-steps:not([data-process-ready]) .process-copy{display:block;width:calc(100% - 184px)}
-.process-section .process-steps:not([data-process-ready]) .process-card-top{margin-bottom:20px}
-.process-section .process-steps:not([data-process-ready]) .process-text{width:100%}
-.process-section .process-steps:not([data-process-ready]) .process-detail[hidden]{display:block}
-.process-section .process-steps:not([data-process-ready]) .process-summary{display:none!important}
-.process-section .process-steps:not([data-process-ready]) .process-card-toggle{display:none}
-.process-section .process-steps:not([data-process-ready]) .process-card-image{top:24px;left:auto;right:24px;bottom:24px;width:160px;height:calc(100% - 48px)}
-@media(max-width:640px){
-  .process-section .process-steps:not([data-process-ready]) .process-copy{width:100%}
-  .process-section .process-steps:not([data-process-ready]) .process-card-top{margin-bottom:156px}
-  .process-section .process-steps:not([data-process-ready]) .process-card-image{top:76px;left:24px;right:24px;bottom:auto;width:calc(100% - 48px);height:120px}
-}
 html[data-motion-paused] .process-section .solution-card,html[data-motion-paused] .process-section .solution-arrow{transition:none!important;transform:none!important}
 html[data-motion-paused] .process-section .process-detail{animation:none!important}
 @media(prefers-reduced-motion:reduce){
@@ -118,3 +57,43 @@ html[data-motion-paused] .process-section .solution-cover{transition:none!import
 }
 html[data-motion-paused] .process-section .process-steps .process-card,html[data-motion-paused] .process-section .process-card-image{transition:none!important}
 
+
+
+/* Compact workflow bands within the site's existing card system. */
+.workflow-board{color:var(--ink)}
+.workflow-list{display:grid;gap:12px;list-style:none;margin:0;padding:0}
+.workflow-row{display:grid;grid-template-columns:140px minmax(0,1fr);gap:32px;align-items:center;padding:28px 32px;border-radius:24px;background:var(--soft);color:var(--ink)}
+.workflow-number{display:block;font-size:112px;font-weight:400;letter-spacing:-.08em;line-height:1;color:#585858;user-select:none}
+.workflow-content{min-width:0;max-width:840px}
+.workflow-kicker{font:10px/16px var(--mono);letter-spacing:1px;text-transform:uppercase;margin:0 0 8px;color:#585858}
+.workflow-content h3{font-size:26px;line-height:32px;letter-spacing:-1px;font-weight:500;margin:0 0 12px}
+.workflow-description{font-size:14px;line-height:22px;margin:0;color:#585858}
+.workflow-outcome{font-size:13px;line-height:20px;margin:12px 0 0}
+.workflow-outcome span{font:10px/16px var(--mono);letter-spacing:.8px;text-transform:uppercase;margin-right:12px;color:#585858}
+.workflow-row--2{background:#fff;border:1px solid #e4e4e4}
+.workflow-row--3{background:#f1fbdc}
+.workflow-row--3 .workflow-number{color:#547322}
+.workflow-row[data-workflow-pending]{opacity:0;transform:translateY(20px)}
+html[data-motion-paused] .workflow-row{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.workflow-row{opacity:1;transform:none}}
+@media(max-width:991px){.workflow-row{grid-template-columns:100px minmax(0,1fr);padding:24px;gap:24px}.workflow-number{font-size:88px}.workflow-content h3{font-size:24px;line-height:30px}}
+@media(max-width:640px){.workflow-row{display:block;padding:24px;border-radius:20px}.workflow-number{font-size:56px;line-height:1;margin-bottom:16px}.workflow-content h3{font-size:22px;line-height:28px;letter-spacing:-.8px}.workflow-description{font-size:14px;line-height:22px}.workflow-outcome span{display:block;margin:0 0 3px}.process-section .process-heading{margin-top:64px}.process-section .process-heading h2{font-size:28px;line-height:36px;letter-spacing:-1.3px}}
+
+@media(min-width:768px){.workflow-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.workflow-row{grid-template-columns:80px minmax(0,1fr);gap:20px;padding:28px;align-items:start}.workflow-number{font-size:76px}.workflow-content h3{font-size:24px;line-height:30px}.workflow-outcome span{display:block;margin:0 0 3px}}
+@media(min-width:768px) and (max-width:991px){.workflow-row{display:block;padding:24px}.workflow-number{font-size:64px;margin-bottom:16px}}
+.workflow-row--4{background:var(--soft)}
+
+@media(hover:hover) and (pointer:fine){
+.workflow-row{transition:transform 200ms var(--ease),box-shadow 200ms ease}
+.workflow-row:hover{transform:translateY(-3px);box-shadow:0 8px 20px #1313130d,inset 0 0 0 1px #b7d987}
+}
+html[data-motion-paused] .workflow-row:hover{transform:none;transition:none}
+@media(prefers-reduced-motion:reduce){.workflow-row:hover{transform:none;transition:none}}
+
+@media(max-width:767px){
+.workflow-board{overflow:clip}
+.workflow-row[data-workflow-pending]:nth-child(odd){transform:translateX(64px)}
+.workflow-row[data-workflow-pending]:nth-child(even){transform:translateX(-64px)}
+html[data-motion-paused] .workflow-row[data-workflow-pending]{opacity:1;transform:none}
+}
+@media(prefers-reduced-motion:reduce){.workflow-row[data-workflow-pending]{opacity:1;transform:none}}

@@ -55,9 +55,17 @@ export const processSteps = [
   },
   {
     title: 'Business blueprint',
-    summary: 'Um plano claro e um MVP para validar a solução.',
-    description: 'Documentamos a arquitetura, as integrações e as etapas do projeto. Criamos uma primeira versão funcional (MVP) para validar os indicadores e os fluxos com a sua equipa, antes de evoluir a solução.',
-    outcome: 'Plano do projeto e MVP validado.',
+    summary: 'Um plano claro para orientar o projeto.',
+    description: 'Documentamos a arquitetura, as integrações e as etapas do projeto. Alinhamos as regras do negócio e o âmbito da solução com a sua equipa.',
+    outcome: 'Plano e arquitetura do projeto acordados.',
+    image: 'blueprint.png',
+    icon: '/assets/figma/2-687-3f18a.svg'
+  },
+  {
+    title: 'MVP',
+    summary: 'Uma primeira versão funcional para validar a solução.',
+    description: 'Criamos uma primeira versão funcional para testar os indicadores e os fluxos com a sua equipa. Validamos o que funciona e recolhemos feedback antes de evoluir a solução.',
+    outcome: 'MVP testado e validado pela sua equipa.',
     image: 'blueprint.png',
     icon: '/assets/figma/2-687-3f18a.svg'
   },

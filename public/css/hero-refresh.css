@@ -27,7 +27,7 @@ html[data-motion-paused] .hero-text-loop-reveal,html[data-motion-paused] .hero-t
 .hero-highlight{display:inline-block;max-width:100%;padding:2px 5px;border-radius:4px;line-height:1.25;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 .hero-highlight--orange{background:var(--orange-bright);color:#fff}
 .hero-tools{z-index:2;max-width:420px;width:calc(100% - 48px);margin:80px auto 0;padding-top:0}
-.hero-tools>p{color:var(--ink);margin-bottom:18px}
+.hero-tools>p{color:#fff;margin-bottom:18px}
 .hero-tools .integration-strip{max-width:420px}
 @media(min-width:641px){
   .hero-surface{padding:clamp(144px,22svh,208px) 0 64px}

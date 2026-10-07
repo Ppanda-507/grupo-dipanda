@@ -13,14 +13,14 @@ export const icon = (src, type = '') => `<span class="icon-tile ${type}" aria-hi
 export const logo = (dark = false) => `<a class="brand ${dark ? 'brand--dark' : ''}" href="/" aria-label="Dipanda — página inicial"><img class="brand-mark" src="/assets/brand/dipanda-mark.svg" width="36" height="38" alt=""><span>dipanda</span></a>`;
 
 export function header(home = false) {
-  const links = [['Home', '/'], ['Sobre', '/#sobre'], ['Problema', '/#problema'], ['Nossa solução', '/#solucao'], ['Processo', '/#processo'], ['Demonstração', '/#demonstracao'], ['Serviços', '/#servicos']];
+  const links = [['Home', '/'], ['Sobre', '/#sobre'], ['Problema', '/#problema'], ['Nossa solução', '/#solucao'], ['Demonstração', '/#demonstracao'], ['Serviços', '/#servicos']];
   return `<header class="site-header ${home ? 'site-header--hero' : 'site-header--inner'}" data-header>
     <div class="header-shell">
     ${logo(!home)}
     <nav class="desktop-nav" aria-label="Navegação principal">${links.map(([label, href]) => `<a href="${href}">${label}</a>`).join('')}${flowButton('Contacto', '/#contacto')}</nav>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-navigation" data-menu-toggle><span>Menu</span><span class="menu-lines" aria-hidden="true"><i></i><i></i></span></button>
     </div>
-    <dialog class="mobile-navigation" id="mobile-navigation" aria-label="Navegação principal" data-menu-dialog><div class="menu-top">${logo(true)}<button class="close-button" aria-label="Fechar menu" data-menu-close>×</button></div><nav>${links.map(([label, href], i) => `<a href="${href}"><small>0${i + 1}</small>${label}<span aria-hidden="true">↗</span></a>`).join('')}${button('Contacto', '/#contacto', 'lime')}</nav></dialog>
+    <dialog class="mobile-navigation" id="mobile-navigation" aria-label="Navegação principal" data-menu-dialog><div class="menu-top">${logo(true)}<button class="close-button" aria-label="Fechar menu" data-menu-close>×</button></div><nav>${links.map(([label, href], i) => `<a href="${href}"><small>0${i + 1}</small>${label}<span class="mobile-menu-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span></a>`).join('')}${button('Contacto', '/#contacto', 'lime')}</nav></dialog>
   </header>`;
 }
 
@@ -40,7 +40,7 @@ export function footer() {
     <div><h2>Links principais</h2><a href="/">Home</a><a href="/sobre/">Sobre nós</a><a href="/#problema">Problema</a><a href="/#demonstracao">Demonstração</a><a href="/servicos/">Solução e Serviços</a></div>
     <div><h2>Serviços</h2>${services.map(s => `<a href="/servicos/${s.slug}/">${escape(s.title === 'Desenvolvimento SaaS' ? 'Desenvolvimento Saas' : s.title)}</a>`).join('')}</div>
     <div><h2>Localização</h2><p class="footer-location">${footerIcon('location')}<span>Porto, Portugal</span></p><p class="footer-location">${footerIcon('location')}<span>Luanda, Angola</span></p><p class="footer-location">${footerIcon('location')}<span>Houston, Estados unidos</span></p></div>
-  </div><div class="footer-contact"><h2>Contactos</h2><dl><div><dt>${footerIcon('mail')}<span>E-mail</span></dt><dd><a href="mailto:${escape(site.email)}">${escape(site.email)}</a></dd></div><div><dt>${footerIcon('phone')}<span>Telefone</span></dt><dd><a href="tel:${escape(site.phoneHref)}">${escape(site.phone)}</a></dd></div><div><dt>${footerIcon('clock')}<span>Horário</span></dt><dd>${escape(site.hours)}</dd></div></dl></div><div class="footer-bottom"><div class="footer-legal"><a href="/termos-e-condicoes/">Termos e Condições</a><a href="/politica-de-privacidade/">Políticas de Privacidade</a><a href="/politica-de-cookies/">Políticas de Cookies</a><button type="button" data-cookie-settings>Gerir cookies</button></div><p>© 2025 Grupo dipanda. Todos os direitos reservados.</p></div></div></footer>`;
+  </div><div class="footer-contact"><h2>Contactos</h2><dl><div><dt>E-mail</dt><dd>${footerIcon('mail')}<a href="mailto:${escape(site.email)}">${escape(site.email)}</a></dd></div><div><dt>Telefone</dt><dd>${footerIcon('phone')}<a href="tel:${escape(site.phoneHref)}">${escape(site.phone)}</a></dd></div><div><dt>Horário</dt><dd>${footerIcon('clock')}<span>${escape(site.hours)}</span></dd></div></dl></div><div class="footer-bottom"><div class="footer-legal"><a href="/termos-e-condicoes/">Termos e Condições</a><a href="/politica-de-privacidade/">Políticas de Privacidade</a><a href="/politica-de-cookies/">Políticas de Cookies</a><button type="button" data-cookie-settings>Gerir cookies</button></div><p>© 2025 Grupo dipanda. Todos os direitos reservados.</p></div></div></footer>`;
 }
 
 export function cookieUI() {
@@ -85,11 +85,7 @@ export function process() {
       <p class="solution-description">${escape(solution.description)}</p>
     </a>`).join('')}</div>
     <div class="section-heading process-heading" id="processo">${tag('Processo de trabalho')}<h2 data-whisper><span data-whisper-word>Clareza</span> <span data-whisper-word>em</span> <span data-whisper-word>cada</span> <span data-whisper-word>etapa.</span><br><em class="orange-bright"><span class="word-rotator process-rotator" data-whisper-word data-word-rotator data-words='["Valor em cada entrega.","Desde o primeiro dia"]'><span class="word-width" aria-hidden="true">Valor em cada entrega.</span><span class="word-current" data-word-current aria-hidden="true">Valor em cada entrega.</span><span class="word-next" data-word-next aria-hidden="true"></span><span class="sr-only">Valor em cada entrega. Desde o primeiro dia.</span></span></em></h2><p>Da primeira conversa à entrega, alinhamos objetivos, validamos a solução consigo e preparamos a sua equipa para a utilizar.</p></div>
-    <ol class="process-steps" data-process-cards data-reveal>${processSteps.map((step, index) => `<li class="process-card ${index === 0 ? 'is-active' : ''}" data-process-card>
-      <div class="process-copy"><div class="process-card-top">${icon(step.icon)}</div><div class="process-text"><h3 id="process-title-${index}">${escape(step.title)}</h3><p class="process-summary">${escape(step.summary)}</p><div class="process-detail" id="process-detail-${index}"><p>${escape(step.description)}</p><p class="process-outcome"><strong>O que fica consigo</strong>${escape(step.outcome)}</p></div></div></div>
-      <div class="process-card-image" aria-hidden="true"><img src="/assets/process/${step.image}" alt="" width="1254" height="1254" loading="lazy"></div>
-      <button class="process-card-toggle" type="button" data-process-toggle aria-labelledby="process-title-${index}" aria-controls="process-detail-${index}" aria-expanded="${index === 0}"><span class="sr-only">Ver detalhes da etapa</span></button>
-    </li>`).join('')}</ol>
+    <div class="workflow-board"><ol class="workflow-list" aria-label="Etapas do processo de trabalho">${processSteps.map((step, index) => `<li class="workflow-row workflow-row--${index + 1}" data-workflow-entry><span class="workflow-number" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span><div class="workflow-content"><p class="workflow-kicker">Etapa ${String(index + 1).padStart(2, '0')}</p><h3>${escape(step.title)}</h3><p class="workflow-description">${escape(step.description)}</p><p class="workflow-outcome"><span>O que fica consigo</span>${escape(step.outcome)}</p></div></li>`).join('')}</ol></div>
     <div class="process-cta" data-reveal><div><h3>O próximo passo começa com uma conversa.</h3><p>Conte-nos o desafio do seu negócio. Vamos definir consigo o melhor ponto de partida.</p></div>${motionButton('Agendar consultoria', '/#contacto')}</div></div></section>`;
 }
 
