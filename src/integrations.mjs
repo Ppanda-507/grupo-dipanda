@@ -1,9 +1,9 @@
 import { escape } from './components.mjs';
 const tools = [
- { name: 'Power BI', asset: 'integration-0.svg' },
+ { name: 'Power BI', logo: 'power-bi-figma.png' },
  { name: 'Microsoft', logo: 'microsoft.svg' },
- { name: 'Azure', asset: 'integration-4.png' },
- { name: 'Python', asset: 'integration-1.svg' }
+ { name: 'Azure', logo: 'azure-figma.png' },
+ { name: 'Python', logo: 'python-figma.png' }
 ];
 function toolIcon(tool) {
  const source = tool.asset ? '/assets/figma/' + tool.asset : '/assets/tools/' + tool.logo;

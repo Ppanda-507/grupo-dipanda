@@ -2,15 +2,16 @@ import { mkdir, cp, stat, writeFile, readdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import os from 'node:os';
+import { pages, renderPage } from '../src/pages.mjs';
+import { assertProjectAssets } from './project-assets.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const destination = path.join(os.tmpdir(), 'dipanda-delivery', 'dipanda');
+await assertProjectAssets(path.join(root, 'public'), Object.keys(pages).map(renderPage));
 await mkdir(destination, { recursive: true });
 for (const item of ['src', 'public', 'scripts', 'tests', 'package.json', 'package-lock.json', '.gitignore', '.env.example', 'README.md']) await cp(path.join(root, item), path.join(destination, item), { recursive: true });
-for (const [temporaryName, folder] of [['dipanda-site-assets', 'public/assets/figma'], ['dipanda-site-fonts', 'public/fonts'], ['dipanda-process-assets', 'public/assets/process'], ['dipanda-hero-assets', 'public/assets/hero'], ['dipanda-site-dist', 'dist']]) {
-  const temporary = path.join(os.tmpdir(), temporaryName);
-  if ((await stat(temporary).catch(() => null))?.isDirectory()) await cp(temporary, path.join(destination, folder), { recursive: true });
-}
+const build = path.join(root, 'dist');
+if ((await stat(build).catch(() => null))?.isDirectory()) await cp(build, path.join(destination, 'dist'), { recursive: true });
 const assets = await readdir(path.join(destination, 'public/assets/figma'));
 for (const asset of assets.filter(file => /\.(svg|png|jpg|jpeg|webp|avif)$/i.test(file))) if ((await stat(path.join(destination, 'public/assets/figma', asset))).size < 2) throw new Error(`Empty asset: ${asset}`);
 const checks = path.join(os.tmpdir(), 'dipanda-browser-checks', 'results.json');

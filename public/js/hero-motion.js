@@ -37,6 +37,33 @@ export function initHeroMotion() {
   const canvas = hero.querySelector('.hero-grid-canvas');
   const art = hero.querySelector('.hero-art');
   if (grid && canvas && art) {
+    function coverHero() {
+      const area = hero.getBoundingClientRect(), origin = art.getBoundingClientRect();
+      // Convert the visible hero bounds into the art's rotated coordinates.
+      // Repeat the unchanged SVG at native size, rather than stretching its cells.
+      const minColumn = Math.floor((origin.right - area.right + 145) / 1508);
+      const maxColumn = Math.floor((origin.right - area.left + 145) / 1508);
+      const minRow = Math.floor((origin.bottom - area.bottom + 97.5) / 928);
+      const maxRow = Math.floor((origin.bottom - area.top + 97.5) / 928);
+      const copies = new Map([...art.querySelectorAll('[data-grid-repeat]')].map(image => [image.dataset.gridRepeat, image]));
+      for (let row = minRow; row <= maxRow; row++) {
+        for (let column = minColumn; column <= maxColumn; column++) {
+          if (!row && !column) continue;
+          const key = `${row},${column}`;
+          if (copies.has(key)) { copies.delete(key); continue; }
+          const image = grid.cloneNode();
+          image.className = 'hero-grid-copy';
+          image.dataset.gridRepeat = key;
+          image.style.left = `${-145 + column * 1508}px`;
+          image.style.top = `${-97.5 + row * 928}px`;
+          art.insertBefore(image, canvas);
+        }
+      }
+      copies.forEach(image => image.remove());
+    }
+    coverHero();
+    if ('ResizeObserver' in window) new ResizeObserver(coverHero).observe(hero);
+    else window.addEventListener('resize', coverHero, { passive: true });
     const width = 1509, height = 929, cell = 116;
     const rasterScale = Math.min(1, Math.sqrt(500_000 / (width * height)));
     let context = null, raster = null;

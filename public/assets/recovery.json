@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-11",
+  "fonts": "Original families restored from Google Fonts",
+  "figmaRaster": "Recovered from scripts/assets.json original URLs",
+  "icons": "Original named symbols recovered from Iconify: Remix Icon, Material Symbols, MDI, Ant Design and Logos",
+  "heroGrid": "Original unmodified SVG exported from Figma node 5598:3908; 1509 x 929; 116px cells with 16px corners; native gradient opacity retained",
+  "referenceImages": "Existing 480px variants copied as fallback originals; original full-resolution files were lost with temporary storage",
+  "figmaFile": "https://www.figma.com/design/DDdNPfbHSwP78FxMAhdpWK/aeline?node-id=0-1",
+  "aboutIcons": "Original unmodified SVGs from Figma nodes 2:409 and 2:412; 24 x 24",
+  "toolLogos": "Original image fills exported from the Figma Logos Row (2:313): Power BI, Python and Azure",
+  "heroGridPresentation": "Original SVG repeated at native dimensions to cover the whole hero; responsive coverage updated on resize; art layer opacity 0.18; original pointer interaction preserved"
+}

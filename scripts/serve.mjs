@@ -2,7 +2,6 @@ import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
-import os from 'node:os';
 import { pages, renderPage } from '../src/pages.mjs';
 import { validateContact, sendContact } from './contact.mjs';
 
@@ -54,14 +53,10 @@ const server = createServer(async (request, response) => {
       response.end(request.method === 'HEAD' ? undefined : html);
       return;
     }
-    let file = path.resolve(assetRoot, '.' + pathname);
+    const file = path.resolve(assetRoot, '.' + pathname);
     const relative = path.relative(assetRoot, file);
     if (relative.startsWith('..') || path.isAbsolute(relative)) { response.writeHead(403); response.end(); return; }
-    let details = await stat(file).catch(() => null);
-    if (!production && (!details?.isFile() || details.size < 2)) {
-      const fallback = pathname.startsWith('/assets/figma/') ? path.join(os.tmpdir(), 'dipanda-site-assets') : pathname.startsWith('/assets/process/') ? path.join(os.tmpdir(), 'dipanda-process-assets') : pathname.startsWith('/assets/hero/') ? path.join(os.tmpdir(), 'dipanda-hero-assets') : pathname.startsWith('/fonts/') ? path.join(os.tmpdir(), 'dipanda-site-fonts') : null;
-      if (fallback && path.basename(pathname) === pathname.split('/').pop() && !pathname.includes('..')) { file = path.join(fallback, path.basename(pathname)); details = await stat(file).catch(() => null); }
-    }
+    const details = await stat(file).catch(() => null);
     if (details?.isFile()) {
       response.writeHead(200, { 'Content-Type': types[path.extname(file)] || 'application/octet-stream', 'Cache-Control': production ? 'public, max-age=3600' : 'no-store' });
       response.end(request.method === 'HEAD' ? undefined : await readFile(file));

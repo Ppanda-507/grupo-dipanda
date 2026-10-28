@@ -6,6 +6,7 @@
 .hero-surface[data-shader-ready] .hero-shader{opacity:1}
 .hero-surface::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='.12'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),linear-gradient(180deg,#004cd36b,#00389e38 57%,#a8d0f3b3);background-size:180px 180px,100% 100%;background-repeat:repeat,no-repeat}
 .hero-art{z-index:1;opacity:.18}
+.hero-grid-copy{position:absolute;pointer-events:none}
 .hero-glow-top,.hero-glow-bottom,.hero-glow-shape{display:none}
 .hero-copy{z-index:2}
 .hero-badge{margin-bottom:24px}
