@@ -1,0 +1,20 @@
+[
+  {
+    "label": "webkit-https",
+    "origin": "https://127.0.0.1:4443",
+    "engine": "webkit",
+    "startedAt": "2026-10-29T15:47:52.301Z",
+    "finishedAt": "2026-10-29T15:47:52.432Z",
+    "exit": 17,
+    "signal": null,
+    "timedOut": false,
+    "status": "ERROR",
+    "errors": [
+      "Subprocess exit: 17",
+      "Report missing or invalid: ENOENT: no such file or directory, open 'C:\\Users\\DELL\\AppData\\Local\\Temp\\dipanda-consent-run-FADJF3\\webkit-https.json'"
+    ],
+    "reportPath": null,
+    "temporary": "C:\\Users\\DELL\\AppData\\Local\\Temp\\dipanda-consent-run-FADJF3\\webkit-https.json",
+    "snapshot": "fd3031562fa9442aed2a9d0bfd991477a5469f9263d176fcb281614f37dd22e8"
+  }
+]

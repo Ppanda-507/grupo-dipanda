@@ -1,0 +1,5 @@
+Synthetic subprocess output: invalid
+Synthetic diagnostic stderr
+
+[executor]
+Report missing or invalid: Invalid report identity or scenarios.

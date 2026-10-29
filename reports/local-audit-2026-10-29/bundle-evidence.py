@@ -12,7 +12,7 @@ version = json.loads((out / 'code-version.json').read_text(encoding='utf-8'))
 files = []
 for report_dir in ['production-2026-10-29', 'consent-storage-2026-10-29', 'local-audit-2026-10-29']:
     files += [p for p in (root / 'reports' / report_dir).rglob('*')
-              if p.is_file() and p.name != 'artefactos.json' and p.suffix != '.zip']
+              if p.is_file() and p.name != 'artefactos.json' and p.suffix != '.zip' and not p.name.endswith('.zip.sha256')]
 for item in version['files']:
     name = item['file']
     if name.startswith(('public/assets/', 'public/fonts/')):

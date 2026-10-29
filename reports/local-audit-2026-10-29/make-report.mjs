@@ -1,7 +1,8 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 const directory = 'reports/local-audit-2026-10-29';
-const version = JSON.parse(await fs.readFile(path.join(directory, 'code-version.json'), 'utf8'));
+// This generator reproduces the historical browser report, not the newer runner phase.
+const version = JSON.parse(await fs.readFile(path.join(directory, 'code-version.browser-tested.json'), 'utf8'));
 const reports = [];
 for (const protocol of ['http', 'https']) for (const engine of ['chromium', 'firefox', 'webkit']) {
   const label = `${engine}-${protocol}`;
@@ -110,7 +111,7 @@ WebKit/Windows conserva as escolhas e bloqueia o armazenamento opcional nos test
 
 Aplicada a skill compliance-check. Os testes verificam os controlos técnicos de escolha/retirada, não a legalidade completa do tratamento. A [CNPD](https://www.cnpd.pt/media/x2zdus50/nota-informativa-cnpd_cookies_20210625.pdf) atribui ao operador responsabilidade pelos cookies que permite; a [Lei 46/2012](https://diariodarepublica.pt/dr/detalhe/lei/46-2012-174793) estabelece o regime de acesso/armazenamento no terminal e exceções, e o [EDPB](https://www.edpb.europa.eu/system/files/2023-01/edpb_20230118_report_cookie_banner_taskforce_en.pdf) trata escolha positiva, recusa e retirada. Fontes consultadas em 29/10/2026. A classificação depende da finalidade e dos dados envolvidos; não foi exigido consentimento nem apagada indiscriminadamente toda a cache HTTP.
 `;
-await fs.writeFile(path.join(directory, 'RELATORIO.md'), text);
-await fs.writeFile(path.join(directory, 'totals.json'), JSON.stringify({ snapshot: version.snapshot, ...totals }, null, 2));
-await fs.writeFile(path.join(directory, 'runs.json'), JSON.stringify(reports.map(r => ({ label: r.label, origin: r.origin, engine: r.engine, browserVersion: r.browserVersion, startedAt: r.startedAt, finishedAt: r.finishedAt, summary: r.summary, snapshot: r.version.snapshot })), null, 2));
+await fs.writeFile(path.join(directory, 'RELATORIO-NAVEGADORES-ANTERIOR.md'), '> Registo histórico anterior à correção do executor; SameSite WebKit/Windows continua inconclusivo.\n\n' + text.replaceAll('(code-version.json)', '(code-version.browser-tested.json)'));
+await fs.writeFile(path.join(directory, 'browser-totals.json'), JSON.stringify({ snapshot: version.snapshot, ...totals }, null, 2));
+await fs.writeFile(path.join(directory, 'browser-runs.json'), JSON.stringify(reports.map(r => ({ label: r.label, origin: r.origin, engine: r.engine, browserVersion: r.browserVersion, startedAt: r.startedAt, finishedAt: r.finishedAt, summary: r.summary, snapshot: r.version.snapshot })), null, 2));
 console.log(JSON.stringify(totals));

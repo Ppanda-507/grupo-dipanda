@@ -1,0 +1,5 @@
+Synthetic subprocess output: valid-but-crash
+Synthetic diagnostic stderr
+
+[executor]
+Subprocess exit: 17

@@ -1,5 +1,7 @@
 # Segurança do código, dependências e segredos — conclusão local
 
+> Consolidação posterior: a correção do executor e os 32 testes aprovados estão em [RELATORIO.md](RELATORIO.md) e [executor-fix-tests.json](executor-fix-tests.json). O unit-tests.txt abaixo conserva os 23 testes anteriores; scans, revisão de aplicação e medições de navegador não foram repetidos após a correção. As versões anterior e posterior têm manifestos separados. A aplicação e os ficheiros de configuração não mudaram; apenas o executor e o novo teste de regressão diferem.
+
 Âmbito: site Dipanda, sem `casaspanda`. Versão dos ficheiros em [code-version.json](code-version.json), incluindo alterações não commitadas; testes atuais em [unit-tests.txt](unit-tests.txt) e respetivos metadados. As linhas abaixo referem-se ao código desta revisão; as linhas das prioridades históricas referem-se ao snapshot indicado no relatório original.
 
 ## Críticos/altos e correções

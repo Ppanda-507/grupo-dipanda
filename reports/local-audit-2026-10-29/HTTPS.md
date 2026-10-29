@@ -1,5 +1,7 @@
 # HTTPS, cabeçalhos e cache — apenas local
 
+> As medições abaixo pertencem à [versão anterior dos testes de navegador](code-version.browser-tested.json). A consolidação posterior corrigiu o executor e registou 32 testes aprovados, sem repetir TLS/navegadores. SameSite no WebKit/Windows permanece inconclusivo. Ver [relatório consolidado](RELATORIO.md).
+
 Âmbito confirmado pelo utilizador: não existe publicação. Não foi procurado/criado deployment, alterado DNS, nem consultada uma conta Vercel. Domínio, certificados públicos, renovação e configuração da plataforma estão **fora do âmbito**; não bloqueiam a conclusão desta fase local.
 
 Servidor real: `https://127.0.0.1:4443`, Node 24.22.1, `scripts/serve.mjs` com TLS nativo. Certificado autoassinado RSA-2048/SHA-256 de 7 dias, SAN localhost/127.0.0.1/::1, gerado pelo OpenSSL instalado no Git for Windows. Chave em TEMP, não incluída no projeto. Não foi instalado certificado raiz nem alterada a confiança do sistema.

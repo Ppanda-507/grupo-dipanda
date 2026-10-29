@@ -1,5 +1,5 @@
 {
-  "snapshot": "448cb3b0c7e9aa7128780e3af54ab19dc22f5d42c01ff6d1754be872ad4dd899",
+  "snapshot": "fd3031562fa9442aed2a9d0bfd991477a5469f9263d176fcb281614f37dd22e8",
   "scope": "Source text/config/tests and audit reports; binary assets remain in the project and code-version manifest. No .env, TLS key, browser profile, browser binary or casaspanda.",
   "files": [
     {
@@ -179,8 +179,8 @@
     },
     {
       "file": "reports/local-audit-2026-10-29/HTTPS.md",
-      "sha256": "ebe4f1f8ece373aca3e0fe6d3560fc7e41ed8b192a875f1b66961a258d2f3673",
-      "bytes": 3970
+      "sha256": "c87295770994339b181d4caa1b2071e3b5724cbd77e41f19aa181ba081261ee3",
+      "bytes": 4288
     },
     {
       "file": "reports/local-audit-2026-10-29/MATRIZ-LEGAL.md",
@@ -188,19 +188,29 @@
       "bytes": 5171
     },
     {
+      "file": "reports/local-audit-2026-10-29/PENDENCIAS.md",
+      "sha256": "f0b4d8ec53666c030ea2f2d0af1a8a3d0c931ee84f4083833f497bc60f39ea75",
+      "bytes": 3467
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/RELATORIO-NAVEGADORES-ANTERIOR.md",
+      "sha256": "5c90099da2ee9761c55f996111b6b289817aa2267b30eb80fb94a7fe9cb8aa0a",
+      "bytes": 14790
+    },
+    {
       "file": "reports/local-audit-2026-10-29/RELATORIO.md",
-      "sha256": "9a51d5564cd6d3e3fa96694e6a1e91694eeb39a173663dc71a64ecfc173028b8",
-      "bytes": 14602
+      "sha256": "98bc86b472363745a71915836ef140823160bc2b23b0158207fe7f4fe9703f24",
+      "bytes": 5595
     },
     {
       "file": "reports/local-audit-2026-10-29/REPRODUZIR.md",
-      "sha256": "18250696c3398d3f4a21349d0f78cf7687bcb03d05c2ca802ac8a13121b056cb",
-      "bytes": 4480
+      "sha256": "81f04e7b1fa45d504950a7717bd6dc6de63c655f41d8f3e38d9f0aabd040bcbc",
+      "bytes": 6001
     },
     {
       "file": "reports/local-audit-2026-10-29/SEGURANCA.md",
-      "sha256": "6cce2ad19cc7f6e4eba4adb34bd917dd50aa56dd66f7ea4239685e99b1124367",
-      "bytes": 7409
+      "sha256": "8fd689a1f82e5127687f6477e8862e0dfb88aca1dd1d20eaa79615d514f8ec9f",
+      "bytes": 7914
     },
     {
       "file": "reports/local-audit-2026-10-29/build.txt",
@@ -214,8 +224,8 @@
     },
     {
       "file": "reports/local-audit-2026-10-29/bundle-evidence.py",
-      "sha256": "e6a8a5592e4a95948dfa174a0b12dfff0c8b4ea61b11f52bdf4ab8f80dc60736",
-      "bytes": 1951
+      "sha256": "eca95126151d9859b720209da7e0191104c778912e98b67f917587e2888c875e",
+      "bytes": 1990
     },
     {
       "file": "reports/local-audit-2026-10-29/chromium-http-restricted.json",
@@ -243,14 +253,34 @@
       "bytes": 525
     },
     {
-      "file": "reports/local-audit-2026-10-29/code-version.json",
+      "file": "reports/local-audit-2026-10-29/code-version.browser-tested.json",
       "sha256": "f9d54e037feb816c8265de7a555f5a02ce9d9d6add07302d6025888ba0b8133e",
       "bytes": 59792
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/code-version.json",
+      "sha256": "b35e7c60fb02609650da8089f32d2ac038e38a008dd8aadd76280d1fa34ef443",
+      "bytes": 59941
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/code-version.runner-tested.json",
+      "sha256": "a9aa1bc1ab352269c7b3594d9977cf177068c25125a2129441c1007f1a47fb4d",
+      "bytes": 59941
     },
     {
       "file": "reports/local-audit-2026-10-29/consent.js.diff",
       "sha256": "ff7aee5990a87946ac7b950b6dc41e1529ff5e733d914c8f0a50fa05cff95e44",
       "bytes": 5127
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/consolidate-runner-fix.mjs",
+      "sha256": "3903914fc4781a1b98eb6ee27c71b32907d8820ea0997726f5a48dab121917db",
+      "bytes": 10445
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/executor-fix-tests.json",
+      "sha256": "3932ee89aed13b01c8403b5850fbf7f62f7eecc827e121a57596b6b6d1ccfca0",
+      "bytes": 5010
     },
     {
       "file": "reports/local-audit-2026-10-29/firefox-http-expiry-diagnostic.json",
@@ -289,8 +319,8 @@
     },
     {
       "file": "reports/local-audit-2026-10-29/make-report.mjs",
-      "sha256": "b4a1c6c15ef3d3600752017e1a5dcdc9d2f3eaed09bc9072106ba20ddd3d0d86",
-      "bytes": 15779
+      "sha256": "a9cc56037978fba8ee868a146eb2fd723f94a4349c808a4318371ae89594aedd",
+      "bytes": 16103
     },
     {
       "file": "reports/local-audit-2026-10-29/npm-audit-meta.json",
@@ -321,6 +351,306 @@
       "file": "reports/local-audit-2026-10-29/profile-diagnostic-unrestricted.txt",
       "sha256": "a1e8256ff203dc36f226a86598f58d23879d4001fa1462668cd847feb8375436",
       "bytes": 8222
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/crash/code-version.json",
+      "sha256": "a9aa1bc1ab352269c7b3594d9977cf177068c25125a2129441c1007f1a47fb4d",
+      "bytes": 59941
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/crash/fixture.mjs",
+      "sha256": "5f53e2d9b0785867d5ecb8430ceb788167b17af7fd84407352f5aff76e12490d",
+      "bytes": 1192
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/crash/runs.json",
+      "sha256": "63fc9861a1bfe2304c4636f8e77630007fbf38b8e19e72af5293176dfd4dee2a",
+      "bytes": 703
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/crash/webkit-https.previous-0d0eb776-2bd2-4868-af83-68da04400633.json",
+      "sha256": "c03094ef2c6aa49f59fd6fc31229ac7627b604b370b9d0306acf40ecc486c359",
+      "bytes": 24
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/crash/webkit-https.previous-0d0eb776-2bd2-4868-af83-68da04400633.txt",
+      "sha256": "e53abfc7db28365cbb96e2e51408682196cb24a12d40c12c41dd15cfce632231",
+      "bytes": 21
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/crash/webkit-https.txt",
+      "sha256": "8a9b59eadf3fd915dd869bd1e7077dfd97d2add88deee7f5ad7bafe47d010e13",
+      "bytes": 242
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/fail/code-version.json",
+      "sha256": "a9aa1bc1ab352269c7b3594d9977cf177068c25125a2129441c1007f1a47fb4d",
+      "bytes": 59941
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/fail/fixture.mjs",
+      "sha256": "5f53e2d9b0785867d5ecb8430ceb788167b17af7fd84407352f5aff76e12490d",
+      "bytes": 1192
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/fail/runs.json",
+      "sha256": "cb18c1fcd5f6d94ac4df02f8748accce8f756a21b019d73d1c1333facde0ed99",
+      "bytes": 725
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/fail/webkit-https.json",
+      "sha256": "48e5f0f07fa10c77c79f612836ba2ca70603968bb707be543e4907756b69dff7",
+      "bytes": 50626
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/fail/webkit-https.previous-abcf19b9-5373-4b63-b5ab-31a5ee627e2b.json",
+      "sha256": "c03094ef2c6aa49f59fd6fc31229ac7627b604b370b9d0306acf40ecc486c359",
+      "bytes": 24
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/fail/webkit-https.previous-abcf19b9-5373-4b63-b5ab-31a5ee627e2b.txt",
+      "sha256": "e53abfc7db28365cbb96e2e51408682196cb24a12d40c12c41dd15cfce632231",
+      "bytes": 21
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/fail/webkit-https.txt",
+      "sha256": "e24c164bf749c8cdad6d0d5feaaee2f998865d478691e1a83b9b2f5845326f88",
+      "bytes": 62
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/invalid/code-version.json",
+      "sha256": "a9aa1bc1ab352269c7b3594d9977cf177068c25125a2129441c1007f1a47fb4d",
+      "bytes": 59941
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/invalid/fixture.mjs",
+      "sha256": "5f53e2d9b0785867d5ecb8430ceb788167b17af7fd84407352f5aff76e12490d",
+      "bytes": 1192
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/invalid/runs.json",
+      "sha256": "9e72448415ad4df277be6267083f74227e8687da1cbde90d4b1498ad9174a6dc",
+      "bytes": 672
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/invalid/webkit-https.json",
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "bytes": 2
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/invalid/webkit-https.previous-dfbaabbe-0983-4717-b7a1-d05331635e13.json",
+      "sha256": "c03094ef2c6aa49f59fd6fc31229ac7627b604b370b9d0306acf40ecc486c359",
+      "bytes": 24
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/invalid/webkit-https.previous-dfbaabbe-0983-4717-b7a1-d05331635e13.txt",
+      "sha256": "e53abfc7db28365cbb96e2e51408682196cb24a12d40c12c41dd15cfce632231",
+      "bytes": 21
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/invalid/webkit-https.txt",
+      "sha256": "37309d2fa93b107529d42932fc96fea950cfee904c4adad4ba7ddef1b8b6822c",
+      "bytes": 142
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/malformed/code-version.json",
+      "sha256": "a9aa1bc1ab352269c7b3594d9977cf177068c25125a2129441c1007f1a47fb4d",
+      "bytes": 59941
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/malformed/fixture.mjs",
+      "sha256": "5f53e2d9b0785867d5ecb8430ceb788167b17af7fd84407352f5aff76e12490d",
+      "bytes": 1192
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/malformed/runs.json",
+      "sha256": "938545a4a5c86cf5ff1b18e11b239e27f079585febcf8db2dfef814b231a11d7",
+      "bytes": 704
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/malformed/webkit-https.json",
+      "sha256": "d7aeddb6d7f6999d468f23bef79fb0de030b72b6f6e10ab9e78a0b133619aae2",
+      "bytes": 12
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/malformed/webkit-https.previous-19590a0f-5256-409e-9b35-6065de54fd24.json",
+      "sha256": "c03094ef2c6aa49f59fd6fc31229ac7627b604b370b9d0306acf40ecc486c359",
+      "bytes": 24
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/malformed/webkit-https.previous-19590a0f-5256-409e-9b35-6065de54fd24.txt",
+      "sha256": "e53abfc7db28365cbb96e2e51408682196cb24a12d40c12c41dd15cfce632231",
+      "bytes": 21
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/malformed/webkit-https.txt",
+      "sha256": "206aa83976f95cf8c3160e5da3cde1fac55dfb08e80ce0e3c415135b45479166",
+      "bytes": 176
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/missing/code-version.json",
+      "sha256": "a9aa1bc1ab352269c7b3594d9977cf177068c25125a2129441c1007f1a47fb4d",
+      "bytes": 59941
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/missing/fixture.mjs",
+      "sha256": "5f53e2d9b0785867d5ecb8430ceb788167b17af7fd84407352f5aff76e12490d",
+      "bytes": 1192
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/missing/runs.json",
+      "sha256": "a90507ff8963ee3372911b7f0c7fc4c05336f5c5406df341e67693a2db25c6bc",
+      "bytes": 673
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/missing/webkit-https.previous-7678cef8-7083-4daa-98a2-edf7a545d04c.json",
+      "sha256": "c03094ef2c6aa49f59fd6fc31229ac7627b604b370b9d0306acf40ecc486c359",
+      "bytes": 24
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/missing/webkit-https.previous-7678cef8-7083-4daa-98a2-edf7a545d04c.txt",
+      "sha256": "e53abfc7db28365cbb96e2e51408682196cb24a12d40c12c41dd15cfce632231",
+      "bytes": 21
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/missing/webkit-https.txt",
+      "sha256": "9bcaac888b8b0a3120ec81e92a2efb90c524864a094e7bca186ad0bff65c85b4",
+      "bytes": 224
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/pass/code-version.json",
+      "sha256": "a9aa1bc1ab352269c7b3594d9977cf177068c25125a2129441c1007f1a47fb4d",
+      "bytes": 59941
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/pass/fixture.mjs",
+      "sha256": "5f53e2d9b0785867d5ecb8430ceb788167b17af7fd84407352f5aff76e12490d",
+      "bytes": 1192
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/pass/runs.json",
+      "sha256": "ba7597ae39d80da9741a127f6c7df7699f537fa1f0d2d379e604ec08c76f08eb",
+      "bytes": 725
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/pass/webkit-https.json",
+      "sha256": "553bdd025a48c6536ed3410fb60c622d6261333aa0703a34ef3b3d97eead458f",
+      "bytes": 50626
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/pass/webkit-https.previous-26158668-7753-450c-bd89-76cdebcc2129.json",
+      "sha256": "c03094ef2c6aa49f59fd6fc31229ac7627b604b370b9d0306acf40ecc486c359",
+      "bytes": 24
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/pass/webkit-https.previous-26158668-7753-450c-bd89-76cdebcc2129.txt",
+      "sha256": "e53abfc7db28365cbb96e2e51408682196cb24a12d40c12c41dd15cfce632231",
+      "bytes": 21
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/pass/webkit-https.txt",
+      "sha256": "342a4fa94d76d4d79541fdf46044b96820306bf5aa24246c57fe1093e919cd1d",
+      "bytes": 62
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/spawn-error/code-version.json",
+      "sha256": "a9aa1bc1ab352269c7b3594d9977cf177068c25125a2129441c1007f1a47fb4d",
+      "bytes": 59941
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/spawn-error/fixture.mjs",
+      "sha256": "5f53e2d9b0785867d5ecb8430ceb788167b17af7fd84407352f5aff76e12490d",
+      "bytes": 1192
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/spawn-error/runs.json",
+      "sha256": "6883ab85bb3dc0b1ccbb7fd4ff00fc09e56de81f8dd712a78a1727bca3b999c8",
+      "bytes": 1043
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/spawn-error/webkit-https.previous-6fe018d1-ce67-4896-8ad5-2d2d99e1ba38.json",
+      "sha256": "c03094ef2c6aa49f59fd6fc31229ac7627b604b370b9d0306acf40ecc486c359",
+      "bytes": 24
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/spawn-error/webkit-https.previous-6fe018d1-ce67-4896-8ad5-2d2d99e1ba38.txt",
+      "sha256": "e53abfc7db28365cbb96e2e51408682196cb24a12d40c12c41dd15cfce632231",
+      "bytes": 21
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/spawn-error/webkit-https.txt",
+      "sha256": "20f8499ceb9d351467553e3ca0b93bc31eb1aeb836d09c0387830839d21799f8",
+      "bytes": 497
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/unverified/code-version.json",
+      "sha256": "a9aa1bc1ab352269c7b3594d9977cf177068c25125a2129441c1007f1a47fb4d",
+      "bytes": 59941
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/unverified/fixture.mjs",
+      "sha256": "5f53e2d9b0785867d5ecb8430ceb788167b17af7fd84407352f5aff76e12490d",
+      "bytes": 1192
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/unverified/runs.json",
+      "sha256": "74a98f7e8ef1fafbbdacddc034de1268cb54a4037166a67dc3d044e4f2412405",
+      "bytes": 731
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/unverified/webkit-https.json",
+      "sha256": "834853697176b0e6810350e897ccc78241bbf613537da15f598a0289ee0bfc6a",
+      "bytes": 50632
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/unverified/webkit-https.previous-26ad2626-55ca-4d02-a3ee-c24962b54ce0.json",
+      "sha256": "c03094ef2c6aa49f59fd6fc31229ac7627b604b370b9d0306acf40ecc486c359",
+      "bytes": 24
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/unverified/webkit-https.previous-26ad2626-55ca-4d02-a3ee-c24962b54ce0.txt",
+      "sha256": "e53abfc7db28365cbb96e2e51408682196cb24a12d40c12c41dd15cfce632231",
+      "bytes": 21
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/unverified/webkit-https.txt",
+      "sha256": "e8042de086a4c03aceeeee7cfdfc8a4a13cffb76e8feac9842684d23e0622eb0",
+      "bytes": 68
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/valid-but-crash/code-version.json",
+      "sha256": "a9aa1bc1ab352269c7b3594d9977cf177068c25125a2129441c1007f1a47fb4d",
+      "bytes": 59941
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/valid-but-crash/fixture.mjs",
+      "sha256": "5f53e2d9b0785867d5ecb8430ceb788167b17af7fd84407352f5aff76e12490d",
+      "bytes": 1192
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/valid-but-crash/runs.json",
+      "sha256": "1a59ec4ca28f058c8cc7dbb7f59942173be060166931d09c4c360120889d2c13",
+      "bytes": 760
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/valid-but-crash/webkit-https.json",
+      "sha256": "553bdd025a48c6536ed3410fb60c622d6261333aa0703a34ef3b3d97eead458f",
+      "bytes": 50626
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/valid-but-crash/webkit-https.previous-8883f3fc-21e2-4219-a211-67aae07ccd07.json",
+      "sha256": "c03094ef2c6aa49f59fd6fc31229ac7627b604b370b9d0306acf40ecc486c359",
+      "bytes": 24
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/valid-but-crash/webkit-https.previous-8883f3fc-21e2-4219-a211-67aae07ccd07.txt",
+      "sha256": "e53abfc7db28365cbb96e2e51408682196cb24a12d40c12c41dd15cfce632231",
+      "bytes": 21
+    },
+    {
+      "file": "reports/local-audit-2026-10-29/runner-regression/valid-but-crash/webkit-https.txt",
+      "sha256": "79adf9db94136aff36bd7354b250f121d60f93e232918e08edcba2ba5638f7cb",
+      "bytes": 105
     },
     {
       "file": "reports/local-audit-2026-10-29/runs.json",
@@ -594,8 +924,8 @@
     },
     {
       "file": "scripts/run-local-consent-audit.mjs",
-      "sha256": "d0ffa89a59ba206206d018e2064e238dd0d9d7a868aa6845bd628ae931b74dbc",
-      "bytes": 3284
+      "sha256": "553ebe1d3ae04012cae9ed50b56529e302e1d53c0c1cf043f2fc003a291aa07f",
+      "bytes": 5723
     },
     {
       "file": "scripts/runtime-version.mjs",
@@ -676,6 +1006,11 @@
       "file": "src/solutions.mjs",
       "sha256": "db84c8058d032248e121d19a5fa1e96c279189de534fc53a85770d5af6ed8b22",
       "bytes": 3410
+    },
+    {
+      "file": "tests/consent-audit-runner.test.mjs",
+      "sha256": "4facb80e338a35b852b779ce69196badd7a0041bf38d45b609ea442427c76fff",
+      "bytes": 4350
     },
     {
       "file": "tests/consent-storage.test.mjs",

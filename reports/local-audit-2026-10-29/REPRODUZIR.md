@@ -1,5 +1,7 @@
 # Reprodução da auditoria local
 
+> Os comandos abaixo permitem uma futura reprodução; **não foram repetidos na consolidação documental**. Consultar [RELATORIO.md](RELATORIO.md) para distinguir os 90 cenários anteriores dos 32 testes aprovados após a correção do executor.
+
 Executar na raiz do projeto. Não requer Vercel, domínio público, credenciais de e-mail ou Redis. Não criar `.env` com chaves reais para esta auditoria. A suite só aceita destinos de loopback e envia apenas `{}` inválido ao endpoint real. Nos unitários, os envios válidos são simulados.
 
 ## Pré-requisitos
@@ -61,3 +63,11 @@ node scripts/audit-code-version.mjs
 ```
 
 Comparar `snapshot` com `code-version.json`. Inclui hashes dos bytes dos ficheiros da aplicação, recursos, configuração e testes; relatórios estão excluídos para evitar dependência circular. Os relatórios históricos não têm automaticamente esta versão: consultar a proveniência indicada em `RELATORIO.md`.
+
+`code-version.browser-tested.json` identifica os testes de navegador anteriores; `code-version.runner-tested.json` preserva o manifesto da execução posterior dos 32 testes; `code-version.json` identifica a fonte atual. Não substituir versões dentro dos resultados antigos para as fazer coincidir artificialmente.
+
+## Executor corrigido
+
+Para uma nova execução isolada, definir `AUDIT_OUTPUT_DIR` para outro diretório de relatórios. O executor fornece `AUDIT_VERSION` ao subprocesso, preserva JSON bruto/logs, arquiva resultados anteriores e termina com código 1 para execução falhada, relatório ausente/inválido ou cenário FAIL. UNVERIFIED fica identificado e não conta como PASS. Não executar `make-report.mjs` para gerar a conclusão atual: esse script reproduz apenas o relatório histórico de navegadores.
+
+O teste `node --test tests/consent-audit-runner.test.mjs` cria subprocessos simulados em diretórios TEMP dedicados e verifica o processo principal real, sem navegador/rede. O comando completo `node --test tests/*.test.mjs` já aprovou 32 testes após a correção; os resultados e a limitação do stdout não guardado constam de `executor-fix-tests.json`. Não são necessários novos testes só para atualizar documentação ou manifestos.

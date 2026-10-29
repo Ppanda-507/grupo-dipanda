@@ -1,0 +1,2 @@
+Synthetic subprocess output: unverified
+Synthetic diagnostic stderr
