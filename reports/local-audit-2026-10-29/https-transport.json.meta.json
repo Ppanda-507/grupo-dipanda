@@ -1,0 +1,12 @@
+{
+  "runtime": "C:\\Users\\DELL\\AppData\\Local\\Temp\\dipanda-node-runtime\\node.exe",
+  "args": [
+    "scripts/check-local-https.mjs"
+  ],
+  "exit": 0,
+  "stderr": "",
+  "snapshot": "448cb3b0c7e9aa7128780e3af54ab19dc22f5d42c01ff6d1754be872ad4dd899",
+  "date": "2026-10-29T14:57:41.815Z",
+  "runtimeVersion": "v24.22.1",
+  "parentRuntimeVersion": "v24.11.1"
+}

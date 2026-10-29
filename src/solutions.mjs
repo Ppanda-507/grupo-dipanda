@@ -7,6 +7,7 @@ export const solutions = [
     href: '/servicos/consultoria-bi/',
     icon: '/assets/icons/process-pie.svg',
     features: ['Power BI', 'Dados integrados'],
+    projects: [],
     images: [
       ['reference-bi-finance.png', 'Referência visual de dashboard financeiro', 1199, 861],
       ['reference-bi-performance.png', 'Referência visual de dashboard de controlo de gestão', 1200, 900],
@@ -21,6 +22,15 @@ export const solutions = [
     href: '/servicos/desenvolvimento-web/',
     icon: '/assets/figma/2-687-3f18a.svg',
     features: ['Sites à medida', 'Aplicações web'],
+    projects: [{
+      title: 'Queluz Cardoso',
+      description: 'Site de apresentação de um alojamento em Queluz, Lisboa.',
+      href: 'https://queluzcardoso.com/',
+      image: '/assets/projects/queluz-cardoso.jpg',
+      imageAlt: 'Página inicial do site Queluz Cardoso',
+      width: 1440,
+      height: 960
+    }],
     images: [
       ['reference-web-portfolio.png', 'Referência visual de site de portefólio', 1000, 750],
       ['reference-web-platform.png', 'Referência visual de aplicação web', 735, 547],
@@ -35,6 +45,7 @@ export const solutions = [
     href: '/servicos/atendimento-automacao/',
     icon: '/assets/figma/2-401-bdfc9.svg',
     features: ['Atendimento', 'Integrações'],
+    projects: [],
     images: [
       ['reference-automation-assistant.png', 'Referência visual de chatbot com mensagens', 1199, 1501],
       ['reference-automation-flow.png', 'Referência visual de chatbot e integrações', 736, 552],

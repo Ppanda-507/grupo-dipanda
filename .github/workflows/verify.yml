@@ -1,0 +1,26 @@
+name: Verify Dipanda
+on:
+  pull_request:
+    paths-ignore: ['casaspanda/**']
+  push:
+    paths-ignore: ['casaspanda/**']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4, reviewed 2026-10-29
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: node --test tests/*.test.mjs
+      - run: npm audit --audit-level=high
+      - run: node scripts/build.mjs
+      # This workflow verifies a draft artifact. Vercel's production build enforces
+      # the real identity/policy/configuration gate separately. It never deploys.

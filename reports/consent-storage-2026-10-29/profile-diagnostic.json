@@ -1,0 +1,9 @@
+{
+  "profile": "C:\\Users\\DELL\\AppData\\Local\\Temp\\dipanda-cookie-control-klvCyV",
+  "before": [
+    "dipanda_consent",
+    "audit_persistence_control"
+  ],
+  "after": [],
+  "localStorageControl": "nonpersonal"
+}

@@ -1,0 +1,145 @@
+{
+  "origin": "https://127.0.0.1:4443",
+  "runtime": "v24.22.1",
+  "certificate": {
+    "subject": "CN=localhost",
+    "issuer": "CN=localhost",
+    "subjectAltName": "DNS:localhost, IP Address:127.0.0.1, IP Address:0:0:0:0:0:0:0:1",
+    "validFrom": "Oct 29 14:33:09 2026 GMT",
+    "validTo": "Nov  5 14:33:09 2026 GMT",
+    "fingerprint256": "18:9C:98:2D:36:14:6A:85:6F:4E:A2:8B:EF:82:22:10:EB:67:ED:24:17:9A:35:2E:E0:73:E1:81:CF:DE:B2:E1"
+  },
+  "checks": [
+    {
+      "name": "TLSv1.2 validated with explicit development CA",
+      "status": "PASS",
+      "observed": {
+        "status": 200,
+        "headers": {
+          "content-security-policy": "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; media-src 'self'; manifest-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; form-action 'self'",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+          "content-type": "text/html; charset=utf-8",
+          "date": "Thu, 29 Oct 2026 14:57:41 GMT",
+          "connection": "keep-alive",
+          "keep-alive": "timeout=5, max=100",
+          "transfer-encoding": "chunked"
+        },
+        "transport": {
+          "authorized": true,
+          "protocol": "TLSv1.2",
+          "cipher": {
+            "name": "ECDHE-RSA-AES128-GCM-SHA256",
+            "standardName": "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+            "version": "TLSv1.2"
+          }
+        }
+      }
+    },
+    {
+      "name": "TLSv1.3 validated with explicit development CA",
+      "status": "PASS",
+      "observed": {
+        "status": 200,
+        "headers": {
+          "content-security-policy": "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; media-src 'self'; manifest-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; form-action 'self'",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+          "content-type": "text/html; charset=utf-8",
+          "date": "Thu, 29 Oct 2026 14:57:41 GMT",
+          "connection": "keep-alive",
+          "keep-alive": "timeout=5, max=100",
+          "transfer-encoding": "chunked"
+        },
+        "transport": {
+          "authorized": true,
+          "protocol": "TLSv1.3",
+          "cipher": {
+            "name": "TLS_AES_256_GCM_SHA384",
+            "standardName": "TLS_AES_256_GCM_SHA384",
+            "version": "TLSv1.3"
+          }
+        }
+      }
+    },
+    {
+      "name": "TLSv1 rejected",
+      "status": "PASS",
+      "error": "write EPROTO 20010100:error:0A00042E:SSL routines:ssl3_read_bytes:tlsv1 alert protocol version:openssl\\ssl\\record\\rec_layer_s3.c:918:SSL alert number 70\n"
+    },
+    {
+      "name": "TLSv1.1 rejected",
+      "status": "PASS",
+      "error": "write EPROTO 20010100:error:0A00042E:SSL routines:ssl3_read_bytes:tlsv1 alert protocol version:openssl\\ssl\\record\\rec_layer_s3.c:918:SSL alert number 70\n"
+    },
+    {
+      "name": "No system trust installed",
+      "status": "PASS",
+      "error": "self-signed certificate; if the root CA is installed locally, try running Node.js with --use-system-ca"
+    },
+    {
+      "name": "Invalid synthetic contact; no-store, no email",
+      "status": "PASS",
+      "observed": {
+        "status": 400,
+        "headers": {
+          "content-security-policy": "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; media-src 'self'; manifest-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; form-action 'self'",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+          "cache-control": "no-store",
+          "content-type": "application/json; charset=utf-8",
+          "date": "Thu, 29 Oct 2026 14:57:41 GMT",
+          "connection": "keep-alive",
+          "keep-alive": "timeout=5, max=100",
+          "transfer-encoding": "chunked"
+        },
+        "transport": {
+          "authorized": true,
+          "protocol": "TLSv1.3",
+          "cipher": {
+            "name": "TLS_AES_256_GCM_SHA384",
+            "standardName": "TLS_AES_256_GCM_SHA384",
+            "version": "TLSv1.3"
+          }
+        },
+        "body": "{\"message\":\"Pedido inválido.\"}"
+      }
+    },
+    {
+      "name": "Development static asset cache",
+      "status": "PASS",
+      "observed": {
+        "status": 200,
+        "headers": {
+          "content-security-policy": "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; media-src 'self'; manifest-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; form-action 'self'",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+          "content-type": "text/javascript; charset=utf-8",
+          "cache-control": "no-store",
+          "date": "Thu, 29 Oct 2026 14:57:41 GMT",
+          "connection": "keep-alive",
+          "keep-alive": "timeout=5, max=100",
+          "transfer-encoding": "chunked"
+        },
+        "transport": {
+          "authorized": true,
+          "protocol": "TLSv1.3",
+          "cipher": {
+            "name": "TLS_AES_256_GCM_SHA384",
+            "standardName": "TLS_AES_256_GCM_SHA384",
+            "version": "TLSv1.3"
+          }
+        }
+      }
+    }
+  ],
+  "scope": "Real loopback TLS; no platform, public certificate, domain, HSTS preload or automatic renewal assessment."
+}

@@ -1,0 +1,31 @@
+✔ contact success and provider errors remain no-store without reflecting submitted data (75.7316ms)
+✔ consent defaults to essential cookies and stores an explicit choice (4.9621ms)
+✔ expired, malformed, future or obsolete consent is rejected (1.0725ms)
+✔ cookie names cannot match a suffix or another cookie (3.4372ms)
+✔ secure cookies on HTTPS, available for local preview on HTTP (1.0507ms)
+✔ contact CTAs, navigation and footer use the form on the current page (25.9519ms)
+✔ pages without a form link directly to the contact page (7.5246ms)
+✔ contact rejects invalid fields, bots and implausible submission times (5.9838ms)
+✔ contact never reports success without a configured service or a delivery acknowledgement (2.8342ms)
+✔ demo catalogue shows an honest empty state and no individual demo pages (2.853ms)
+✔ published demos link directly to their analytics platform (0.8649ms)
+✔ solution pages select Nossa solução and only show the real web project (5.6724ms)
+✔ packaging requires local fonts and every responsive image, including empty files (257.4809ms)
+✔ contact rejects cross origins, schemes, null origin, wrong methods, types and oversized bodies without sending (76.2319ms)
+✔ form schema rejects unexpected fields, arrays, controls, duplicates and invalid UTF-8 (2.5688ms)
+✔ concurrent requests reserve quotas before provider work; invalid forms consume quota (44.4993ms)
+✔ memory limiter expires and bounds memory; IPv6 /64 shares quota (8.325ms)
+✔ durable quota uses an atomic script and pseudonymous keys, fails closed on outages (5.1924ms)
+✔ production/preview form is disabled by default and responses never cache (1.6269ms)
+✔ production cannot build without confirmed identity, policies and valid configuration (3.6084ms)
+✔ consumer notices escape HTML and omit unsafe complaints links (2.6117ms)
+✔ production rejects unpatched Node runtimes (0.3973ms)
+✔ Vercel and local server use the same CSP; output escapes HTML, cookies are not sessions (1.9623ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1648.0294

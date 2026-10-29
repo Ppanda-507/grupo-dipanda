@@ -143,47 +143,6 @@ document.querySelectorAll('[data-contact-form]').forEach(form => {
   });
 });
 
-const datasets = {
-  dre: { labels: ['Receita', 'Custos', 'EBITDA', 'Resultado líquido'], values: [186000, 121000, 42000, 28500], previous: [169000, 116000, 35000, 23000], types: ['money', 'money', 'money', 'money'], chart: [48, 63, 54, 70, 79, 88] },
-  balancete: { labels: ['Débitos', 'Créditos', 'Saldo', 'Contas analisadas'], values: [248000, 219500, 28500, 74], previous: [230000, 207000, 23000, 70], types: ['money', 'money', 'money', 'number'], chart: [52, 68, 64, 75, 72, 86] },
-  operacional: { labels: ['Pedidos', 'Concluídos', 'Pendentes', 'Taxa de conclusão'], values: [1240, 1138, 102, 91.8], previous: [1180, 1050, 130, 89], types: ['number', 'number', 'number', 'percent'], chart: [46, 58, 51, 72, 77, 92] }
-};
-const money = new Intl.NumberFormat('pt-PT', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
-const number = new Intl.NumberFormat('pt-PT', { maximumFractionDigits: 1 });
-const format = (value, type) => type === 'money' ? money.format(value) : type === 'percent' ? `${number.format(value)}%` : number.format(value);
-const safe = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-document.querySelectorAll('[data-dashboard]').forEach(dashboard => {
-  const data = datasets[dashboard.dataset.dashboard];
-  const period = dashboard.querySelector('[data-demo-period]');
-  let rows = [];
-  function render() {
-    const multiplier = period.value === 'month' ? 1 / 3 : period.value === 'year' ? 4 : 1;
-    rows = data.labels.map((label, i) => {
-      const fixed = data.types[i] === 'percent' || label === 'Contas analisadas';
-      const value = fixed ? data.values[i] : Math.round(data.values[i] * multiplier);
-      const previous = fixed ? data.previous[i] : Math.round(data.previous[i] * multiplier);
-      return { label, value, previous, type: data.types[i], change: (value / previous - 1) * 100 };
-    });
-    dashboard.querySelector('[data-demo-metrics]').innerHTML = rows.map(row => `<div class="metric-card"><span class="metric-label">${safe(row.label)}</span><strong class="metric-value">${safe(format(row.value, row.type))}</strong><span class="metric-change">${row.change >= 0 ? '+' : ''}${number.format(row.change)}% face ao período anterior</span></div>`).join('');
-    dashboard.querySelector('[data-demo-table]').innerHTML = rows.map(row => `<tr><th scope="row">${safe(row.label)}</th><td>${safe(format(row.value, row.type))}</td><td>${safe(format(row.previous, row.type))}</td><td>${row.change >= 0 ? '+' : ''}${number.format(row.change)}%</td></tr>`).join('');
-    const labels = period.value === 'year' ? ['Jan', 'Mar', 'Mai', 'Jul', 'Set', 'Nov'] : period.value === 'month' ? ['S1', 'S2', 'S3', 'S4'] : ['Abr', 'Mai', 'Jun'];
-    const points = data.chart.slice(-labels.length);
-    const chart = dashboard.querySelector('[data-demo-chart]');
-    chart.innerHTML = points.map((value, i) => `<div class="chart-bar-column"><div class="chart-bar" style="--height:${value}%" title="${labels[i]}: índice ${value}"></div><span>${labels[i]}</span></div>`).join('');
-    chart.setAttribute('aria-label', `Índice de evolução de exemplo: ${labels.map((label, i) => `${label}, ${points[i]}`).join('; ')}. Valores ilustrativos normalizados de 0 a 100.`);
-    dashboard.querySelector('.chart-heading>span').textContent = 'Índice ilustrativo · 0–100';
-    dashboard.querySelector('[data-demo-status]').textContent = `Indicadores atualizados: ${period.selectedOptions[0].text}. Dados fictícios.`;
-  }
-  period.addEventListener('change', render);
-  dashboard.querySelector('[data-demo-download]').addEventListener('click', () => {
-    const csv = '\uFEFF' + ['Dados fictícios — Dipanda', 'Indicador;Período atual;Período anterior;Variação (%)', ...rows.map(row => [row.label, row.value, row.previous, row.change.toFixed(2)].join(';'))].join('\r\n');
-    const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
-    const link = document.createElement('a'); link.href = url; link.download = `dipanda-${dashboard.dataset.dashboard}-${period.value}.csv`; link.click();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-  });
-  render();
-});
-
 // Demo explorer: select with touch, mouse or keyboard.
 document.querySelectorAll('[data-demo-explorer]').forEach(explorer => {
  const tabs = [...explorer.querySelectorAll('[role="tab"]')];
@@ -193,6 +152,11 @@ document.querySelectorAll('[data-demo-explorer]').forEach(explorer => {
   tabs.forEach((tab,i) => {tab.setAttribute('aria-selected',String(i===index));tab.tabIndex=i===index?0:-1;panels[i].hidden=i!==index;});
   preview.src=tabs[index].dataset.demoImage;
   preview.alt='Pré-visualização de '+tabs[index].dataset.demoTitle;
+  const link = explorer.querySelector('[data-demo-link]');
+  if (link) {
+    link.href = tabs[index].dataset.demoHref;
+    link.setAttribute('aria-label', 'Abrir ' + tabs[index].dataset.demoTitle + ' (abre num novo separador)');
+  }
   if(focus)tabs[index].focus({preventScroll:true});
  };
  tabs.forEach((tab,index)=>{

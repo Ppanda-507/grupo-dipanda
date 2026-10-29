@@ -1,0 +1,193 @@
+{
+  "coverage": {
+    "criteria": {
+      "advisories": {
+        "assessed_clean": 1,
+        "assessed_flagged": 0,
+        "unassessable": 0
+      },
+      "archived": {
+        "assessed_clean": 1,
+        "assessed_flagged": 0,
+        "unassessable": 0
+      },
+      "binary_artifacts": {
+        "assessed_clean": 0,
+        "assessed_flagged": 1,
+        "unassessable": 0
+      },
+      "code_review": {
+        "assessed_clean": 1,
+        "assessed_flagged": 0,
+        "unassessable": 0
+      },
+      "dangerous_workflow": {
+        "assessed_clean": 1,
+        "assessed_flagged": 0,
+        "unassessable": 0
+      },
+      "deprecated": {
+        "assessed_clean": 1,
+        "assessed_flagged": 0,
+        "unassessable": 0
+      },
+      "downloads": {
+        "assessed_clean": 1,
+        "assessed_flagged": 0,
+        "unassessable": 0
+      },
+      "install_script": {
+        "assessed_clean": 1,
+        "assessed_flagged": 0,
+        "unassessable": 0
+      },
+      "provenance": {
+        "assessed_clean": 1,
+        "assessed_flagged": 0,
+        "unassessable": 0
+      },
+      "publisher_concentration": {
+        "assessed_clean": 0,
+        "assessed_flagged": 0,
+        "unassessable": 1
+      },
+      "security_policy": {
+        "assessed_clean": 1,
+        "assessed_flagged": 0,
+        "unassessable": 0
+      },
+      "staleness": {
+        "assessed_clean": 1,
+        "assessed_flagged": 0,
+        "unassessable": 0
+      },
+      "token_permissions": {
+        "assessed_clean": 1,
+        "assessed_flagged": 0,
+        "unassessable": 0
+      }
+    },
+    "total_dependencies": 1
+  },
+  "dependencies": [
+    {
+      "dev": true,
+      "ecosystem": "npm",
+      "exists": true,
+      "flagged": [
+        "binary_artifacts"
+      ],
+      "name": "playwright-core",
+      "non_registry_reason": null,
+      "repo": "github.com/microsoft/playwright",
+      "signals": {
+        "advisories": {
+          "detail": "no advisories recorded",
+          "state": "assessed_clean",
+          "value": []
+        },
+        "archived": {
+          "detail": "repository is active",
+          "state": "assessed_clean",
+          "value": false
+        },
+        "binary_artifacts": {
+          "detail": "Binary-Artifacts scores 6/10 (below 10)",
+          "state": "assessed_flagged",
+          "value": 6
+        },
+        "code_review": {
+          "detail": "Code-Review scores 9/10",
+          "state": "assessed_clean",
+          "value": 9
+        },
+        "dangerous_workflow": {
+          "detail": "Dangerous-Workflow scores 10/10",
+          "state": "assessed_clean",
+          "value": 10
+        },
+        "deprecated": {
+          "detail": "not deprecated",
+          "state": "assessed_clean",
+          "value": false
+        },
+        "downloads": {
+          "detail": "142,580,703 downloads/week (normal volume)",
+          "state": "assessed_clean",
+          "value": 142580703
+        },
+        "install_script": {
+          "detail": "no install script",
+          "state": "assessed_clean",
+          "value": false
+        },
+        "provenance": {
+          "detail": "publishes with provenance",
+          "state": "assessed_clean",
+          "value": true
+        },
+        "publisher_concentration": {
+          "detail": "publishes from CI with provenance, so the effective publisher set is whoever can merge to the release branch \u2014 not externally observable",
+          "state": "unassessable",
+          "value": [
+            "pavelfeldman",
+            "yurys",
+            "microsoft1es",
+            "dgozman-ms",
+            "microsoft-oss-releases"
+          ]
+        },
+        "security_policy": {
+          "detail": "publishes a security policy",
+          "state": "assessed_clean",
+          "value": true
+        },
+        "staleness": {
+          "detail": "pushed 0 days ago",
+          "state": "assessed_clean",
+          "value": "2026-10-29T05:14:22Z"
+        },
+        "token_permissions": {
+          "detail": "Token-Permissions scores 0/10",
+          "state": "assessed_clean",
+          "value": 0
+        }
+      },
+      "version": "1.58.0",
+      "version_source": "lockfile"
+    }
+  ],
+  "ecosystems": {
+    "npm": 1
+  },
+  "notes": [
+    "cache directory ownership was not verified: os.getuid is POSIX-only, so a cache at C:\\Users\\DELL\\AppData\\Local\\Temp\\supply-chain-risk-auditor-cache owned by another user would not be detected on this platform. Keep the cache under your own user profile, or pass --cache with a private path.",
+    "Optional tooling detected: npm. Not installed, so not used: bundler-audit, cargo-audit, osv-scanner, pip-audit.",
+    "The lockfile (package-lock.json) resolves no packages beyond the direct dependencies.",
+    "HTTP sources: 6 fetched, 1 served from cache (oldest 0.0h old), 0 refetched as stale, 0 unavailable offline, 0 errors."
+  ],
+  "scan": {
+    "commit": "d96498c6fd35",
+    "manifests": [
+      "package.json",
+      "package-lock.json"
+    ],
+    "path": "C:\\Users\\DELL\\Documents\\1",
+    "scanned_at": "2026-10-29T08:23:23+00:00",
+    "subject": "1"
+  },
+  "target": "C:\\Users\\DELL\\Documents\\1",
+  "transitive": {
+    "checked": 0,
+    "examined": true,
+    "excluded_direct": 1,
+    "flagged": [],
+    "lockfile_entries": 1,
+    "reason": null,
+    "sources": [
+      "package-lock.json"
+    ],
+    "total": 0,
+    "unverifiable": []
+  }
+}

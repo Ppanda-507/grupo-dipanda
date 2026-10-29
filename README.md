@@ -141,3 +141,18 @@ O bloco Problema usa imagem, texto e SAIBA MAIS por esta ordem em ecrãs até 76
 A imagem de Relatórios manuais foi adaptada da referência do café, no mesmo estilo editorial texturado de Informação dispersa. A cena representa folhas de cálculo, fórmulas, documentos e conferência de totais, em consonância com o artigo. Imagem e prompt: public/assets/problems/relatorios-manuais-v2.png e relatorios-manuais-v2.prompt.md.
 
 A ilustração atual de Relatórios manuais é relatorios-manuais-v3.png: uma pessoa exausta transporta caixas de ficheiros Excel enquanto uma bolsa de café está ligada diretamente ao braço, representando o trabalho mecânico e repetitivo. Mantém o desenho editorial texturado e a paleta da primeira imagem. A versão anterior e os prompts permanecem guardados em public/assets/problems.
+
+
+Demos: o catálogo público fica em /demos/. A lista demos em src/data.mjs contém apenas demos publicadas, com slug, title, description, image (recurso local), platform e href (URL HTTPS direta para Power BI, Metabase ou outra ferramenta). Sem entradas, o site mostra um estado vazio; não existem páginas individuais /demo/. O bloco da home apresenta até três demos e liga ao catálogo completo.
+
+Projetos: as listas projects de src/solutions.mjs contêm apenas trabalhos reais, com ligação direta e imagem local. As listas vazias mostram Projetos em breve. O projeto web Queluz Cardoso usa public/assets/projects/queluz-cardoso.jpg.
+
+
+## Preparação para produção (auditoria 29/10/2026)
+
+O site ainda não está aprovado para publicação. Consultar [relatório](reports/production-2026-10-29/02-relatorio-final.md), [matriz legal](reports/production-2026-10-29/03-matriz-legal.md) e [configuração Vercel](deploy/VERCEL.md). O projeto casaspanda fica fora desta publicação.
+
+Produção exige Node 24.22.1+ da linha 24 e variáveis LEGAL_* reais/validadas. `npm.cmd run build:production` falha enquanto existirem lacunas. O build normal serve apenas para revisão local/preview protegido. `api/contact.js` prepara o formulário Vercel com quotas duráveis; CONTACT_ENABLED fica false até aprovação/configuração. Não há dependência de runtime npm adicional; Resend e Redis usam HTTPS nativo.
+
+
+Verificação efetiva de cookies/armazenamento: [relatório e matriz de cenários](reports/consent-storage-2026-10-29/RELATORIO.md). Executar `npm.cmd run test:consent-storage` com preview local ligado; `BROWSER_EXECUTABLE` permite indicar outro Chromium. Os testes usam contextos/perfis novos e dados sintéticos, inspecionam armazenamento e rede e não limpam o perfil pessoal. A persistência física em disco tem limitação documentada neste ambiente; não é declarada aprovação global de conformidade.

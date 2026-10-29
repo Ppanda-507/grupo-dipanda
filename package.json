@@ -15,8 +15,14 @@
     "test:hero-startup": "node scripts/check-hero-startup.mjs",
     "test:hero-performance": "node scripts/check-hero-performance.mjs",
     "test:about-highlight": "node scripts/check-about-highlight.mjs",
-    "test:process": "node scripts/check-process.mjs"
+    "test:process": "node scripts/check-process.mjs",
+    "build:production": "node scripts/build.mjs --production",
+    "test:consent-storage": "node scripts/check-consent-storage.mjs"
   },
-  "engines": { "node": ">=22" },
-  "devDependencies": { "playwright-core": "1.58.0" }
+  "engines": {
+    "node": "24.x"
+  },
+  "devDependencies": {
+    "playwright-core": "1.58.0"
+  }
 }
