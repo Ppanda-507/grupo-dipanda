@@ -378,6 +378,7 @@ html[data-motion-paused] .demo-block[data-demo-pending]{opacity:1}
 
 /* Body typography follows the hero's desktop/mobile reading sizes. */
 :root{--hero-description-size:18px;--hero-description-line:28px}
+.detail-card>p,.detail-card .check-list li{font-size:var(--hero-description-size);line-height:var(--hero-description-line)}
 .about-grid .about-card p{font-weight:400}
 .contact-form .field label,.contact-form .field input,.contact-form .field textarea{font-size:var(--hero-description-size);line-height:var(--hero-description-line)}
 .site-footer .footer-grid h2,.site-footer .footer-contact h2{color:#fff;font-weight:700;opacity:1}
