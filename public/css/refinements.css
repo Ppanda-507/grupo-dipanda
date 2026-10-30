@@ -235,7 +235,7 @@ button,[role=button]{user-select:none;-webkit-user-select:none;-webkit-touch-cal
 .solution-gallery .container{max-width:1280px;padding:0}
 .solution-gallery-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
 .solution-gallery figure{margin:0;min-width:0;padding:12px;border:1px solid #e4e4e4;border-radius:16px;background:#f6f6f6}
-.solution-gallery img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;border-radius:8px;background:#fff;image-rendering:auto}
+.solution-gallery figure img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;border-radius:8px;background:#fff;image-rendering:auto}
 @media(min-width:900px){.solution-gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.solution-gallery{padding-top:64px;padding-bottom:64px}}
 
 /* Contact details live in the shared footer; the contact section contains the form. */
@@ -266,6 +266,32 @@ button,[role=button]{user-select:none;-webkit-user-select:none;-webkit-touch-cal
 .web-hero-intro{max-width:940px}
 .solution-gallery--projects{padding:0;margin-bottom:72px}
 .solution-gallery--projects .section-heading{margin-bottom:32px}
+.solution-project-grid,.demo-catalog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.solution-project-grid--single{margin-inline:auto}
+@media(min-width:861px){.solution-project-grid--single .solution-project-card{grid-column:2}}
+.solution-project-card{display:block;min-width:0;overflow:hidden;border:1px solid #dedede;border-radius:20px;background:#fff;color:var(--ink);text-decoration:none}
+.solution-project-image{padding:12px 12px 0}
+.solution-project-image img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:10px;background:#f5f5f5}
+.solution-project-copy{padding:24px}
+.solution-project-status{display:block;font:11px/1.5 var(--mono);text-transform:uppercase;letter-spacing:1px;color:#666;margin-bottom:12px}
+.solution-project-copy h3,.solution-project-copy h2{font-size:24px;line-height:1.3;margin:0 0 12px;letter-spacing:-1px}
+.solution-project-copy p,.solution-project-empty p,.demo-empty p{font-size:var(--hero-description-size,18px);line-height:1.6;color:#606060;margin:0}
+.solution-project-action{display:flex;align-items:center;gap:12px;font:12px/1.5 var(--mono);text-transform:uppercase;margin-top:24px}
+.solution-project-action svg{width:18px;height:18px}
+.solution-project-card:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+@media(hover:hover) and (pointer:fine){.solution-project-card:hover{border-color:#aaa;box-shadow:0 8px 24px #0000000a}}
+.solution-project-empty,.demo-empty{max-width:680px;margin-inline:auto;padding:40px;border:1px dashed #ccc;border-radius:20px;background:#fafafa;text-align:center}
+.solution-project-empty-icon,.demo-empty-icon{display:block;width:56px;height:56px;margin:0 auto 20px;color:#666}
+.solution-project-empty-icon svg,.demo-empty-icon svg{display:block;width:100%;height:100%}
+.solution-project-empty h3,.demo-empty h2{font-size:26px;line-height:1.3;letter-spacing:-1px;margin:0 0 16px}
+.solution-project-empty p,.demo-empty p{max-width:480px;margin-inline:auto}
+.solution-project-empty .button{margin-top:24px}
+.demo-catalog-more{text-align:center;margin-top:24px}
+.demo-catalog{padding-top:64px}
+@media(max-width:640px){.demo-catalog{padding-top:40px}}
+.demo-explorer-preview:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+@media(max-width:860px){.solution-project-grid,.demo-catalog-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:640px){.solution-project-copy{padding:20px}.solution-project-empty,.demo-empty{padding:28px 20px}.solution-project-copy p,.solution-project-empty p,.demo-empty p{font-size:16px}}
 @media(max-width:640px){.service-hero-banner{border-radius:12px;margin-bottom:28px}.solution-gallery--projects{margin-bottom:48px}}
 
 /* Solution detail headers: page typography and independent transparent subjects. */
@@ -291,7 +317,9 @@ button,[role=button]{user-select:none;-webkit-user-select:none;-webkit-touch-cal
 @media(min-width:900px){.service-hero-layout{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:40px}.service-hero-copy h2{font-size:clamp(42px,4.3vw,60px);letter-spacing:-.05em}.service-hero-cutout img{max-height:440px}.service-hero-bottom{margin-top:40px}}
 @media(max-width:640px){.inner-hero--solution{padding-bottom:48px}.service-hero-label h1{font-size:28px;letter-spacing:-1.4px}.service-hero-copy h2{font-size:34px;line-height:1.18;letter-spacing:-1.7px}.service-hero-bottom p{font-size:16px;line-height:26px}.service-hero-layout{margin-top:28px}.service-hero-cutout img{max-height:280px}}
 
-.service-hero-cutout--photo img{border-radius:12px}
+.service-hero-cutout--photo img{width:auto;max-width:100%;border-radius:12px}
+.bi-visual,.bi-visual-photo{width:100%;height:100%;min-width:0;overflow:hidden;border-radius:8px;background:#0b1724}
+.bi-visual-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 68%}
 
 /* Night service: full header photograph with readable page text. */
 .inner-hero--night{position:relative;isolation:isolate;overflow:hidden;background:#03101e;color:#fff;padding:32px 0 64px}
@@ -307,6 +335,12 @@ button,[role=button]{user-select:none;-webkit-user-select:none;-webkit-touch-cal
 @media(max-width:640px){.inner-hero--night{padding:24px 0 48px}.inner-hero--night .service-hero-layout{margin-top:40px;min-height:280px}.inner-hero--night .service-hero-bottom{margin-top:40px}.service-hero-backdrop img{object-position:72% center}.inner-hero--night::before{background:linear-gradient(90deg,rgba(2,10,20,.9),rgba(2,10,20,.6)),linear-gradient(0deg,rgba(2,10,20,.9),transparent 70%)}}
 
 .inner-hero--night .service-hero-emphasis{display:block}
+
+/* BI follows the full-background header, keeping the laptop itself uncropped. */
+.inner-hero--bi .service-hero-backdrop::before{content:"";position:absolute;inset:-20px;background:url('/assets/process/business-intelligence-dashboard-v3.png') center/cover no-repeat;filter:blur(16px);opacity:.5}
+.inner-hero--bi .service-hero-backdrop img{position:absolute;right:0;top:0;width:auto;max-width:100%;height:100%;object-fit:contain;object-position:right center;mask-image:linear-gradient(90deg,transparent,#000 18%)}
+.inner-hero--bi::before{background:linear-gradient(90deg,rgba(2,10,20,.94),rgba(2,10,20,.72) 38%,rgba(2,10,20,.08) 75%),linear-gradient(0deg,rgba(2,10,20,.85),transparent 45%)}
+@media(max-width:640px){.inner-hero--bi .service-hero-backdrop img{top:29%;right:-4%;width:155%;max-width:none;height:auto;object-position:center;mask-image:linear-gradient(180deg,transparent,#000 10%,#000 85%,transparent)}.inner-hero--bi::before{background:linear-gradient(180deg,rgba(2,10,20,.88),rgba(2,10,20,.16) 48%,rgba(2,10,20,.92) 84%)}.inner-hero--bi .service-hero-layout{min-height:360px}}
 
 /* Demo previews and a fourth card for the BI toolset. */
 .demo-grid--blocks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:12px;background:var(--soft);border-radius:24px;align-items:stretch;max-width:1040px}

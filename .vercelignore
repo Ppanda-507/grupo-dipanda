@@ -1,0 +1,14 @@
+casaspanda/
+node_modules/
+.git/
+.env
+.env.*
+!.env.example
+.cache/
+.references/
+reports/
+tests/
+test-results/
+playwright-report/
+.agents/
+.codex/

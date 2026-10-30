@@ -1,4 +1,4 @@
-import { mkdir, cp, stat, writeFile, readdir } from 'node:fs/promises';
+import { mkdir, mkdtemp, cp, stat, writeFile, readdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import os from 'node:os';
@@ -6,10 +6,11 @@ import { pages, renderPage } from '../src/pages.mjs';
 import { assertProjectAssets } from './project-assets.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-const destination = path.join(os.tmpdir(), 'dipanda-delivery', 'dipanda');
+// A fresh directory prevents stale files/secrets from an older delivery surviving.
+const destination = path.join(await mkdtemp(path.join(os.tmpdir(), 'dipanda-delivery-')), 'dipanda');
 await assertProjectAssets(path.join(root, 'public'), Object.keys(pages).map(renderPage));
 await mkdir(destination, { recursive: true });
-for (const item of ['src', 'public', 'scripts', 'tests', 'package.json', 'package-lock.json', '.gitignore', '.env.example', 'README.md']) await cp(path.join(root, item), path.join(destination, item), { recursive: true });
+for (const item of ['src', 'public', 'scripts', 'api', 'deploy', 'reports', 'tests', 'package.json', 'package-lock.json', 'vercel.json', '.vercelignore', '.gitignore', '.env.example', 'README.md']) await cp(path.join(root, item), path.join(destination, item), { recursive: true });
 const build = path.join(root, 'dist');
 if ((await stat(build).catch(() => null))?.isDirectory()) await cp(build, path.join(destination, 'dist'), { recursive: true });
 const assets = await readdir(path.join(destination, 'public/assets/figma'));

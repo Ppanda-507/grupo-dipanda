@@ -1,0 +1,6 @@
+{
+  "tool": "Built-in image_gen",
+  "prompt": "Use case: compositing. Edit Image 1 only inside the laptop screen. Image 2 is the exact screen content to insert, NOT a style inspiration. Replace the entire existing Portuguese dashboard with the dashboard screenshot from Image 2, preserving its English text, values, avatar, exact five-panel layout and graphics: 'Hello, Siburian', 'Overview', Active Balance '$92,142.10', lime Your Rewards '$12,172.07', bottom Spending donut '$916.10', Earning '$7,110.12' with horizontal bars, and Transactions list. Preserve the reference UI rather than inventing or translating any dashboard. Map Image 2 cleanly onto the quadrilateral laptop display with natural perspective. Keep the complete dashboard visible within the bezel, no clipped panels. Everything outside the screen must remain unchanged from Image 1: same blue night room, desk, lamp, coffee mug, laptop keyboard and bezel, camera angle, landscape 1672x941 composition and empty left space. Minimal edit, no other redesign.",
+  "source": "business-intelligence-dashboard-v2.png",
+  "screenReference": "bi-dashboard-reference.png"
+}

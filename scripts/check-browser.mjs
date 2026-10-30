@@ -60,13 +60,10 @@ try {
     const links = await page.locator('a[href^="/"]').evaluateAll(anchors => anchors.map(a => a.getAttribute('href')));
     check(`page ${route} links resolve`, links.every(href => Object.hasOwn(pages, href.split('#')[0].replace(/\/+$/, '') || '/')));
   }
-  await page.goto(`${base}/demo/dre/`, { waitUntil: 'networkidle' });
-  const quarter = await page.locator('.metric-value').first().textContent();
-  await page.locator('[data-demo-period]').selectOption('month');
-  check('demo period changes actual values', quarter !== await page.locator('.metric-value').first().textContent());
-  const downloadPromise = page.waitForEvent('download');
-  await page.locator('[data-demo-download]').click();
-  check('demo exports CSV', (await downloadPromise).suggestedFilename() === 'dipanda-dre-month.csv');
+  await page.goto(base, { waitUntil: 'networkidle' });
+  await page.locator('.demo-catalog-more a').click();
+  check('more demos opens the catalogue', new URL(page.url()).pathname === '/demos/');
+  check('unpublished demos are not presented as real', await page.locator('.demo-empty').count() === 1 && await page.locator('[data-dashboard]').count() === 0);
   await page.goto(`${base}/contacto/`, { waitUntil: 'networkidle' });
   await page.locator('[name="name"]').fill('Pessoa Teste');
   await page.locator('[name="email"]').fill('pessoa@example.com');
@@ -98,11 +95,11 @@ try {
       check('mobile menu closes with Escape and restores state', await page.locator('[data-menu-toggle]').getAttribute('aria-expanded') === 'false');
     }
   }
-  for (const route of ['/problemas/informacao-dispersa/', '/servicos/pedido-personalizado/', '/demo/operacional/', '/politica-de-cookies/', '/contacto/']) {
+  for (const route of ['/problemas/informacao-dispersa/', '/servicos/pedido-personalizado/', '/demos/', '/politica-de-cookies/', '/contacto/']) {
     await page.goto(`${base}${route}`, { waitUntil: 'networkidle' });
     check(`${route} fits mobile`, await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   }
-  await page.goto(`${base}/demo/dre/`, { waitUntil: 'networkidle' });
+  await page.goto(`${base}/demos/`, { waitUntil: 'networkidle' });
   await imagesReady();
   await page.screenshot({ path: path.join(output, 'demo-mobile.png'), fullPage: true });
   await page.goto(base, { waitUntil: 'networkidle' });

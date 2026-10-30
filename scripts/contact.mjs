@@ -2,13 +2,15 @@ import { site } from '../src/site.mjs';
 
 export function validateContact(body, now = Date.now()) {
   if (!body || typeof body !== 'object' || Array.isArray(body)) return { error: 'Pedido inválido.' };
+  const fields = new Set(['name', 'email', 'message', 'website', 'startedAt']);
+  if (Object.keys(body).some(key => !fields.has(key)) || (body.website !== undefined && typeof body.website !== 'string') || !['string', 'number'].includes(typeof body.startedAt)) return { error: 'Pedido inválido.' };
   if (body.website) return { error: 'Não foi possível validar o pedido.' };
   const name = typeof body.name === 'string' ? body.name.trim() : '';
   const email = typeof body.email === 'string' ? body.email.trim() : '';
   const message = typeof body.message === 'string' ? body.message.trim() : '';
-  if (name.length < 2 || name.length > 120 || /[\r\n]/.test(name)) return { error: 'Indique um nome válido.' };
-  if (email.length > 254 || !/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email)) return { error: 'Indique um e-mail válido.' };
-  if (message.length < 10 || message.length > 5000) return { error: 'A mensagem deve ter entre 10 e 5000 caracteres.' };
+  if (name.length < 2 || name.length > 120 || /[\u0000-\u001f\u007f]/.test(name)) return { error: 'Indique um nome válido.' };
+  if (email.length > 254 || /[\u0000-\u001f\u007f]/.test(email) || !/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email)) return { error: 'Indique um e-mail válido.' };
+  if (message.length < 10 || message.length > 5000 || /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(message)) return { error: 'A mensagem deve ter entre 10 e 5000 caracteres, sem caracteres de controlo.' };
   if (!Number.isFinite(Number(body.startedAt)) || Number(body.startedAt) > now - 1200 || Number(body.startedAt) < now - 86400000) return { error: 'Atualize a página e tente novamente.' };
   return { value: { name, email, message } };
 }
@@ -19,7 +21,7 @@ export async function sendContact(data, options = {}) {
   if (!environment.RESEND_API_KEY || !environment.CONTACT_FROM_EMAIL) return { status: 503, message: 'O envio pelo formulário ainda não está disponível.' };
   try {
     const response = await fetcher('https://api.resend.com/emails', {
-      method: 'POST', headers: { Authorization: `Bearer ${environment.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+      method: 'POST', redirect: 'error', headers: { Authorization: `Bearer ${environment.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({ from: environment.CONTACT_FROM_EMAIL, to: [environment.CONTACT_TO_EMAIL || site.email], reply_to: data.email, subject: `Contacto Dipanda — ${data.name}`, text: `Nome: ${data.name}\nE-mail: ${data.email}\n\n${data.message}` }), signal: AbortSignal.timeout(15000)
     });
     const result = await response.json().catch(() => ({}));

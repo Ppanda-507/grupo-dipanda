@@ -1,0 +1,21 @@
+[
+  {
+    "label": "webkit-https",
+    "origin": "https://127.0.0.1:4443",
+    "engine": "webkit",
+    "startedAt": "2026-10-29T15:48:04.570Z",
+    "finishedAt": "2026-10-29T15:48:04.580Z",
+    "exit": -4058,
+    "signal": null,
+    "timedOut": false,
+    "status": "ERROR",
+    "errors": [
+      "Subprocess exit: -4058",
+      "Error: spawn C:\\Users\\DELL\\AppData\\Local\\Temp\\dipanda-runner-regression-4QMpSo\\missing-runtime.exe ENOENT\n    at ChildProcess._handle.onexit (node:internal/child_process:316:19)\n    at onErrorNT (node:internal/child_process:554:16)\n    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)",
+      "Report missing or invalid: ENOENT: no such file or directory, open 'C:\\Users\\DELL\\AppData\\Local\\Temp\\dipanda-consent-run-llwvrV\\webkit-https.json'"
+    ],
+    "reportPath": null,
+    "temporary": "C:\\Users\\DELL\\AppData\\Local\\Temp\\dipanda-consent-run-llwvrV\\webkit-https.json",
+    "snapshot": "fd3031562fa9442aed2a9d0bfd991477a5469f9263d176fcb281614f37dd22e8"
+  }
+]

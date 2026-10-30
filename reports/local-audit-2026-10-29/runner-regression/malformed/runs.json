@@ -1,0 +1,19 @@
+[
+  {
+    "label": "webkit-https",
+    "origin": "https://127.0.0.1:4443",
+    "engine": "webkit",
+    "startedAt": "2026-10-29T15:47:55.924Z",
+    "finishedAt": "2026-10-29T15:47:56.058Z",
+    "exit": 0,
+    "signal": null,
+    "timedOut": false,
+    "status": "ERROR",
+    "errors": [
+      "Report missing or invalid: Expected property name or '}' in JSON at position 1 (line 1 column 2)"
+    ],
+    "reportPath": "C:\\Users\\DELL\\AppData\\Local\\Temp\\dipanda-runner-regression-nKS6ru\\webkit-https.json",
+    "temporary": "C:\\Users\\DELL\\AppData\\Local\\Temp\\dipanda-consent-run-CUjBwy\\webkit-https.json",
+    "snapshot": "fd3031562fa9442aed2a9d0bfd991477a5469f9263d176fcb281614f37dd22e8"
+  }
+]

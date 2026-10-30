@@ -27,7 +27,7 @@ export function initNavigation() {
       select(active);
     } else {
       const route = document.body.dataset.page;
-      select(route.startsWith('/servicos') ? 'servicos' : route.startsWith('/demo') ? 'demonstracao' : route.startsWith('/problemas') ? 'problema' : route === '/sobre' ? 'sobre' : route === '/contacto' ? 'contacto' : null);
+      select(document.body.dataset.navSection || (route.startsWith('/servicos') ? 'servicos' : route.startsWith('/demo') ? 'demonstracao' : route.startsWith('/problemas') ? 'problema' : route === '/sobre' ? 'sobre' : route === '/contacto' ? 'contacto' : null));
     }
   }
   update();

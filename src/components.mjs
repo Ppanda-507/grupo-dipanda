@@ -70,7 +70,7 @@ export function contact(section = true, standalone = false) {
       <div class="honeypot" aria-hidden="true"><label>Deixe este campo vazio<input name="website" tabindex="-1" autocomplete="off"></label></div>
       <input type="hidden" name="startedAt" value="" data-started-at>
       <button class="button button--dark button--motion" data-soft-hover type="submit"><span class="button-inner"><span class="button-label" data-submit-label>Enviar</span><span class="button-arrow" aria-hidden="true">${arrow()}</span></span></button>
-      <p class="contact-consent">${escape(figmaText('5598:4846'))} <a href="/politica-de-privacidade/">Política de privacidade</a>.</p><div class="form-status" role="status" aria-live="polite" data-contact-status></div>
+      <p class="contact-consent">Usaremos os dados para responder ao seu pedido. Consulte a <a href="/politica-de-privacidade/">Política de privacidade</a>.</p><div class="form-status" role="status" aria-live="polite" data-contact-status></div>
     </form></div>
   </div></${section ? 'section' : 'div'}>`;
 }
@@ -78,13 +78,13 @@ export function contact(section = true, standalone = false) {
 export function process() {
   return `<section class="section process-section" id="solucao"><div class="container">
     <div class="section-heading solution-heading" data-reveal>${tag('Nossa solução')}<h2>A nossa especialidade é<br><em>Business Intelligence.</em></h2><p>Complementamos essa capacidade com desenvolvimento web e automação, de acordo com as necessidades da sua empresa.</p></div>
-    <div class="solution-grid">${solutions.map(solution => `<a class="solution-card" href="${solution.href}" aria-label="Saiba mais sobre ${escape(solution.title)}" data-reveal>
+    <div class="solution-grid">${solutions.map(solution => `<a class="solution-card${solution.coverPhoto ? ' solution-card--photo' : ''}" href="${solution.href}" aria-label="Saiba mais sobre ${escape(solution.title)}" data-reveal>
       <div class="solution-card-heading"><h3>${escape(solution.title)}</h3><span class="solution-arrow" aria-hidden="true">${arrow()}</span></div>
-      <div class="solution-images"><span class="solution-cover">${solutionImage(solution.cover || solution.images[0], 'auto, 400px')}</span></div>
+      <div class="solution-images">${solution.coverPhoto ? businessIntelligenceVisual(solution) : `<span class="solution-cover">${solutionImage(solution.cover || solution.images[0], 'auto, 400px')}</span>`}</div>
       <div class="solution-features">${icon(solution.icon)}${solution.features.map(feature => `<span>${escape(feature)}</span>`).join('')}</div>
       <p class="solution-description">${escape(solution.description)}</p>
     </a>`).join('')}</div>
-    <div class="section-heading process-heading" id="processo">${tag('Processo de trabalho')}<h2 data-whisper><span data-whisper-word>Clareza</span> <span data-whisper-word>em</span> <span data-whisper-word>cada</span> <span data-whisper-word>etapa.</span><br><em class="orange-bright"><span class="word-rotator process-rotator" data-whisper-word data-word-rotator data-words='["Valor em cada entrega.","Desde o primeiro dia"]'><span class="word-width" aria-hidden="true">Valor em cada entrega.</span><span class="word-current" data-word-current aria-hidden="true">Valor em cada entrega.</span><span class="word-next" data-word-next aria-hidden="true"></span><span class="sr-only">Valor em cada entrega. Desde o primeiro dia.</span></span></em></h2><p>Da primeira conversa à entrega, alinhamos objetivos, validamos a solução consigo e preparamos a sua equipa para a utilizar.</p></div>
+    <div class="section-heading process-heading" id="processo">${tag('Processo de trabalho')}<h2 data-whisper><span data-whisper-word>Clareza</span> <span data-whisper-word>em</span> <span data-whisper-word>cada</span> <span data-whisper-word>etapa.</span><br><em class="orange-bright"><span class="word-rotator process-rotator" data-whisper-word data-word-rotator data-words='["Valor em cada entrega.","Desde o primeiro dia"]'><span class="word-width" aria-hidden="true">Valor em cada entrega.</span><span class="word-current" data-word-current aria-hidden="true">Valor em cada entrega.</span><span class="word-next" data-word-next aria-hidden="true"></span><span class="sr-only">Valor em cada entrega. Desde o primeiro dia.</span></span></em></h2></div>
     <div class="workflow-board"><ol class="workflow-list" aria-label="Etapas do processo de trabalho">${processSteps.map((step, index) => `<li class="workflow-row workflow-row--${index + 1}" data-workflow-entry><span class="workflow-number" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span><div class="workflow-content"><p class="workflow-kicker">Etapa ${String(index + 1).padStart(2, '0')}</p><h3>${escape(step.title)}</h3><p class="workflow-description">${escape(step.description)}</p><p class="workflow-outcome"><span>O que fica consigo</span>${escape(step.outcome)}</p></div></li>`).join('')}</ol></div>
     <div class="process-cta" data-reveal><div><h3>O próximo passo começa com uma conversa.</h3><p>Conte-nos o desafio do seu negócio. Vamos definir consigo o melhor ponto de partida.</p></div>${motionButton('Agendar consultoria', '/#contacto')}</div></div></section>`;
 }
@@ -95,24 +95,32 @@ export function serviceCard(service) {
     ${service.featured ? '<span class="service-badge" data-loop-animation>Comece por aqui</span>' : ''}
     <div class="service-top">${icon(service.icon)}<h3>${escape(service.title)}</h3></div>
     <p class="service-tagline">${escape(summary)}</p>
-    <div class="investment"><span>Sob consulta</span><small>Proposta à medida do projeto</small></div>
+    <div class="investment"><span>${escape(service.investmentLabel || 'Sob consulta')}</span><small>${escape(service.investmentDescription || 'Proposta à medida do projeto')}</small></div>
     ${button('Saiba mais', '/servicos/' + service.slug + '/', service.featured ? 'dark' : 'lime')}
-    <h4 class="service-features-title">O que podemos fazer</h4>
+    <h4 class="service-features-title">${escape(service.benefitsLabel || 'O que podemos fazer')}</h4>
     <ul class="service-benefits">${service.benefits.map(b => `<li><img src="/assets/figma/2-687-7b108.svg" width="20" height="20" alt="">${escape(b)}</li>`).join('')}</ul>
     <details class="service-details"><summary>Detalhes e indicação <span aria-hidden="true">+</span></summary><div class="service-copy">${paragraphs(service.description)}<h4>Para quem é indicado?</h4><p>${escape(service.audience)}</p></div></details>
   </article>`;
 }
 
-export function solutionImage([file, alt, width, height], sizes, decorative = false) {
+export function businessIntelligenceVisual(solution) {
+  return `<div class="bi-visual"><div class="bi-visual-photo">${solutionImage(solution.cover, 'auto, 400px')}</div></div>`;
+}
+
+export function solutionImage([file, alt, width, height, responsive = true], sizes, decorative = false) {
   if (file.endsWith('.gif')) {
     const poster = '/assets/process/' + file.replace(/\.gif$/, '.png');
     return `<img src="${poster}" data-animated-src="/assets/process/${file}" data-still-src="${poster}" alt="${decorative ? '' : escape(alt)}" width="${width}" height="${height}" loading="lazy" decoding="async">`;
   }
   const base = file.replace(/\.png$/, '');
+  if (!responsive) return `<img src="/assets/process/${file}" alt="${decorative ? '' : escape(alt)}" width="${width}" height="${height}" loading="lazy" decoding="async">`;
   return `<img src="/assets/process/${file}" srcset="${((['bi-cover-campaign-v3.png', 'web-cover-campaign-v4.png', 'chatbot-night-cover-v4.png', 'chatbot-night-photo-v3.png'].includes(file) || file.startsWith('service-')) ? [160, 240, 320, 480, 960, 1280] : [160, 240, 320, 480]).map(size => `/assets/process/responsive/${base}-${size}.png ${size}w`).join(', ')}, /assets/process/${file} ${width}w" sizes="${sizes}" alt="${decorative ? '' : escape(alt)}" width="${width}" height="${height}" loading="lazy" decoding="async">`;
 }
 
-export function solutionGallery(solution, { includeCover = true, title = '', embedded = false } = {}) {
+export function solutionGallery(solution, { title = 'Projetos', embedded = false } = {}) {
   if (!solution) return '';
-  return `<section class="solution-gallery${embedded ? ' solution-gallery--projects' : ''}" aria-label="${escape(title || solution.title)}">${embedded ? '' : '<div class="container">'}${title ? `<div class="section-heading"><h2>${escape(title)}</h2></div>` : ''}${includeCover && solution.cover ? `<figure class="solution-gallery-cover">${solutionImage(solution.cover, 'auto, (min-width: 1280px) 1280px, calc(100vw - 48px)')}</figure>` : ''}<div class="solution-gallery-grid">${solution.images.map(image => `<figure>${solutionImage(image, 'auto, (min-width: 900px) 400px, calc(100vw - 48px)')}</figure>`).join('')}</div>${embedded ? '' : '</div>'}</section>`;
+  const projects = solution.projects || [];
+  const projectArrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>';
+  const content = projects.length ? `<div class="solution-project-grid${projects.length === 1 ? ' solution-project-grid--single' : ''}">${projects.map(project => `<a class="solution-project-card" href="${escape(project.href)}" target="_blank" rel="noopener noreferrer" aria-label="Visitar projeto ${escape(project.title)} (abre num novo separador)"><div class="solution-project-image"><img src="${escape(project.image)}" alt="${escape(project.imageAlt)}" width="${project.width}" height="${project.height}" loading="lazy" decoding="async"></div><div class="solution-project-copy"><span class="solution-project-status">Projeto realizado</span><h3>${escape(project.title)}</h3><p>${escape(project.description)}</p><span class="solution-project-action">Visitar projeto ${projectArrow}</span></div></a>`).join('')}</div>` : `<div class="solution-project-empty"><span class="solution-project-empty-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="8" width="38" height="32" rx="5"/><path d="M5 17h38M12 12.5h1m4 0h1m4 0h1M17 28h14m-7-7v14"/></svg></span><h3>Projetos em breve</h3><p>Ainda não existem projetos publicados nesta área. Os trabalhos realizados serão apresentados aqui.</p>${button('Falar com a equipa', '#contacto', 'lime')}</div>`;
+  return `<section class="solution-gallery${embedded ? ' solution-gallery--projects' : ''}" aria-label="${escape(title)}">${embedded ? '' : '<div class="container">'}<div class="section-heading"><h2>${escape(title)}</h2></div>${content}${embedded ? '' : '</div>'}</section>`;
 }

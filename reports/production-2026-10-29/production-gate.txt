@@ -1,0 +1,24 @@
+Runtime 24.22.1
+file:///C:/Users/DELL/Documents/1/scripts/production-readiness.mjs:29
+  if (issues.length) throw new Error('Publicação bloqueada:\n- ' + issues.join('\n- '));
+                           ^
+
+Error: Publicação bloqueada:
+- SITE_URL: definir a origem HTTPS real, sem caminho nem domínio de exemplo.
+- LEGAL_CONTROLLER_NAME: informação confirmada em falta.
+- LEGAL_TAX_ID: informação confirmada em falta.
+- LEGAL_ADDRESS: informação confirmada em falta.
+- LEGAL_ESTABLISHMENT_COUNTRY: informação confirmada em falta.
+- LEGAL_RETENTION_NOTICE: informação confirmada em falta.
+- LEGAL_PROCESSORS_NOTICE: informação confirmada em falta.
+- LEGAL_CONSUMER_NOTICE: informação confirmada em falta.
+- LEGAL_LAST_REVIEW_DATE: indicar a data real de revisão (AAAA-MM-DD), sem data futura.
+- LEGAL_REVIEW_APPROVED: a identidade, mercados, fundamentos, prazos, fornecedores e requisitos de consumo precisam de validação.
+- CONTACT_ENABLED: escolher explicitamente true ou false.
+    at assertProductionReady (file:///C:/Users/DELL/Documents/1/scripts/production-readiness.mjs:29:28)
+    at file:///C:/Users/DELL/Documents/1/scripts/build.mjs:11:87
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.22.1

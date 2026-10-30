@@ -1,0 +1,5 @@
+{
+  "date": "2026-10-29T14:52:59.686Z",
+  "exit": 0,
+  "stderr": "npm notice\nnpm notice New minor version of npm available! 11.6.2 -> 11.21.1\nnpm notice Changelog: https://github.com/npm/cli/releases/tag/v11.21.1\nnpm notice To update run: npm install -g npm@11.21.1\nnpm notice\n"
+}

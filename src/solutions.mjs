@@ -1,12 +1,14 @@
 export const solutions = [
   {
     title: 'Business Intelligence',
-    hero: { image: ['service-bi-cutout-v1.png', 'Portátil com um painel de indicadores do negócio.', 1484, 1060], lead: 'Olhe para o seu negócio com', highlight: 'seriedade.', color: 'orange' },
-    cover: ['bi-cover-campaign-v3.png', 'Olhe para o seu negócio com seriedade. Monitor apresenta indicadores de desempenho do negócio.', 1881, 836],
+    hero: { image: ['business-intelligence-dashboard-v3.png', 'Portátil com dashboard financeiro, indicadores, gráfico de custos e evolução mensal, numa secretária iluminada em azul.', 1672, 941, false], backdrop: true, lead: 'Olhe para o seu negócio com', highlight: 'seriedade.', color: 'orange' },
+    cover: ['business-intelligence-dashboard-v3.png', 'Dashboard financeiro no ecrã de um portátil, com indicadores e gráficos em branco e verde.', 1672, 941, false],
+    coverPhoto: true,
     description: 'Integramos os dados da sua empresa e transformamo-los em informação clara para acompanhar resultados, identificar desvios e tomar decisões com confiança.',
     href: '/servicos/consultoria-bi/',
     icon: '/assets/icons/process-pie.svg',
     features: ['Power BI', 'Dados integrados'],
+    projects: [],
     images: [
       ['reference-bi-finance.png', 'Referência visual de dashboard financeiro', 1199, 861],
       ['reference-bi-performance.png', 'Referência visual de dashboard de controlo de gestão', 1200, 900],
@@ -21,6 +23,15 @@ export const solutions = [
     href: '/servicos/desenvolvimento-web/',
     icon: '/assets/figma/2-687-3f18a.svg',
     features: ['Sites à medida', 'Aplicações web'],
+    projects: [{
+      title: 'Queluz Cardoso',
+      description: 'Site de apresentação de um alojamento em Queluz, Lisboa.',
+      href: 'https://queluzcardoso.com/',
+      image: '/assets/projects/queluz-cardoso.jpg',
+      imageAlt: 'Página inicial do site Queluz Cardoso',
+      width: 1440,
+      height: 960
+    }],
     images: [
       ['reference-web-portfolio.png', 'Referência visual de site de portefólio', 1000, 750],
       ['reference-web-platform.png', 'Referência visual de aplicação web', 735, 547],
@@ -35,6 +46,7 @@ export const solutions = [
     href: '/servicos/atendimento-automacao/',
     icon: '/assets/figma/2-401-bdfc9.svg',
     features: ['Atendimento', 'Integrações'],
+    projects: [],
     images: [
       ['reference-automation-assistant.png', 'Referência visual de chatbot com mensagens', 1199, 1501],
       ['reference-automation-flow.png', 'Referência visual de chatbot e integrações', 736, 552],

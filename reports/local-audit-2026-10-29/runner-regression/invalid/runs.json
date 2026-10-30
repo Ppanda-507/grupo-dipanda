@@ -1,0 +1,19 @@
+[
+  {
+    "label": "webkit-https",
+    "origin": "https://127.0.0.1:4443",
+    "engine": "webkit",
+    "startedAt": "2026-10-29T15:47:57.954Z",
+    "finishedAt": "2026-10-29T15:47:58.102Z",
+    "exit": 0,
+    "signal": null,
+    "timedOut": false,
+    "status": "ERROR",
+    "errors": [
+      "Report missing or invalid: Invalid report identity or scenarios."
+    ],
+    "reportPath": "C:\\Users\\DELL\\AppData\\Local\\Temp\\dipanda-runner-regression-QlZSLr\\webkit-https.json",
+    "temporary": "C:\\Users\\DELL\\AppData\\Local\\Temp\\dipanda-consent-run-9pgds4\\webkit-https.json",
+    "snapshot": "fd3031562fa9442aed2a9d0bfd991477a5469f9263d176fcb281614f37dd22e8"
+  }
+]

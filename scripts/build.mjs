@@ -4,9 +4,11 @@ import path from 'node:path';
 import os from 'node:os';
 import { pages, renderPage } from '../src/pages.mjs';
 import { assertProjectAssets } from './project-assets.mjs';
+import { assertProductionReady } from './production-readiness.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 try { process.loadEnvFile(path.join(root, '.env')); } catch (error) { if (error.code !== 'ENOENT') throw error; }
+if (process.argv.includes('--production') || process.env.VERCEL_ENV === 'production') assertProductionReady();
 const outputIndex = process.argv.indexOf('--output');
 const output = outputIndex >= 0 ? path.resolve(process.argv[outputIndex + 1]) : path.resolve(root, 'dist');
 const normalOutput = path.resolve(root, 'dist');

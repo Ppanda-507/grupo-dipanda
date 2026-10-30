@@ -1,0 +1,293 @@
+{
+  "runtime": "v24.22.1",
+  "results": [
+    {
+      "name": "/demos: HTTP 200 and single h1",
+      "passed": true
+    },
+    {
+      "name": "/demos: CSP and anti-framing",
+      "passed": true
+    },
+    {
+      "name": "/demos: no mobile overflow",
+      "passed": true
+    },
+    {
+      "name": "/: HTTP 200 and single h1",
+      "passed": true
+    },
+    {
+      "name": "/: CSP and anti-framing",
+      "passed": true
+    },
+    {
+      "name": "/: no mobile overflow",
+      "passed": true
+    },
+    {
+      "name": "/sobre: HTTP 200 and single h1",
+      "passed": true
+    },
+    {
+      "name": "/sobre: CSP and anti-framing",
+      "passed": true
+    },
+    {
+      "name": "/sobre: no mobile overflow",
+      "passed": true
+    },
+    {
+      "name": "/servicos: HTTP 200 and single h1",
+      "passed": true
+    },
+    {
+      "name": "/servicos: CSP and anti-framing",
+      "passed": true
+    },
+    {
+      "name": "/servicos: no mobile overflow",
+      "passed": true
+    },
+    {
+      "name": "/contacto: HTTP 200 and single h1",
+      "passed": true
+    },
+    {
+      "name": "/contacto: CSP and anti-framing",
+      "passed": true
+    },
+    {
+      "name": "/contacto: no mobile overflow",
+      "passed": true
+    },
+    {
+      "name": "/termos-e-condicoes: HTTP 200 and single h1",
+      "passed": true
+    },
+    {
+      "name": "/termos-e-condicoes: CSP and anti-framing",
+      "passed": true
+    },
+    {
+      "name": "/termos-e-condicoes: no mobile overflow",
+      "passed": true
+    },
+    {
+      "name": "/politica-de-privacidade: HTTP 200 and single h1",
+      "passed": true
+    },
+    {
+      "name": "/politica-de-privacidade: CSP and anti-framing",
+      "passed": true
+    },
+    {
+      "name": "/politica-de-privacidade: no mobile overflow",
+      "passed": true
+    },
+    {
+      "name": "/politica-de-cookies: HTTP 200 and single h1",
+      "passed": true
+    },
+    {
+      "name": "/politica-de-cookies: CSP and anti-framing",
+      "passed": true
+    },
+    {
+      "name": "/politica-de-cookies: no mobile overflow",
+      "passed": true
+    },
+    {
+      "name": "/problemas/informacao-dispersa: HTTP 200 and single h1",
+      "passed": true
+    },
+    {
+      "name": "/problemas/informacao-dispersa: CSP and anti-framing",
+      "passed": true
+    },
+    {
+      "name": "/problemas/informacao-dispersa: no mobile overflow",
+      "passed": true
+    },
+    {
+      "name": "/problemas/relatorios-manuais: HTTP 200 and single h1",
+      "passed": true
+    },
+    {
+      "name": "/problemas/relatorios-manuais: CSP and anti-framing",
+      "passed": true
+    },
+    {
+      "name": "/problemas/relatorios-manuais: no mobile overflow",
+      "passed": true
+    },
+    {
+      "name": "/problemas/numeros-duvidosos: HTTP 200 and single h1",
+      "passed": true
+    },
+    {
+      "name": "/problemas/numeros-duvidosos: CSP and anti-framing",
+      "passed": true
+    },
+    {
+      "name": "/problemas/numeros-duvidosos: no mobile overflow",
+      "passed": true
+    },
+    {
+      "name": "/problemas/dependencia: HTTP 200 and single h1",
+      "passed": true
+    },
+    {
+      "name": "/problemas/dependencia: CSP and anti-framing",
+      "passed": true
+    },
+    {
+      "name": "/problemas/dependencia: no mobile overflow",
+      "passed": true
+    },
+    {
+      "name": "/servicos/consultoria-bi: HTTP 200 and single h1",
+      "passed": true
+    },
+    {
+      "name": "/servicos/consultoria-bi: CSP and anti-framing",
+      "passed": true
+    },
+    {
+      "name": "/servicos/consultoria-bi: no mobile overflow",
+      "passed": true
+    },
+    {
+      "name": "/servicos/solucoes-analytics: HTTP 200 and single h1",
+      "passed": true
+    },
+    {
+      "name": "/servicos/solucoes-analytics: CSP and anti-framing",
+      "passed": true
+    },
+    {
+      "name": "/servicos/solucoes-analytics: no mobile overflow",
+      "passed": true
+    },
+    {
+      "name": "/servicos/atendimento-automacao: HTTP 200 and single h1",
+      "passed": true
+    },
+    {
+      "name": "/servicos/atendimento-automacao: CSP and anti-framing",
+      "passed": true
+    },
+    {
+      "name": "/servicos/atendimento-automacao: no mobile overflow",
+      "passed": true
+    },
+    {
+      "name": "/servicos/desenvolvimento-saas: HTTP 200 and single h1",
+      "passed": true
+    },
+    {
+      "name": "/servicos/desenvolvimento-saas: CSP and anti-framing",
+      "passed": true
+    },
+    {
+      "name": "/servicos/desenvolvimento-saas: no mobile overflow",
+      "passed": true
+    },
+    {
+      "name": "/servicos/produtos-dipanda: HTTP 200 and single h1",
+      "passed": true
+    },
+    {
+      "name": "/servicos/produtos-dipanda: CSP and anti-framing",
+      "passed": true
+    },
+    {
+      "name": "/servicos/produtos-dipanda: no mobile overflow",
+      "passed": true
+    },
+    {
+      "name": "/servicos/pedido-personalizado: HTTP 200 and single h1",
+      "passed": true
+    },
+    {
+      "name": "/servicos/pedido-personalizado: CSP and anti-framing",
+      "passed": true
+    },
+    {
+      "name": "/servicos/pedido-personalizado: no mobile overflow",
+      "passed": true
+    },
+    {
+      "name": "/servicos/desenvolvimento-web: HTTP 200 and single h1",
+      "passed": true
+    },
+    {
+      "name": "/servicos/desenvolvimento-web: CSP and anti-framing",
+      "passed": true
+    },
+    {
+      "name": "/servicos/desenvolvimento-web: no mobile overflow",
+      "passed": true
+    },
+    {
+      "name": "no cookies before choice",
+      "passed": true
+    },
+    {
+      "name": "reject saves only essential choice",
+      "passed": true
+    },
+    {
+      "name": "functional cookie created only after explicit consent",
+      "passed": true
+    },
+    {
+      "name": "withdrawal removes optional cookie",
+      "passed": true
+    },
+    {
+      "name": "no third-party tracking requests in tested navigation",
+      "passed": true
+    },
+    {
+      "name": "/: fits 320",
+      "passed": true
+    },
+    {
+      "name": "/demos/: fits 320",
+      "passed": true
+    },
+    {
+      "name": "/servicos/desenvolvimento-web/: fits 320",
+      "passed": true
+    },
+    {
+      "name": "/: fits 1280",
+      "passed": true
+    },
+    {
+      "name": "/demos/: fits 1280",
+      "passed": true
+    },
+    {
+      "name": "/servicos/desenvolvimento-web/: fits 1280",
+      "passed": true
+    },
+    {
+      "name": "HTTPS cookies use Secure and SameSite=Lax",
+      "passed": true
+    },
+    {
+      "name": "no JavaScript exceptions",
+      "passed": true
+    },
+    {
+      "name": "CSP does not break existing navigation and scripts",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "csp": [],
+  "external": [],
+  "note": "Mobile emulado. HTTPS mirror testa cookies, não certificados/TLS reais."
+}

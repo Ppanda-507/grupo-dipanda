@@ -1,0 +1,31 @@
+Runtime 24.22.1
+✔ consent defaults to essential cookies and stores an explicit choice (3.4866ms)
+✔ expired, malformed, future or obsolete consent is rejected (0.6231ms)
+✔ cookie names cannot match a suffix or another cookie (3.0814ms)
+✔ secure cookies on HTTPS, available for local preview on HTTP (1.6035ms)
+✔ contact CTAs, navigation and footer use the form on the current page (21.6019ms)
+✔ pages without a form link directly to the contact page (2.3086ms)
+✔ contact rejects invalid fields, bots and implausible submission times (13.8168ms)
+✔ contact never reports success without a configured service or a delivery acknowledgement (5.8289ms)
+✔ demo catalogue shows an honest empty state and no individual demo pages (2.9595ms)
+✔ published demos link directly to their analytics platform (1.4517ms)
+✔ solution pages select Nossa solução and only show the real web project (9.4095ms)
+✔ packaging requires local fonts and every responsive image, including empty files (65.7595ms)
+✔ contact rejects cross origins, schemes, null origin, wrong methods, types and oversized bodies without sending (50.7742ms)
+✔ form schema rejects unexpected fields, arrays, controls, duplicates and invalid UTF-8 (1.4787ms)
+✔ concurrent requests reserve quotas before provider work; invalid forms consume quota (20.8813ms)
+✔ memory limiter expires and bounds memory; IPv6 /64 shares quota (6.5062ms)
+✔ durable quota uses an atomic script and pseudonymous keys, fails closed on outages (1.4922ms)
+✔ production/preview form is disabled by default and responses never cache (0.9731ms)
+✔ production cannot build without confirmed identity, policies and valid configuration (2.9738ms)
+✔ consumer notices escape HTML and omit unsafe complaints links (1.6541ms)
+✔ production rejects unpatched Node runtimes (0.188ms)
+✔ Vercel and local server use the same CSP; output escapes HTML, cookies are not sessions (1.1648ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 630.4994
