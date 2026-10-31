@@ -15,13 +15,14 @@ export function sendErrorPage(response, status, method, renderPage) {
 }
 
 export function createSiteRequestHandler({ assetRoot, production = false, pages, renderPage, contactRequest, siteUrl = '' }) {
+  const expectedHost = production && publicOrigin(siteUrl) ? new URL(siteUrl).host : null;
   const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.json': 'application/json; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.avif': 'image/avif', '.gif': 'image/gif', '.woff2': 'font/woff2', '.ttf': 'font/ttf', '.txt': 'text/plain; charset=utf-8', '.xml': 'application/xml; charset=utf-8' };
   return async (request, response) => {
     for (const [key, value] of Object.entries(securityHeaders)) response.setHeader(key, value);
     let pathname;
     try {
       const host = request.headers.host;
-      if (typeof host !== 'string' || !/^[a-z0-9.:[\]_-]+(?::[0-9]+)?$/i.test(host) || (production && host !== new URL(publicOrigin(siteUrl)).host)) {
+      if (typeof host !== 'string' || !/^[a-z0-9.:[\]_-]+(?::[0-9]+)?$/i.test(host) || (expectedHost && host !== expectedHost)) {
         response.writeHead(421, { 'Cache-Control': 'no-store' }); response.end(); return;
       }
       pathname = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);
