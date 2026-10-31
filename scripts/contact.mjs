@@ -1,4 +1,5 @@
 import { site } from '../src/site.mjs';
+import { sendSmtpContact } from './contact-smtp.mjs';
 
 export function validateContact(body, now = Date.now()) {
   if (!body || typeof body !== 'object' || Array.isArray(body)) return { error: 'Pedido inválido.' };
@@ -17,6 +18,9 @@ export function validateContact(body, now = Date.now()) {
 
 export async function sendContact(data, options = {}) {
   const environment = options.environment || process.env;
+  const provider = environment.CONTACT_PROVIDER || (environment.RESEND_API_KEY ? 'resend' : 'smtp');
+  if (provider === 'smtp') return sendSmtpContact(data, { ...options, environment });
+  if (provider !== 'resend') return { status: 503, message: 'O envio pelo formulário ainda não está configurado.' };
   const fetcher = options.fetcher || fetch;
   if (!environment.RESEND_API_KEY || !environment.CONTACT_FROM_EMAIL) return { status: 503, message: 'O envio pelo formulário ainda não está disponível.' };
   try {

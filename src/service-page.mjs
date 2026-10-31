@@ -1,5 +1,5 @@
 import { escape, tag, button, solutionGallery } from './components.mjs';
-import { services, processSteps } from './data.mjs';
+import { services } from './data.mjs';
 import { solutions } from './solutions.mjs';
 import { serviceImages } from './service-banners.mjs';
 
@@ -119,7 +119,6 @@ export function renderServiceSections(service, solution) {
   return `<section class="section service-overview service-band"><div class="service-overview-heading"><div class="container"><div class="section-heading section-heading--left" data-reveal><h2>Uma visão <em>geral.</em></h2></div></div></div><div class="container"><div class="service-overview-rows">${overview[service.slug].map((body,index) => `<article data-reveal><h3>${labels[index]}</h3><p>${escape(body)}</p></article>`).join('')}</div></div></section>
   <section class="section service-audience"><div class="container service-audience-layout"><div data-reveal>${tag('O seu ponto de partida')}<h2>${product ? 'Para quem criamos?' : 'Para quem é indicado?'}</h2></div><p data-reveal>${escape(service.audience)}</p></div></section>
   <section class="section service-scope service-band"><div class="container"><div class="section-heading section-heading--left" data-reveal>${tag('Âmbito da solução')}<h2>${product ? 'Produtos que queremos criar' : 'O que podemos fazer'}</h2></div><div class="service-scope-grid">${service.benefits.map((title,index) => `<details><summary><h3>${escape(title)}</h3><span aria-hidden="true">+</span></summary><p>${escape(scopeDescription(service,title,index) || 'O âmbito é definido na proposta, de acordo com as necessidades do projeto.')}</p></details>`).join('')}</div></div></section>
-  ${service.slug === 'pedido-personalizado' ? '' : `<section class="section service-delivery"><div class="container"><div class="section-heading section-heading--left" data-reveal><h2>Uma entrega <em>clara.</em></h2></div><ol class="service-delivery-steps">${processSteps.map((step,index) => `<li data-reveal><span aria-hidden="true">0${index+1}</span><h3>${escape(step.title)}</h3></li>`).join('')}</ol></div></section>`}
   ${solution?.hero ? solutionGallery(solution, { title: 'Projetos' }) : ''}
   <section class="section service-pricing service-band"${product ? ' id="modelo-de-acesso"' : ''}><div class="container service-pricing-layout"><div data-reveal>${tag(product ? 'Modelo de acesso' : 'Investimento')}<h2>${product ? 'Planos por produto.' : 'Sob consulta.'}</h2><p>${product ? 'Os preços e as condições de acesso serão apresentados com cada produto, quando estiver disponível.' : 'O valor depende do âmbito, das integrações e das entregas acordadas. Começamos por uma conversa para compreender o que precisa.'}</p></div>${button(product ? 'Falar com a Dipanda' : 'Consultar a equipa', '#contacto', 'lime')}</div></section>
   ${relatedServices(service)}`;

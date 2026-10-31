@@ -46,6 +46,14 @@ if total == 1 then redis.call('EXPIRE', KEYS[2], 86400) end
 if total > 100 then return {429, redis.call('TTL', KEYS[2])} end
 return {200, 0}`;
 
+export function createContactLimiter(environment = process.env) {
+  // Basic protection per running instance. Shared quotas are optional.
+  // An explicitly configured shared store must never silently fail open.
+  return environment.UPSTASH_REDIS_REST_URL || environment.UPSTASH_REDIS_REST_TOKEN
+    ? createDurableLimiter(environment)
+    : createMemoryLimiter();
+}
+
 export function createDurableLimiter(environment = process.env, fetcher = fetch) {
   return async address => {
     const ip = normalizeAddress(address);

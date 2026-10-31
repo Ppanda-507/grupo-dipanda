@@ -1,22 +1,25 @@
 import { validateContact, sendContact } from './contact.mjs';
 import { securityHeaders, publicOrigin } from './security.mjs';
-import { createMemoryLimiter, createDurableLimiter } from './contact-limits.mjs';
+import { createMemoryLimiter, createContactLimiter } from './contact-limits.mjs';
 
 export const MAX_CONTACT_BYTES = 32768;
 const memoryLimiter = createMemoryLimiter();
 
 export function createContactHandler({ environment = process.env, send = sendContact, limit, local = false } = {}) {
-  const limiter = limit || (local ? memoryLimiter : createDurableLimiter(environment));
+  const limiter = limit || (local ? memoryLimiter : createContactLimiter(environment));
   return async (request, address) => {
     const reply = (status, message, extra = {}) => new Response(JSON.stringify({ message }), {
       status, headers: { ...securityHeaders, 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store', ...extra },
     });
     if (request.method !== 'POST') return reply(405, 'Método não permitido.', { Allow: 'POST' });
     const target = new URL(request.url);
-    const expected = local ? target.origin : publicOrigin(environment.SITE_URL);
-    // Disable real submissions on preview deployments, or until explicitly enabled.
-    if (!expected || (!local && (environment.CONTACT_ENABLED !== 'true' || (environment.VERCEL_ENV && environment.VERCEL_ENV !== 'production')))) return reply(503, 'O formulário ainda não está disponível. Contacte-nos por e-mail.');
-    if (target.origin !== expected || request.headers.get('origin') !== expected || request.headers.get('sec-fetch-site') === 'cross-site') return reply(403, 'Origem do pedido inválida.');
+    const origins = local ? new Set([target.origin]) : new Set([
+      publicOrigin(environment.SITE_URL),
+      publicOrigin(environment.VERCEL_URL ? `https://${environment.VERCEL_URL}` : ''),
+      publicOrigin(environment.VERCEL_PROJECT_PRODUCTION_URL ? `https://${environment.VERCEL_PROJECT_PRODUCTION_URL}` : ''),
+    ].filter(Boolean));
+    if (environment.CONTACT_ENABLED !== 'true') return reply(503, 'O formulário ainda não está disponível. Contacte-nos por e-mail.');
+    if (!origins.has(target.origin) || request.headers.get('origin') !== target.origin || request.headers.get('sec-fetch-site') === 'cross-site') return reply(403, 'Origem do pedido inválida.');
     const type = request.headers.get('content-type') || '';
     if (request.headers.has('content-encoding') && request.headers.get('content-encoding') !== 'identity') return reply(415, 'Conteúdo comprimido não suportado.');
     if (!/^(application\/json|application\/x-www-form-urlencoded)(?:\s*;\s*charset=utf-8)?$/i.test(type)) return reply(415, 'Tipo de conteúdo não suportado.');

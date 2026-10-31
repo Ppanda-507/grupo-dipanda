@@ -131,7 +131,7 @@ document.querySelectorAll('[data-contact-form]').forEach(form => {
     status.dataset.state = 'pending';
     submit.disabled = true; label.textContent = 'A enviar';
     try {
-      const response = await fetch(form.action, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(Object.fromEntries(new FormData(form))), signal: AbortSignal.timeout(20000) });
+      const response = await fetch(form.action, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(Object.fromEntries(new FormData(form))), signal: AbortSignal.timeout(25000) });
       const result = await response.json();
       if (!response.ok) throw new Error(result.message || 'Não foi possível enviar a mensagem.');
       status.textContent = result.message;
