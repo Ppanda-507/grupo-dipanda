@@ -1,0 +1,15 @@
+/* One description scale across pages; labels and controls keep their hierarchy. */
+:root{--hero-description-size:18px;--hero-description-line:28px}
+@media(max-width:640px){:root{--hero-description-size:16px;--hero-description-line:24px}}
+.hero-copy>p,.section-heading>p:not(.eyebrow),.inner-description p,
+.about-grid .about-card p,.problem-content .problem-description p,
+.process-section .solution-description,.workflow-description,
+.demo-explorer-details p,.demo-block-content>p,.demo-content>p,
+.detail-card>p,.detail-card .check-list li,.service-investment p,
+.technology-panel p,.article-content>p,.related-card>p,
+.problem-detail-section p,.problem-detail-scope li,
+.solution-project-copy p,.solution-project-empty p,.demo-empty p,
+.service-copy p,.service-details .service-copy p,.service-benefits li,
+.legal-content p,.legal-content li,.contact-consent{
+  font-size:var(--hero-description-size);line-height:var(--hero-description-line)
+}

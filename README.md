@@ -27,7 +27,7 @@ Copie `.env.example` para `.env` e configure:
 - `SITE_URL`: domínio final, para as ligações canónicas.
 - `RESEND_API_KEY`: chave de envio de e-mail, apenas no servidor.
 - `CONTACT_FROM_EMAIL`: remetente num domínio verificado.
-- `CONTACT_TO_EMAIL`: destino dos pedidos; por defeito, `comercial@grupodipanda.com`.
+- `CONTACT_TO_EMAIL`: destino dos pedidos; por defeito, `geral@grupodipanda.com`.
 
 A integração segue a [API oficial do Resend](https://resend.com/docs/api-reference/emails/send-email). Não é enviada nenhuma mensagem durante os testes. Sem credenciais, o formulário mostra um erro claro e permite contactar por e-mail; nunca apresenta um sucesso falso. Os pedidos têm validação no cliente e no servidor, um campo contra bots, limite de tamanho, verificação de origem e limitação de frequência. O formulário não subscreve comunicações de marketing.
 

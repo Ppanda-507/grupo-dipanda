@@ -12,7 +12,7 @@ export function initNavigation() {
     if (selected === id) return;
     selected = id;
     links.forEach(link => {
-      const target = link.getAttribute('href')?.split('#')[1] || 'home';
+      const target = link.dataset.navTarget || link.getAttribute('href')?.split('#')[1] || 'home';
       if (target === id) link.setAttribute('aria-current', landing ? 'location' : 'page');
       else link.removeAttribute('aria-current');
     });

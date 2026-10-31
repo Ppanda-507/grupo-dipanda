@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { pages, renderPage } from '../src/pages.mjs';
 
-const pagesWithoutForm = ['/termos-e-condicoes', '/politica-de-privacidade', '/politica-de-cookies', '/404'];
+const pagesWithoutForm = ['/termos-e-condicoes', '/politica-de-privacidade', '/politica-de-cookies', '/404', '/500', '/503'];
 const contactLinks = html => [...html.matchAll(/<a\b[^>]*\bhref="([^"]*contacto[^"]*)"/g)].map(match => match[1]);
 
 test('contact CTAs, navigation and footer use the form on the current page', () => {

@@ -1,6 +1,7 @@
 import { site } from './site.mjs';
 import { services, processSteps, figmaText } from './data.mjs';
 import { solutions } from './solutions.mjs';
+import { navigationLinks } from './navigation-links.mjs';
 
 export const escape = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 export const paragraphs = text => text.trim().split(/\n\s*\n/).map(p => `<p>${escape(p)}</p>`).join('');
@@ -13,14 +14,14 @@ export const icon = (src, type = '') => `<span class="icon-tile ${type}" aria-hi
 export const logo = (dark = false) => `<a class="brand ${dark ? 'brand--dark' : ''}" href="/" aria-label="Dipanda — página inicial"><img class="brand-mark" src="/assets/brand/dipanda-mark.svg" width="36" height="38" alt=""><span>dipanda</span></a>`;
 
 export function header(home = false) {
-  const links = [['Home', '/'], ['Sobre', '/#sobre'], ['Problema', '/#problema'], ['Nossa solução', '/#solucao'], ['Demonstração', '/#demonstracao'], ['Serviços', '/#servicos']];
+  const links = navigationLinks(home);
   return `<header class="site-header ${home ? 'site-header--hero' : 'site-header--inner'}" data-header>
     <div class="header-shell">
     ${logo(!home)}
-    <nav class="desktop-nav" aria-label="Navegação principal">${links.map(([label, href]) => `<a href="${href}">${label}</a>`).join('')}${flowButton('Contacto', '/#contacto')}</nav>
+    <nav class="desktop-nav" aria-label="Navegação principal">${links.map(({label, href, target}) => `<a href="${href}" data-nav-target="${target}">${label}</a>`).join('')}${flowButton('Contacto', '/#contacto')}</nav>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-navigation" data-menu-toggle><span>Menu</span><span class="menu-lines" aria-hidden="true"><i></i><i></i></span></button>
     </div>
-    <dialog class="mobile-navigation" id="mobile-navigation" aria-label="Navegação principal" data-menu-dialog><div class="menu-top">${logo(true)}<button class="close-button" aria-label="Fechar menu" data-menu-close>×</button></div><nav>${links.map(([label, href], i) => `<a href="${href}"><small>0${i + 1}</small>${label}<span class="mobile-menu-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span></a>`).join('')}${button('Contacto', '/#contacto', 'lime')}</nav></dialog>
+    <dialog class="mobile-navigation" id="mobile-navigation" aria-label="Navegação principal" data-menu-dialog><div class="menu-top">${logo(true)}<button class="close-button" aria-label="Fechar menu" data-menu-close>×</button></div><nav>${links.map(({label, href, target}, i) => `<a href="${href}" data-nav-target="${target}"><small>0${i + 1}</small>${label}<span class="mobile-menu-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span></a>`).join('')}${button('Contacto', '/#contacto', 'lime')}</nav></dialog>
   </header>`;
 }
 
@@ -36,8 +37,8 @@ const footerIcon = name => {
 
 export function footer() {
   return `<footer class="site-footer"><div class="footer-surface"><div class="footer-grid">
-    <div class="footer-brand">${logo()}<a href="/#contacto">Conectar-se</a><button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false"><span class="pause-icon" aria-hidden="true">Ⅱ</span><span data-motion-label>Pausar animações</span></button></div>
-    <div><h2>Links principais</h2><a href="/">Home</a><a href="/sobre/">Sobre nós</a><a href="/#problema">Problema</a><a href="/#demonstracao">Demonstração</a><a href="/servicos/">Solução e Serviços</a></div>
+    <div class="footer-brand">${logo()}<a href="/#contacto">Conectar-se</a></div>
+    <div><h2>Links principais</h2><a href="/">Home</a><a href="/sobre/">Sobre nós</a><a href="/#problema">Problema</a><a href="/#demonstracao">Demonstração</a><a href="/servicos/">Serviços</a></div>
     <div><h2>Serviços</h2>${services.map(s => `<a href="/servicos/${s.slug}/">${escape(s.title === 'Desenvolvimento SaaS' ? 'Desenvolvimento Saas' : s.title)}</a>`).join('')}</div>
     <div><h2>Localização</h2><p class="footer-location">${footerIcon('location')}<span>Porto, Portugal</span></p><p class="footer-location">${footerIcon('location')}<span>Luanda, Angola</span></p><p class="footer-location">${footerIcon('location')}<span>Houston, Estados unidos</span></p></div>
   </div><div class="footer-contact"><h2>Contactos</h2><dl><div><dt>E-mail</dt><dd>${footerIcon('mail')}<a href="mailto:${escape(site.email)}">${escape(site.email)}</a></dd></div><div><dt>Telefone</dt><dd>${footerIcon('phone')}<a href="tel:${escape(site.phoneHref)}">${escape(site.phone)}</a></dd></div><div><dt>Horário</dt><dd>${footerIcon('clock')}<span>${escape(site.hours)}</span></dd></div></dl></div><div class="footer-bottom"><div class="footer-legal"><a href="/termos-e-condicoes/">Termos e Condições</a><a href="/politica-de-privacidade/">Políticas de Privacidade</a><a href="/politica-de-cookies/">Políticas de Cookies</a><button type="button" data-cookie-settings>Gerir cookies</button></div><p>© 2025 Grupo dipanda. Todos os direitos reservados.</p></div></div></footer>`;

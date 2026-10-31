@@ -5,7 +5,9 @@ export const problemDetails = {
       ['Versões que não coincidem', 'Cada equipa trabalha com o seu ficheiro e chega a uma leitura diferente dos resultados.'],
       ['Decisões à espera', 'O tempo que devia servir para analisar o negócio é gasto a procurar e confirmar informação.']
     ],
-    approachTitle: 'Ligar a informação. Partilhar a mesma visão.',
+    approachTitle: 'Integramos os dados num único lugar onde possa confiar',
+    integrationFlow: true,
+    processImage: '/assets/problems/go-live-reference.png',
     approach: 'Começamos pelas perguntas que o seu negócio precisa de responder. Ligamos as fontes relevantes e organizamos os dados para que as equipas acompanhem os mesmos indicadores.',
     scope: ['Integração das fontes de dados', 'Regras comuns para os indicadores', 'Dashboards com acesso ao detalhe', 'Documentação e passagem de conhecimento'],
     benefits: [
@@ -26,7 +28,8 @@ export const problemDetails = {
       ['Erros difíceis de detetar', 'Uma fórmula alterada ou uma linha em falta pode mudar o resultado.'],
       ['Pouco tempo para analisar', 'Quando a preparação termina, sobra pouco tempo para interpretar os números.']
     ],
-    approachTitle: 'Automatizar a preparação. Dar tempo à análise.',
+    approachTitle: 'Criamos sistemas para automatizar os processos manuais',
+    stepsGrid: true,
     approach: 'Analisamos o percurso do relatório, desde a origem dos dados até à sua utilização. Automatizamos as tarefas repetitivas e criamos verificações para acompanhar a qualidade dos resultados.',
     scope: ['Recolha de dados automatizada', 'Tratamento e validação da informação', 'Indicadores e relatórios consistentes', 'Documentação do processo'],
     benefits: [
@@ -42,6 +45,8 @@ export const problemDetails = {
     ]
   },
   'numeros-duvidosos': {
+    stepsGrid: true,
+    processTitle: 'Trabalhamos em equipa para definir as regras certas',
     signals: [
       ['O mesmo indicador, vários valores', 'As equipas apresentam respostas diferentes para a mesma pergunta.'],
       ['Regras pouco claras', 'Períodos, filtros e fórmulas mudam entre relatórios sem uma definição partilhada.'],

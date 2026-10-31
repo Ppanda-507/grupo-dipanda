@@ -25,4 +25,6 @@ for (const [route, html] of renderedPages) {
   await writeFile(path.join(folder, 'index.html'), html);
 }
 await writeFile(path.join(output, '404.html'), renderPage('/404'));
+await writeFile(path.join(output, '500.html'), renderPage('/500'));
+await writeFile(path.join(output, '503.html'), renderPage('/503'));
 console.log(`Built ${renderedPages.size} pages with ${assetCount} verified local resources into ${output}`);

@@ -6,6 +6,7 @@ import { initConsent } from './consent.js';
 import { initHeroMotion } from './hero-motion.js';
 import { initHeroShader } from './hero-shader.js';
 import { initNavigation } from './navigation.js';
+import { initTouchFeedback, initFlowPreview } from './touch-feedback.js';
 
 initMotion();
 // Draw the background before starting the foreground entrance. Its inline
@@ -15,6 +16,8 @@ initAboutMotion();
 initSectionMotion();
 initConsent();
 initNavigation();
+initTouchFeedback();
+initFlowPreview();
 initHeroMotion();
 initIntegrationMotion();
 
@@ -137,7 +140,7 @@ document.querySelectorAll('[data-contact-form]').forEach(form => {
     } catch (error) {
       status.replaceChildren(document.createTextNode(error.name === 'TimeoutError' ? 'O envio demorou mais do que o esperado. Contacte-nos por e-mail antes de repetir o pedido.' : error.message || 'Não foi possível enviar a mensagem.'));
       status.append(document.createTextNode(' Pode contactar-nos em '));
-      const email = document.createElement('a'); email.href = 'mailto:comercial@grupodipanda.com'; email.textContent = 'comercial@grupodipanda.com'; status.append(email, '.');
+      const email = document.createElement('a'); email.href = 'mailto:geral@grupodipanda.com'; email.textContent = 'geral@grupodipanda.com'; status.append(email, '.');
       status.dataset.state = 'error';
     } finally { submit.disabled = false; label.textContent = 'Enviar'; }
   });

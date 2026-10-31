@@ -378,6 +378,19 @@ html[data-motion-paused] .demo-block[data-demo-pending]{opacity:1}
 
 /* Body typography follows the hero's desktop/mobile reading sizes. */
 :root{--hero-description-size:18px;--hero-description-line:28px}
+/* Shared reading size, excluding labels, prices and control captions. */
+.section-heading>p:not(.eyebrow),.inner-description p,.problem-description p,.about-card p,.solution-description,.demo-explorer-description,.demo-content>p,.detail-card>p,.detail-card .check-list li,.service-investment p,.technology-panel p,.article-content>p,.related-card>p,.contact-consent{font-size:var(--hero-description-size);line-height:var(--hero-description-line)}
+.button--motion.is-touch-pressed .button-inner::before,.button--motion:active .button-inner::before{clip-path:inset(0 round 999px);transition-duration:160ms}
+.button--lime.button--motion:is(.is-touch-pressed,:active){color:#fff}
+.button--dark.button--motion:is(.is-touch-pressed,:active){color:var(--ink)}
+.button--motion.is-touch-pressed .button-label{transform:translateX(2px);transition-duration:160ms}
+.button--motion.is-touch-pressed .button-arrow img{transform:translateX(-3px);transition-duration:160ms}
+.flow-button:is(.is-touch-pressed,:active) .flow-fill{clip-path:circle(75% at 50% 50%);transition-duration:160ms}
+.site-header .flow-button:is(.is-touch-pressed,:active){color:#fff;border-color:transparent;border-radius:12px}
+.flow-button:is(.is-touch-pressed,:active) .flow-label{transform:translateX(8px);transition-duration:160ms}
+.flow-button:is(.is-touch-pressed,:active) .flow-arrow--outgoing{transform:translate(40px,-50%);opacity:0;transition-duration:160ms}
+.flow-button:is(.is-touch-pressed,:active) .flow-arrow--incoming{transform:translate(0,-50%);opacity:1;transition-duration:160ms}
+@media(prefers-reduced-motion:reduce){.button--motion.is-touch-pressed .button-label,.button--motion.is-touch-pressed .button-arrow img{transform:none;transition:none}}
 .detail-card>p,.detail-card .check-list li{font-size:var(--hero-description-size);line-height:var(--hero-description-line)}
 .about-grid .about-card p{font-weight:400}
 .contact-form .field label,.contact-form .field input,.contact-form .field textarea{font-size:var(--hero-description-size);line-height:var(--hero-description-line)}

@@ -17,7 +17,7 @@ test('contact never reports success without a configured service or a delivery a
     assert.equal(url, 'https://api.resend.com/emails');
     const payload = JSON.parse(options.body);
     assert.equal(payload.reply_to, form.email);
-    assert.equal(payload.to[0], 'comercial@grupodipanda.com');
+    assert.equal(payload.to[0], 'geral@grupodipanda.com');
     assert.ok(payload.text.includes(form.message));
     return { ok: true, json: async () => ({ id: 'fake-test-ack' }) };
   } });
