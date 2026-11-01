@@ -1,2 +1,0 @@
-Synthetic subprocess output: pass
-Synthetic diagnostic stderr

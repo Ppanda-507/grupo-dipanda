@@ -19,7 +19,7 @@ Website em Node.js/ESM, HTML gerado no build e JavaScript nativo no navegador. A
 | `config/public-assets.json` | Lista explícita dos recursos que podem ser publicados |
 | `scripts/` | Comandos de build, desenvolvimento e auditoria |
 | `tests/` | Testes unitários, de integração e servidor de auditoria simulado |
-| `docs/` | Arquitetura, publicação, segurança, fontes e evidência histórica |
+| `docs/` | Guias de manutenção, publicação e testes; fontes das imagens e conteúdos |
 | `dist/` | Artefacto gerado e ignorado pelo Git |
 
 ## Desenvolvimento
@@ -36,15 +36,16 @@ npm run build:production
 npm test
 ```
 
-O servidor usa `127.0.0.1:4173` por omissão. Para acesso pela rede local: `npm run dev -- --host 0.0.0.0`. O comando `preview` usa `dist/`, pelo que exige um build anterior.
+O servidor usa `127.0.0.1:4173` por omissão. Para acesso pela rede local: `npm run dev -- --host 0.0.0.0`. O comando `preview` usa `dist/`, pelo que exige um build anterior. Com `SITE_URL` configurado para um domínio real, o preview de produção valida esse Host; usar `npm run dev` para navegar normalmente em localhost.
 
 ## Verificações e evolução
 
 - [Arquitetura e criação de páginas](docs/architecture.md).
 - [Configuração do contacto e publicação na Vercel](docs/deployment.md).
 - [Reprodução de testes e auditorias](docs/testing.md).
-- [Auditoria estrutural e decisões](docs/refactor/review.md).
-- [Resultados e limites da validação](docs/refactor/validation.md).
-- [Proveniência das auditorias anteriores](docs/audits/history/README.md).
 
-Esta refatoração não publica o site, não reintroduz o bloqueio legal de produção e não envia mensagens reais durante os testes.
+## Arquivo de auditoria
+
+Os relatórios, capturas, inventários da reorganização e evidências históricas ficam fora do projeto, na pasta vizinha `Dipanda-arquivo-2026-11-01/organizacao-projeto/`. Servem de registo e consulta; não exigem nenhuma ação para executar ou publicar o site.
+
+Os testes e as ferramentas que permitem repetir as verificações continuam no projeto. O build gera `dist/`; a Vercel recebe o código e executa esse build. A configuração real do contacto é fornecida por variáveis de ambiente, conforme o guia de publicação.

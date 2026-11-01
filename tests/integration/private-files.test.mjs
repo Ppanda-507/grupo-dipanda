@@ -17,7 +17,7 @@ async function withServer(options, run) {
 
 test('HTTP does not expose server, source, configuration, secrets or audit material',async()=>{
   await withServer({},async origin=>{
-    for(const route of ['/.env','/.env.example','/.git/config','/server/contact/service.mjs','/scripts/build.mjs','/src/pages/index.mjs','/tests/fixtures/server.mjs','/config/public-assets.json','/docs/audits/history/manifest.json','/assets/%2e%2e/%2e%2e/.env','/%2eenv']){
+    for(const route of ['/.env','/.env.example','/.git/config','/server/contact/service.mjs','/scripts/build.mjs','/src/pages/index.mjs','/tests/fixtures/server.mjs','/config/public-assets.json','/docs/deployment.md','/assets/%2e%2e/%2e%2e/.env','/%2eenv']){
       const result=await fetch(origin+route);
       assert.equal(result.status,404,route);
       assert.equal(result.headers.get('cache-control'),'no-store');

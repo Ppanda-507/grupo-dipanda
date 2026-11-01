@@ -1,2 +1,0 @@
-Runtime 24.22.1
-Built 20 pages with 100 verified local resources into C:\Users\DELL\AppData\Local\Temp\dipanda-site-dist

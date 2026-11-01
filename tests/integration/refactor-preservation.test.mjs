@@ -6,7 +6,7 @@ import {pages,renderPage} from '../../src/pages/index.mjs';
 import manifest from '../../config/public-assets.json' with {type:'json'};
 
 test('preserves original pages and public assets except explicitly approved visual updates',()=>{
-  const baseline=JSON.parse(fs.readFileSync(new URL('../../docs/refactor/baseline.json',import.meta.url),'utf8'));
+  const baseline=JSON.parse(fs.readFileSync(new URL('../fixtures/refactor-baseline.json',import.meta.url),'utf8'));
   const approved=JSON.parse(fs.readFileSync(new URL('../fixtures/approved-visual-updates.json',import.meta.url),'utf8'));
   const old=process.env.SITE_URL;
   process.env.SITE_URL=baseline.publicEnvironment.SITE_URL;
