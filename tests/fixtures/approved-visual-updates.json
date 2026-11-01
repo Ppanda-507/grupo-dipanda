@@ -1,14 +1,33 @@
 {
-  "reason": "Altera??o visual pedida ap?s a refatora??o: os cart?es de Continue a explorar passam a mostrar os banners completos, com texto, de Chatbots e automa??o e Desenvolvimento web. O formato preserva a imagem inteira. O baseline hist?rico da refatora??o fica intacto.",
+  "reason": "Alterações visuais pedidas após a refatoração: os cartões de Continue a explorar mostram os banners completos da Home, com o mesmo formato. O botão Contacto do menu móvel mantém o texto visível ao limitar a cor verde às setas dos restantes links. A seta da política de cookies usa o SVG existente para evitar a apresentação como emoji no telefone. O baseline histórico da refatoração fica intacto.",
   "pageHashes": {
-    "/servicos/consultoria-bi": "429ebd494044cdb275cf97935b07a681c8bd627bd659d52e309461f4c559e415",
-    "/servicos/solucoes-analytics": "30f5befd9778821e9d626f28ff75dfa80a5047e5e05ae9f0e8060b0d12a6858d",
-    "/servicos/desenvolvimento-saas": "605e650c1eec88356d27b5679f648fd5b5b150c32390eec8f832e8ddb8b75901",
-    "/servicos/produtos-dipanda": "2e0f5224f320d6e357c31a2d1a11d93157fb0b30b491315dba47373180cc65ae",
-    "/servicos/pedido-personalizado": "c31f1925a735ec9a861761fab6d2e8110679e8d132f38f7a2e5ca1146a3c3a0b",
-    "/servicos/desenvolvimento-web": "084865759446ef8d8c8b45a16bded1afe10f68950431c1fe8a990258e2062673"
+    "/servicos/consultoria-bi": "d1c5576faef045ce7b8f868675dadbacdd2927a8378932371b5e8ccd43646b3a",
+    "/servicos/solucoes-analytics": "9fc5521cc9705f57e0129a17b63325b47df42073523b8ff4ac2ac942b12ece12",
+    "/servicos/desenvolvimento-saas": "311f75daff8786b54f88aec3f37613b75342242708efc23a4d50927dcfee1701",
+    "/servicos/produtos-dipanda": "54a8837fdd83ac4de80e832b2c1b74086b1ce655f447f1e80bca83fb0fb8375d",
+    "/servicos/pedido-personalizado": "e24847fc8047b64d5757cdf4756d95cb577750700fc2cf09d8c8a6e0b5e746cb",
+    "/servicos/desenvolvimento-web": "ad91c9f36b873662822b3559e4e6981fc3ee12dc4017ac4753e736a952267fc3",
+    "/500": "ec4b7cb4ee9b66a3befe571afd3dac6af77ebba2b315c666f563fb2e21103332",
+    "/503": "d638abdd3aec56ab25e96a957231599194030d59a0a14b1a125de4d5fec8d370",
+    "/solucoes": "cd56681dccaee416308892870b5fcc5c4cfb0b5654d76a4353fe8171526c5fb2",
+    "/demos": "f19a73ddcaf28f7ae929cd2ffb6d108bd002ad23470017106e44887af01d98df",
+    "/": "831ab0b379469c7e68bc4ef79bafd2e8bd205b77ca0736947201c5e26dd76cd6",
+    "/sobre": "b0c21783395ca42f1996793c4cc65c0dfbfa3cb9646ac74c1385748f50dd6eb3",
+    "/servicos": "e741486c308c0bd8179d16a21b0901211e7e40855a42e7bfdd58a7ad7d9cddfd",
+    "/contacto": "fed53d1b361570e72b2b103df813ddc221574dcfb17a9b52603cc1c76d25c38f",
+    "/termos-e-condicoes": "8aaeb0bef4985610208060ff08b80e064313913a95a015e27a7e5904a76c8c49",
+    "/politica-de-privacidade": "bddaafb5455ef35ca041099ef2547b66cea967a9fc417f08fd5ec4012c47f88d",
+    "/politica-de-cookies": "c70f149f9de7658d2b2de6c245928cceebc3dd62be580e9dc09704b5decb46a7",
+    "/404": "771066292ba815662043daee7c40feb7f351e6b9920a5bd0421b461324d16647",
+    "/problemas/informacao-dispersa": "4c254a31faf826e2c55bc1dc33521c6e9fad3bc071c3ac54619697461b050422",
+    "/problemas/relatorios-manuais": "c308964032febeeeec963ab790926d9bdab05caa627642562c6b2f5a90405bde",
+    "/problemas/numeros-duvidosos": "05a1cc7683fadc6f3136b2597a045b44f957ed3c0a3a851b69f490702d5e136f",
+    "/problemas/dependencia": "26ae7bc9aab14dabb907b9addb7ba2beabcfd81e6ab319427766403e5b4e119b",
+    "/servicos/atendimento-automacao": "1f48b6e112c0450ed03208b8bf809084d607a03853395df0970c6dba7053d453"
   },
   "publicHashes": {
-    "public/css/service-detail.css": "54b8837bd2f3d9e2c9fc22413a7e34c4d79a2a59a9b0efff45d78f64c434a788"
+    "public/css/service-detail.css": "54b8837bd2f3d9e2c9fc22413a7e34c4d79a2a59a9b0efff45d78f64c434a788",
+    "public/css/site.css": "0f2f9ad6a020afd95f4818563c7c3de650f818e5e69ed129b9dc822feb7057c5",
+    "public/css/refinements.css": "bd1c10d119fe6b84df8e0c1ea87a3daa3d72ba5c5e0fae5aceda63bd3e55b945"
   }
 }

@@ -57,7 +57,7 @@ export function cookieUI() {
     <p class="cookie-note">Este site não utiliza cookies de publicidade nem ferramentas de análise de terceiros.</p>
     <p class="form-status" role="status" data-cookie-status></p>
     <div class="dialog-actions"><button class="plain-button" type="button" data-cookie-reject>Rejeitar opcionais</button><button class="plain-button" type="button" data-cookie-accept>Aceitar todos</button><button class="plain-button plain-button--lime" type="button" data-cookie-save>Guardar escolha</button></div>
-    <a class="text-link" href="/politica-de-cookies/">Consultar a política de cookies ↗</a>
+    <a class="text-link" href="/politica-de-cookies/">Consultar a política de cookies ${arrow()}</a>
   </dialog><noscript><div class="noscript-notice">Os cookies opcionais estão desativados. Ative o JavaScript para usar os formulários e ajustar as preferências.</div></noscript>`;
 }
 

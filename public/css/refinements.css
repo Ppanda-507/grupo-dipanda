@@ -199,6 +199,7 @@ button,[role=button]{user-select:none;-webkit-user-select:none;-webkit-touch-cal
 .site-header--hero,.site-header--inner{top:calc(8px + env(safe-area-inset-top,0px))}
 .cookie-banner{bottom:calc(16px + env(safe-area-inset-bottom,0px))}
 .mobile-navigation{padding:max(24px,env(safe-area-inset-top,0px)) max(24px,env(safe-area-inset-right,0px)) max(24px,env(safe-area-inset-bottom,0px)) max(24px,env(safe-area-inset-left,0px))}
+.cookie-dialog .text-link>img{display:inline-block;width:16px;height:16px;vertical-align:-2px;margin-left:4px}
 @media(pointer:coarse){.menu-toggle,.close-button{min-height:44px;min-width:44px}}
 @media(min-width:641px){.site-header--hero,.site-header--inner{top:calc(16px + env(safe-area-inset-top,0px))}}
 
