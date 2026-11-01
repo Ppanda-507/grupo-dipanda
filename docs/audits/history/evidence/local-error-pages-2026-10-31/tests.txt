@@ -1,0 +1,15 @@
+✔ contact CTAs, navigation and footer use the form on the current page (38.7676ms)
+✔ pages without a form link directly to the contact page (6.2062ms)
+✔ missing pages and assets return a real uncached 404, including HEAD (266.9283ms)
+✔ error pages use 500/503 statuses and noindex; normal pages remain 200 (70.9683ms)
+✔ unexpected rendering errors return a safe 500 without stack traces (16.4707ms)
+✔ a failing error template still has a safe fallback; malformed URLs are 400 (32.8197ms)
+✔ unexpected API failures keep JSON and do not cache private responses (18.0611ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1021.6334

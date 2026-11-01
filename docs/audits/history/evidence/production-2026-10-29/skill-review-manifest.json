@@ -1,0 +1,478 @@
+[
+  {
+    "repo": "openai/skills",
+    "folder": "skills/.curated/security-best-practices",
+    "commit": "49f948faa9258a0c61caceaf225e179651397431",
+    "status": "installed",
+    "files": [
+      {
+        "file": "agents/openai.yaml",
+        "sha256": "6e9c6f2edce448eb2b589f81ad6e3f722665021785513bcbfd0bf7b86b529171"
+      },
+      {
+        "file": "LICENSE.txt",
+        "sha256": "4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9"
+      },
+      {
+        "file": "references/golang-general-backend-security.md",
+        "sha256": "a73c47c34497b120672d48411fe51dc90d426a571801a0b3f649e2ce4ec658b4"
+      },
+      {
+        "file": "references/javascript-express-web-server-security.md",
+        "sha256": "427835cbb5be7ba96172ea6ca9af80ddd4419c833e9ebf870996740c80d8406c"
+      },
+      {
+        "file": "references/javascript-general-web-frontend-security.md",
+        "sha256": "3a7bc7b3f6e7ff043db9dbaa8933894d7a19d987d0607e4ddae5d70184a63d63"
+      },
+      {
+        "file": "references/javascript-jquery-web-frontend-security.md",
+        "sha256": "bcbad2fa6c2a02709e47e889e70102c76886bf36bc798624d27db570eccf40da"
+      },
+      {
+        "file": "references/javascript-typescript-nextjs-web-server-security.md",
+        "sha256": "71c773f7a97ce60c853adfa100b3d88b3b7bc4c6b8acaef1432ffabd923ee182"
+      },
+      {
+        "file": "references/javascript-typescript-react-web-frontend-security.md",
+        "sha256": "d3030c0f24bddb56b9bbb91bbec1ee49eb7778bce4d3e0297b2641b2fc6b0d9c"
+      },
+      {
+        "file": "references/javascript-typescript-vue-web-frontend-security.md",
+        "sha256": "77c6a747f9f17e3df03aad0fcb20d99ac7898001b81aef8b80908e45ac14a688"
+      },
+      {
+        "file": "references/python-django-web-server-security.md",
+        "sha256": "4fb69b5d45f10e588d1a8c35cdc5f59e18910f6b46a93e2d342d90f286f8dfd2"
+      },
+      {
+        "file": "references/python-fastapi-web-server-security.md",
+        "sha256": "7383c7f4fc271190b05e562ada7e825982a2c76b6c79a9f95a1da7687b65a616"
+      },
+      {
+        "file": "references/python-flask-web-server-security.md",
+        "sha256": "9606d69190c04c167fdeac57e61297547a57b0542fd89dede36f355970446929"
+      },
+      {
+        "file": "SKILL.md",
+        "sha256": "7b3dae1ffc5434d890f3c65c8f552af52d0307fab3b35dec13013c9ca3844c4f"
+      }
+    ]
+  },
+  {
+    "repo": "openai/skills",
+    "folder": "skills/.curated/security-threat-model",
+    "commit": "49f948faa9258a0c61caceaf225e179651397431",
+    "status": "installed",
+    "files": [
+      {
+        "file": "agents/openai.yaml",
+        "sha256": "3319b59736312abceca614e341c0e59cae47263e3b58a22b2b5ddf1e5fc8c227"
+      },
+      {
+        "file": "LICENSE.txt",
+        "sha256": "4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9"
+      },
+      {
+        "file": "references/prompt-template.md",
+        "sha256": "81a59aa3fb3ac3a739d6a26ab38e4015965f215581ee54becef21a2b121ec29b"
+      },
+      {
+        "file": "references/security-controls-and-assets.md",
+        "sha256": "d536cfa9acad2523dc39134bcf33b9566c29dd9a57b407cbc9901637230c6b98"
+      },
+      {
+        "file": "SKILL.md",
+        "sha256": "1283c0dd62a8104d9edda4583569b5d8510b4ddaa45120687c999250fd96bad2"
+      }
+    ]
+  },
+  {
+    "repo": "anthropics/knowledge-work-plugins",
+    "folder": "legal/skills/compliance-check",
+    "commit": "2574e29377c7173d0cecffef29a6ecbd7f8ccb5d",
+    "status": "installed",
+    "files": [
+      {
+        "file": "SKILL.md",
+        "sha256": "8dff8ebe7eda9ad5e38f3faf1016a7fc1eeba65bcdb7f5ae45ea507824bbc1c2"
+      }
+    ]
+  },
+  {
+    "repo": "trailofbits/skills",
+    "folder": "plugins/static-analysis/skills/sarif-parsing",
+    "commit": "2be6433b39e009cd2b6fd3be1895f6b1faa5af9a",
+    "status": "installed",
+    "files": [
+      {
+        "file": "agents/openai.yaml",
+        "sha256": "6385b46a44aad5b114744dbc2055ce3f6456c0e822b92a7a6c6870f2a248014e"
+      },
+      {
+        "file": "assets/trail-of-bits-mark.svg",
+        "sha256": "4bf74c789b38dcf6ad762c136b6832363d27ae19fbaa9a18ec18d66ecce6ca05"
+      },
+      {
+        "file": "resources/fixtures/codeql-no-level.sarif",
+        "sha256": "edc92b09e4d8b1247ec87f081c68caa1843d8407063508ad33aab13327ba386a"
+      },
+      {
+        "file": "resources/fixtures/levels-on-results.sarif",
+        "sha256": "625e8175a3c68d0d11f7e4c14095dddff5056d52a539e3153180cdb37ce50c6b"
+      },
+      {
+        "file": "resources/jq-queries.md",
+        "sha256": "f44ec4e219c93504ec69fdeb2c60668ee3934585e5565fffdaa43f6b224b5d6a"
+      },
+      {
+        "file": "resources/sarif_helpers.py",
+        "sha256": "06d8e63849bd2b93baf31b23a33550447eed2ac457c2687f173933039e5ad247"
+      },
+      {
+        "file": "resources/test_sarif_helpers.py",
+        "sha256": "5efc4e50f3dbd81ea223049b1892653a46bce0c273904d0b04e43e449343fe17"
+      },
+      {
+        "file": "SKILL.md",
+        "sha256": "cc5f008f40ffb8a1ae03ebd32d7234de43e828293955a0bc251b76ba249554fa"
+      }
+    ]
+  },
+  {
+    "repo": "trailofbits/skills",
+    "folder": "plugins/supply-chain-risk-auditor/skills/supply-chain-risk-auditor",
+    "commit": "2be6433b39e009cd2b6fd3be1895f6b1faa5af9a",
+    "status": "installed",
+    "files": [
+      {
+        "file": "agents/openai.yaml",
+        "sha256": "7d79ce0a77aaa1e2c72939b02b285b13a84d9da85ffb965a9d1489c358cd27ab"
+      },
+      {
+        "file": "assets/trail-of-bits-mark.svg",
+        "sha256": "4bf74c789b38dcf6ad762c136b6832363d27ae19fbaa9a18ec18d66ecce6ca05"
+      },
+      {
+        "file": "scripts/collect.py",
+        "sha256": "fd75cffad628980a6da521b5d3a40fb5dd16c5bb9ad63a25245e5208d08abff7"
+      },
+      {
+        "file": "scripts/model.py",
+        "sha256": "78a20954b76e81216991b57453ceddbdb867035a0d6993b98cfa05a7f8d008d3"
+      },
+      {
+        "file": "scripts/pyproject.toml",
+        "sha256": "a79ec30039ce3bc90544b9d833f7edc128232821575736f659d2b2ca0a601f3b"
+      },
+      {
+        "file": "scripts/render.py",
+        "sha256": "9d6091645c8a8edf5c50d24bd70ff881efa30b920d93b46ea1775ee2dd328bc7"
+      },
+      {
+        "file": "scripts/sources.py",
+        "sha256": "4eb66952dca285b4790d1193b39f240e8015025ee054a215f4c696cbba2478e2"
+      },
+      {
+        "file": "scripts/test_collect.py",
+        "sha256": "ea4f25bdab0add75d500b22ba5eb9f993d3695d974cd3f92b418f5cff07e00da"
+      },
+      {
+        "file": "scripts/test_model.py",
+        "sha256": "92059fe937c50f1502d71df2ddc4f123e8e2647fc0f4f7b270727ef9a2004f5c"
+      },
+      {
+        "file": "scripts/test_render.py",
+        "sha256": "319970fd010d6bf5fbf79b595e8fc918c5e74645b718f495f2479aef3ea8cc16"
+      },
+      {
+        "file": "scripts/test_sources.py",
+        "sha256": "5c0a993d747e3ed29972272a18a14dd46b6f897bdfff7e147d0a9e9b4b4b6511"
+      },
+      {
+        "file": "scripts/uv.lock",
+        "sha256": "99598cc397a42c945abbc9d839d1c61f1852f414660ce41e2e68bd9cdf664100"
+      },
+      {
+        "file": "SKILL.md",
+        "sha256": "a1254b7f8d3a1731a9a7e1f9cd6c67b59cf84ed6ef7c7fb455db9a14c528ceb4"
+      }
+    ]
+  },
+  {
+    "repo": "trailofbits/skills",
+    "folder": "plugins/static-analysis/skills/codeql",
+    "commit": "2be6433b39e009cd2b6fd3be1895f6b1faa5af9a",
+    "status": "not-installed: required CodeQL CLI and Bash workflow unavailable",
+    "files": [
+      {
+        "file": "agents/openai.yaml",
+        "sha256": "c6efac43fae29e05e5ae324212fab758247aae62701c45e906ea03d7c3eef8ef"
+      },
+      {
+        "file": "assets/trail-of-bits-mark.svg",
+        "sha256": "4bf74c789b38dcf6ad762c136b6832363d27ae19fbaa9a18ec18d66ecce6ca05"
+      },
+      {
+        "file": "references/build-fixes.md",
+        "sha256": "e4af17ecbe5a6784e3c011fec1f093ce25e5c852cd92be97caaeaea0be10ca1a"
+      },
+      {
+        "file": "references/diagnostic-query-templates.md",
+        "sha256": "c27a979094f8de6d1d341a838de52952a98385ff75c9439a7e76ba3bb3fbe662"
+      },
+      {
+        "file": "references/extension-yaml-format.md",
+        "sha256": "c98903da4f21fd94816c520f6fdaba8d12e08b4bd55f85233c487e3baf39a1a6"
+      },
+      {
+        "file": "references/important-only-suite.md",
+        "sha256": "9f2fbb57b0e02fe964ad268b11ad88c9598b38314fc008016caa615cf303b3a5"
+      },
+      {
+        "file": "references/language-details.md",
+        "sha256": "f0857914eeabfb96929c2d1a8f086e92c0a3973cc2ac8460f371fedc2d023818"
+      },
+      {
+        "file": "references/macos-arm64e-workaround.md",
+        "sha256": "72d7c9fc2be8368968516857fe4e32211473b92cc8bc3ef1d28530aaf744d1fe"
+      },
+      {
+        "file": "references/performance-tuning.md",
+        "sha256": "536473b91e8574c18a3a943df2e4328615bbabbd899c76827d345ff7be986b7d"
+      },
+      {
+        "file": "references/quality-assessment.md",
+        "sha256": "2acbb61d487211a0d6342ef86f774de3d4e05496185d337e09cb39810bcae08a"
+      },
+      {
+        "file": "references/ruleset-catalog.md",
+        "sha256": "2b139ae593865548a596fb5b78694cb09d4a1959beb5225a5d8a914155a72165"
+      },
+      {
+        "file": "references/run-all-suite.md",
+        "sha256": "bbac653d6e8ea115fa7df47307729745157bb60868939a71167c30cc18dcffb6"
+      },
+      {
+        "file": "references/sarif-processing.md",
+        "sha256": "abde04ca479a372ed134150cd9cd1fd2b45cd7b4b45386034a2b3f4d415f6f9b"
+      },
+      {
+        "file": "references/threat-models.md",
+        "sha256": "fd4252f0fc71734ab756ff51bead1b894397bf67382b2337cbe0b0de4672cefd"
+      },
+      {
+        "file": "scripts/build_log.sh",
+        "sha256": "83c98d08c85a96b0b46246c14f3ffbe61370f5d184338455c6c288ddcf8df5de"
+      },
+      {
+        "file": "scripts/check_db_quality.py",
+        "sha256": "fca99a149eb4689730b7d3a3314527a5716823fb5f19b6b79114f4949b726c36"
+      },
+      {
+        "file": "scripts/find_databases.sh",
+        "sha256": "a56995c048b322bce45baf4482388a3cdf78dd59d562eca39e169c065f7f9b18"
+      },
+      {
+        "file": "scripts/generate_suite.sh",
+        "sha256": "489516c52155c2061ec2a53d8190ebe474f4bdcb53ddc53b1216dc72ff7b1d9f"
+      },
+      {
+        "file": "scripts/pyproject.toml",
+        "sha256": "c78fce8eeb7d91895dfc44296bdf547bcf77a156c8c057ae5238032883dfa41b"
+      },
+      {
+        "file": "scripts/test_build_log.py",
+        "sha256": "3d58186d066d0ebf8117f89dfb03d49a8db8907e43cb013bd51b7669aa478f2d"
+      },
+      {
+        "file": "scripts/test_build_mode_claims.py",
+        "sha256": "eeddedd49a2aa33790425f828c808a0504fab66a635c7902878cac2a292db89e"
+      },
+      {
+        "file": "scripts/test_check_db_quality.py",
+        "sha256": "842c78079bb0a033f7e3ec0d2608ac5913906c87e96132e85fb38577eb170c29"
+      },
+      {
+        "file": "scripts/test_find_databases.py",
+        "sha256": "eb9895c35f94ccb334997b296774dc36c5997ce520acb606bfd83b0934d4982a"
+      },
+      {
+        "file": "scripts/test_generation_scripts.py",
+        "sha256": "9b092f2c0ebf630f21276214dc05b72b681a5c3e5e26816621e028d880cf2feb"
+      },
+      {
+        "file": "scripts/test_script_flags.py",
+        "sha256": "7aa9ca403051f4bd7690ee4ce46b3d9e16050119a24b4eb2858653e489c7edeb"
+      },
+      {
+        "file": "scripts/test_section_pointers.py",
+        "sha256": "46aa000803005d5e3328b4c028b3431f67c7105997bddd15aa361a3e2511695c"
+      },
+      {
+        "file": "scripts/test_shell_blocks.py",
+        "sha256": "bf800714b9bee72292d74ac0c80acd47c00e6bb7e2624731e8b30a82c840358e"
+      },
+      {
+        "file": "scripts/test_suite_templates.py",
+        "sha256": "94028929d16a3bbcdcc4b92b5f32bda396360cbbb34198c4f2405b3397957d5d"
+      },
+      {
+        "file": "scripts/test_verify_query_suite.py",
+        "sha256": "21089b2b06407c6dcf43ff2bf44644b64ad4fd028713eadeafb92e8db8d5732d"
+      },
+      {
+        "file": "scripts/verify_query_suite.py",
+        "sha256": "ad1bb120201c9af5ae199d3d36a727ba12d897162f817045e8a8006e691154f8"
+      },
+      {
+        "file": "SKILL.md",
+        "sha256": "1a6d919ff80f83b262daf650552af6eb6d2c32b19d0c529b70efe0c116b675cf"
+      },
+      {
+        "file": "workflows/build-database.md",
+        "sha256": "06794bb67182303b0c81d30b3772531537d9f986b7b2cbe2a9ffa4b4f3e230ba"
+      },
+      {
+        "file": "workflows/create-data-extensions.md",
+        "sha256": "f3643e4916e7586c7738c14f781e3919bce35129d75beb00812b963efbbc4673"
+      },
+      {
+        "file": "workflows/run-analysis.md",
+        "sha256": "83b0e0bccdb7f9f3962022b4477bcc888a6728eebcd25495378a860da72930c6"
+      }
+    ]
+  },
+  {
+    "repo": "trailofbits/skills",
+    "folder": "plugins/static-analysis/skills/semgrep",
+    "commit": "2be6433b39e009cd2b6fd3be1895f6b1faa5af9a",
+    "status": "not-installed: required Semgrep CLI and Bash workflow unavailable",
+    "files": [
+      {
+        "file": "agents/openai.yaml",
+        "sha256": "b200a52900687f8176cb5d8230a29e5e80c8317337efcdcf87754e892129cd89"
+      },
+      {
+        "file": "assets/trail-of-bits-mark.svg",
+        "sha256": "4bf74c789b38dcf6ad762c136b6832363d27ae19fbaa9a18ec18d66ecce6ca05"
+      },
+      {
+        "file": "references/rulesets.md",
+        "sha256": "e641bf7b2f32cd81b2623759f72a560dd96f6747f1295157f2984fe8ebac3f74"
+      },
+      {
+        "file": "references/scan-modes.md",
+        "sha256": "99ed0ffb9e9ee68bcb175da469f1310f28f96e356c69c65918a0afc430027d3d"
+      },
+      {
+        "file": "scripts/merge_sarif.py",
+        "sha256": "8b6094e18a0e4d36250c72c81903edac914552df7eb2a7eebd1ac449d105f7ba"
+      },
+      {
+        "file": "scripts/run-scans.sh",
+        "sha256": "ac3d815dbd5cdfa0419596411058378ab659bd243c7dc87495114e773aa40347"
+      },
+      {
+        "file": "scripts/test_merge_sarif.py",
+        "sha256": "8f235bface6ff37f813c1a44b2a6c2edf273cd548b95b770c362f0a443473c75"
+      },
+      {
+        "file": "SKILL.md",
+        "sha256": "52162605593f871cf45f48f9cf00b7c2d7e0759ccb7507981088442b7cc5d76c"
+      },
+      {
+        "file": "workflows/scan-workflow.md",
+        "sha256": "ddb630d34a51a749157140d71fd05044b09301352126f2c169a3119d5eb1d1a4"
+      }
+    ]
+  },
+  {
+    "repo": "trailofbits/skills",
+    "folder": "plugins/insecure-defaults",
+    "commit": "2be6433b39e009cd2b6fd3be1895f6b1faa5af9a",
+    "status": "not-installed: Claude Workflow runtime required; no SKILL.md",
+    "files": [
+      {
+        "file": ".claude-plugin/plugin.json",
+        "sha256": "0da557acf1632bf73f97e1a9ae46b8e3cd9fef48f59466b703486f9ca14a0f22"
+      },
+      {
+        "file": "commands/audit.md",
+        "sha256": "75883127cbe66d51977f4ea1db1a8107f6df6b302bc338121e46a851d79c6518"
+      },
+      {
+        "file": "README.md",
+        "sha256": "999d8d5fcb7153eedd3d31a0826f4f72183a427836f585a357a4cdf1f1ce254f"
+      },
+      {
+        "file": "references/debug-features.json",
+        "sha256": "5f1ea6080d50bc4698e239dbf1c168bcbcead834b7161b754d2731bf96561e13"
+      },
+      {
+        "file": "references/debug-features.md",
+        "sha256": "c83c54a3f8a36939b61f897f919dde8f2b41c18b8249a653c071ab749f562cf6"
+      },
+      {
+        "file": "references/default-credentials.json",
+        "sha256": "46169168a34a18439aaeb882f248a73012ecc9af95cc0f31ab962067a62d9879"
+      },
+      {
+        "file": "references/default-credentials.md",
+        "sha256": "259a036867182b0480d0ee8be3c89fe8199a086c7084a0410adb9899cb024ab9"
+      },
+      {
+        "file": "references/fail-open-security.json",
+        "sha256": "c44057e9251b46eb14b7afa70931d0a0353567e640eb936e4fbd813bdb2b2946"
+      },
+      {
+        "file": "references/fail-open-security.md",
+        "sha256": "0e837dd32f600c7788cf34407f9ef836e8af7ed028e83019a099c036afccf39c"
+      },
+      {
+        "file": "references/fallback-secrets.json",
+        "sha256": "717eb7850b4d0fec43c1a528f4b09a12050f11f9cfc0ebf3faae328365346f1a"
+      },
+      {
+        "file": "references/fallback-secrets.md",
+        "sha256": "eea72165e891ff40d2d6f7eea5bc0ee20c13332856b1e5914334f06f5f984f59"
+      },
+      {
+        "file": "references/permissive-access.json",
+        "sha256": "8ee01d7845a964c255aa5d320ec372e4d71d3a14bdf6f35fe34bbeef5669e006"
+      },
+      {
+        "file": "references/permissive-access.md",
+        "sha256": "6e4bd7798b7d1e4065f25e57c4409764eda47ce192cd7f683f9771ed54626842"
+      },
+      {
+        "file": "references/weak-crypto.json",
+        "sha256": "792b59a3488fabe5b2e72254de3b0f589de926f8f6c17deb3096033be61eaa4c"
+      },
+      {
+        "file": "references/weak-crypto.md",
+        "sha256": "df424cfe3ba37fc69482b4dcd7d03b0191cb8db3b2e239a416cb295f11dc70ef"
+      },
+      {
+        "file": "tests/harness.js",
+        "sha256": "61338f0652ae7569c5dbd2076194ff577a333b52b5e6331f28a7d959639d5259"
+      },
+      {
+        "file": "tests/README.md",
+        "sha256": "f2f2c3e9334048c52e6323c54900d34ad4a80e41e70aa469b5934687550811f0"
+      },
+      {
+        "file": "tests/run_seeds.sh",
+        "sha256": "07f5ee633b753cd41c49e30ae91c06afbca189feac196d5931ee8c3f5d6a4712"
+      },
+      {
+        "file": "tests/seed-coverage.js",
+        "sha256": "d7c05450da39c115823eb359fba14d1291051191298e73be2725a4fd341af202"
+      },
+      {
+        "file": "workflows/audit.js",
+        "sha256": "d11f066eebc5390233c0a1308b6f7fc5da80a7dbd79a533e43dbd8f5cbc23572"
+      }
+    ]
+  }
+]

@@ -1,0 +1,2 @@
+Synthetic subprocess output: fail
+Synthetic diagnostic stderr

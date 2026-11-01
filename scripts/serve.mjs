@@ -1,18 +1,20 @@
-import { createSiteRequestHandler } from './site-request-handler.mjs';
+import { createSiteRequestHandler } from '../server/http/site-request-handler.mjs';
+import { assertAssetRoot } from '../server/http/asset-root.mjs';
 import { createServer } from 'node:http';
 import { createServer as createHttpsServer } from 'node:https';
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
-import { pages, renderPage } from '../src/pages.mjs';
+import { pages, renderPage } from '../src/pages/index.mjs';
 import { Readable } from 'node:stream';
-import { createContactHandler } from './contact-handler.mjs';
-import { publicOrigin } from './security.mjs';
+import { createContactHandler } from '../server/contact/handler.mjs';
+import { publicOrigin } from '../server/security.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const production = process.argv.includes('--production');
 const outputIndex = process.argv.indexOf('--output');
 const assetRoot = outputIndex >= 0 ? path.resolve(process.argv[outputIndex + 1]) : path.join(root, production ? 'dist' : 'public');
+await assertAssetRoot(assetRoot);
 try { process.loadEnvFile(path.join(root, '.env')); } catch (error) { if (error.code !== 'ENOENT') throw error; }
 const portIndex = process.argv.indexOf('--port');
 const port = Number(portIndex >= 0 ? process.argv[portIndex + 1] : process.env.PORT || 4173);

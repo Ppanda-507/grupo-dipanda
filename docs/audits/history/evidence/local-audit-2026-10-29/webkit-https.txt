@@ -1,0 +1,16 @@
+S01-before-choice: PASS
+S02-reject: PASS
+S03-accept-all: PASS
+S04-custom-essential-only: PASS
+S05-custom-functional: PASS
+S06-withdraw: PASS
+S07-other-tab-revocation: PASS
+S08-expiry-open-tab: PASS
+S09-expiry-timer-and-ttl: PASS
+S10-selective-cleanup: PASS
+S11-contact-private-cache: PASS
+S12-reopen-browser-reject: PASS
+S12-reopen-browser-accept: PASS
+S13-https-cookie-attributes: UNVERIFIED
+S14-network-and-write-audit: PASS
+{"scenarios":15,"passed":14,"failed":0,"unverified":1,"notApplicable":0,"snapshots":58,"requests":1991}

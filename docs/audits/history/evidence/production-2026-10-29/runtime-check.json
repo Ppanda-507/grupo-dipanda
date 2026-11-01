@@ -1,0 +1,9 @@
+{
+  "initial": "24.11.1",
+  "tested": "24.22.1",
+  "portableExecutable": "C:\\Users\\DELL\\AppData\\Local\\Temp\\dipanda-node-runtime\\node.exe",
+  "sha256": "d702daa815eabbff763c7d3808e235cf031cf2ca70211b56847bc72f51e240e5",
+  "verification": "matched official nodejs.org SHASUMS256.txt over HTTPS; system installation unchanged",
+  "notes": "Portable runtime cannot write audit reports directly inside the protected Documents folder (EBADF); outputs captured by existing Node or written in TEMP and copied. Tests and draft build passed on portable Node.",
+  "production": "Node 24.22.1 or later patch of line 24 required; Vercel runtime not inspected"
+}

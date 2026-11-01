@@ -1,0 +1,14 @@
+{
+  "reason": "Altera??o visual pedida ap?s a refatora??o: os cart?es de Continue a explorar passam a mostrar os banners completos, com texto, de Chatbots e automa??o e Desenvolvimento web. O formato preserva a imagem inteira. O baseline hist?rico da refatora??o fica intacto.",
+  "pageHashes": {
+    "/servicos/consultoria-bi": "429ebd494044cdb275cf97935b07a681c8bd627bd659d52e309461f4c559e415",
+    "/servicos/solucoes-analytics": "30f5befd9778821e9d626f28ff75dfa80a5047e5e05ae9f0e8060b0d12a6858d",
+    "/servicos/desenvolvimento-saas": "605e650c1eec88356d27b5679f648fd5b5b150c32390eec8f832e8ddb8b75901",
+    "/servicos/produtos-dipanda": "2e0f5224f320d6e357c31a2d1a11d93157fb0b30b491315dba47373180cc65ae",
+    "/servicos/pedido-personalizado": "c31f1925a735ec9a861761fab6d2e8110679e8d132f38f7a2e5ca1146a3c3a0b",
+    "/servicos/desenvolvimento-web": "084865759446ef8d8c8b45a16bded1afe10f68950431c1fe8a990258e2062673"
+  },
+  "publicHashes": {
+    "public/css/service-detail.css": "54b8837bd2f3d9e2c9fc22413a7e34c4d79a2a59a9b0efff45d78f64c434a788"
+  }
+}

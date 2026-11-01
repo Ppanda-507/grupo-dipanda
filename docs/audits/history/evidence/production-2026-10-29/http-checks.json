@@ -1,0 +1,34 @@
+[
+  {
+    "name": "GET only supports POST",
+    "status": 405,
+    "expected": 405
+  },
+  {
+    "name": "forged cross-origin rejected",
+    "status": 403,
+    "expected": 403
+  },
+  {
+    "name": "missing origin rejected",
+    "status": 403,
+    "expected": 403
+  },
+  {
+    "name": "unsupported media rejected",
+    "status": 415,
+    "expected": 415
+  },
+  {
+    "name": "compressed bodies rejected",
+    "status": 415,
+    "expected": 415
+  },
+  {
+    "name": "20 concurrent local requests, no provider configured or e-mail sent",
+    "statusCounts": {
+      "429": 14,
+      "503": 6
+    }
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "snapshot": "448cb3b0c7e9aa7128780e3af54ab19dc22f5d42c01ff6d1754be872ad4dd899",
+  "scenarios": 90,
+  "passed": 86,
+  "failed": 0,
+  "unverified": 1,
+  "notApplicable": 3,
+  "snapshots": 345,
+  "requests": 11792
+}

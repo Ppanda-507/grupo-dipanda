@@ -1,0 +1,67 @@
+{
+  "engine": "chromium",
+  "origin": "http://127.0.0.1:4173",
+  "profile": "C:\\Users\\DELL\\AppData\\Local\\Temp\\dipanda-profile-chromium-LTgqji",
+  "options": {
+    "headless": true,
+    "ignoreHTTPSErrors": true,
+    "timeout": 30000,
+    "channel": "chromium",
+    "args": [
+      "--enable-logging=stderr"
+    ]
+  },
+  "evidence": [
+    {
+      "run": 0,
+      "version": "145.0.7632.6",
+      "cookies": [
+        {
+          "name": "dipanda_consent",
+          "value": "%7B%22version%22%3A1%2C%22necessary%22%3Atrue%2C%22functional%22%3Afalse%2C%22updatedAt%22%3A1793286187778%2C%22expiresAt%22%3A1808838187778%7D",
+          "domain": "127.0.0.1",
+          "path": "/",
+          "expires": 1808838187.778348,
+          "httpOnly": false,
+          "secure": false,
+          "sameSite": "Lax"
+        },
+        {
+          "name": "audit_js_control",
+          "value": "nonpersonal",
+          "domain": "127.0.0.1",
+          "path": "/",
+          "expires": 1793372587.803876,
+          "httpOnly": false,
+          "secure": false,
+          "sameSite": "Lax"
+        },
+        {
+          "name": "audit_protocol_control",
+          "value": "nonpersonal",
+          "domain": "127.0.0.1",
+          "path": "/",
+          "expires": 1793372587.809,
+          "httpOnly": false,
+          "secure": false,
+          "sameSite": "Lax"
+        }
+      ],
+      "localStorage": {
+        "audit_control": "nonpersonal"
+      },
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.0.0 Safari/537.36"
+    },
+    {
+      "run": 1,
+      "version": "145.0.7632.6",
+      "cookies": [],
+      "localStorage": {
+        "audit_control": "nonpersonal"
+      },
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.0.0 Safari/537.36"
+    }
+  ],
+  "storageStateUsed": false,
+  "preserved": false
+}

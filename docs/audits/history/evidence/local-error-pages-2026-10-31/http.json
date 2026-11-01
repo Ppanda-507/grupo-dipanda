@@ -1,0 +1,74 @@
+[
+  {
+    "route": "/",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "cacheControl": null,
+    "robots": null,
+    "noindex": false,
+    "leaksStack": false
+  },
+  {
+    "route": "/solucoes/",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "cacheControl": null,
+    "robots": null,
+    "noindex": false,
+    "leaksStack": false
+  },
+  {
+    "route": "/pagina-inexistente/",
+    "status": 404,
+    "contentType": "text/html; charset=utf-8",
+    "cacheControl": "no-store",
+    "robots": "noindex",
+    "noindex": true,
+    "leaksStack": false
+  },
+  {
+    "route": "/404/",
+    "status": 404,
+    "contentType": "text/html; charset=utf-8",
+    "cacheControl": "no-store",
+    "robots": "noindex",
+    "noindex": true,
+    "leaksStack": false
+  },
+  {
+    "route": "/500/",
+    "status": 500,
+    "contentType": "text/html; charset=utf-8",
+    "cacheControl": "no-store",
+    "robots": "noindex",
+    "noindex": true,
+    "leaksStack": false
+  },
+  {
+    "route": "/503/",
+    "status": 503,
+    "contentType": "text/html; charset=utf-8",
+    "cacheControl": "no-store",
+    "robots": "noindex",
+    "noindex": true,
+    "leaksStack": false
+  },
+  {
+    "route": "/%E0%A4%A",
+    "status": 400,
+    "contentType": "text/plain; charset=utf-8",
+    "cacheControl": "no-store",
+    "robots": "noindex",
+    "noindex": false,
+    "leaksStack": false
+  },
+  {
+    "route": "/%00",
+    "status": 400,
+    "contentType": "text/plain; charset=utf-8",
+    "cacheControl": "no-store",
+    "robots": "noindex",
+    "noindex": false,
+    "leaksStack": false
+  }
+]

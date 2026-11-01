@@ -1,0 +1,6 @@
+Synthetic subprocess output: crash
+Synthetic diagnostic stderr
+
+[executor]
+Subprocess exit: 17
+Report missing or invalid: ENOENT: no such file or directory, open 'C:\Users\DELL\AppData\Local\Temp\dipanda-consent-run-FADJF3\webkit-https.json'

@@ -12,3 +12,6 @@ test-results/
 playwright-report/
 .agents/
 .codex/
+docs/
+README.md
+dist/

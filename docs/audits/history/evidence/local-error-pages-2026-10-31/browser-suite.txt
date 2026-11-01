@@ -1,0 +1,5 @@
+PASS 1440px: 23 pages, typography, overflow, previews, flow playback and touch feedback
+PASS 390px: 23 pages, typography, overflow, previews, flow playback and touch feedback
+
+Executed with scripts/check-ui-refinements.mjs against http://127.0.0.1:4173/.
+Microsoft Edge headless via Playwright; desktop/mobile viewport emulation.

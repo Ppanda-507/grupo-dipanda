@@ -42,7 +42,8 @@
 .service-related-card{display:flex;flex-direction:column;gap:16px;border:1px solid #dedede;border-radius:20px;padding:20px;min-width:0;transition:border-color 180ms ease}
 .service-related-card h3{font-size:24px;line-height:32px;letter-spacing:-1px}
 .service-related-card p{color:#585858}
-.service-related-image{aspect-ratio:16/10;border-radius:12px;overflow:hidden;background:#eff2ed}
+.service-related-image{aspect-ratio:1882/836;border-radius:12px;overflow:hidden;background:#eff2ed}
+.service-related-image--campaign{background:#fff}
 .service-related-image>img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
 .service-preview-symbol{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:linear-gradient(135deg,#f3f5ef,#dfedc5);padding:20px;text-align:center}
 .service-preview-symbol img{width:48px;height:48px}

@@ -1,0 +1,167 @@
+FILE scripts/serve.mjs
+1: import { createServer } from 'node:http';
+2: import { readFile, stat } from 'node:fs/promises';
+3: import { fileURLToPath } from 'node:url';
+4: import path from 'node:path';
+5: import { pages, renderPage } from '../src/pages.mjs';
+6: import { validateContact, sendContact } from './contact.mjs';
+7:
+8: const root = fileURLToPath(new URL('../', import.meta.url));
+9: const production = process.argv.includes('--production');
+10: const outputIndex = process.argv.indexOf('--output');
+11: const assetRoot = outputIndex >= 0 ? path.resolve(process.argv[outputIndex + 1]) : path.join(root, production ? 'dist' : 'public');
+12: try { process.loadEnvFile(path.join(root, '.env')); } catch (error) { if (error.code !== 'ENOENT') throw error; }
+13: const portIndex = process.argv.indexOf('--port');
+14: const port = Number(portIndex >= 0 ? process.argv[portIndex + 1] : process.env.PORT || 4173);
+15: const hostIndex = process.argv.indexOf('--host');
+16: const host = hostIndex >= 0 ? process.argv[hostIndex + 1] : process.env.HOST || '127.0.0.1';
+17: const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.json': 'application/json; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.avif': 'image/avif', '.woff2': 'font/woff2', '.ttf': 'font/ttf', '.txt': 'text/plain; charset=utf-8', '.xml': 'application/xml; charset=utf-8' };
+18: const contacts = new Map();
+19: async function contactRequest(request, response) {
+20:   const reply = (status, message) => { response.writeHead(status, { 'Content-Type': types['.json'], 'Cache-Control': 'no-store' }); response.end(JSON.stringify({ message })); };
+21:   const origin = request.headers.origin;
+22:   if (origin && new URL(origin).host !== request.headers.host) return reply(403, 'Origem do pedido inválida.');
+23:   const address = request.socket.remoteAddress;
+24:   const now = Date.now();
+25:   for (const [key, value] of contacts) if (now - value.start > 900000) contacts.delete(key);
+26:   const rate = contacts.get(address) || { start: now, count: 0 };
+27:   if (rate.count >= 6) return reply(429, 'Foram enviados vários pedidos. Aguarde alguns minutos antes de tentar novamente.');
+28:   let size = 0, chunks = [];
+29:   for await (const chunk of request) { size += chunk.length; if (size > 32768) return reply(413, 'A mensagem é demasiado longa.'); chunks.push(chunk); }
+30:   let body;
+31:   try {
+32:     const text = Buffer.concat(chunks).toString('utf8');
+33:     body = request.headers['content-type']?.includes('application/json') ? JSON.parse(text) : Object.fromEntries(new URLSearchParams(text));
+34:   } catch { return reply(400, 'Pedido inválido.'); }
+35:   const result = validateContact(body, now);
+36:   if (result.error) return reply(400, result.error);
+37:   rate.count++; contacts.set(address, rate);
+38:   const sent = await sendContact(result.value);
+39:   reply(sent.status, sent.message);
+40: }
+41: const server = createServer(async (request, response) => {
+42:   response.setHeader('X-Content-Type-Options', 'nosniff');
+43:   response.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+44:   response.setHeader('X-Frame-Options', 'SAMEORIGIN');
+45:   try {
+46:     const pathname = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);
+47:     if (pathname === '/api/contact' && request.method === 'POST') { await contactRequest(request, response); return; }
+48:     if (!['GET', 'HEAD'].includes(request.method)) { response.writeHead(405, { Allow: pathname === '/api/contact' ? 'POST' : 'GET, HEAD' }); response.end(); return; }
+49:     const route = pathname === '/' ? '/' : pathname.replace(/\/+$/, '');
+50:     if (pages[route]) {
+51:       response.writeHead(route === '/404' ? 404 : 200, { 'Content-Type': types['.html'] });
+52:       const html = production ? await readFile(path.join(assetRoot, route.slice(1), 'index.html')) : renderPage(route);
+53:       response.end(request.method === 'HEAD' ? undefined : html);
+54:       return;
+55:     }
+56:     const file = path.resolve(assetRoot, '.' + pathname);
+57:     const relative = path.relative(assetRoot, file);
+58:     if (relative.startsWith('..') || path.isAbsolute(relative)) { response.writeHead(403); response.end(); return; }
+59:     const details = await stat(file).catch(() => null);
+60:     if (details?.isFile()) {
+61:       response.writeHead(200, { 'Content-Type': types[path.extname(file)] || 'application/octet-stream', 'Cache-Control': production ? 'public, max-age=3600' : 'no-store' });
+62:       response.end(request.method === 'HEAD' ? undefined : await readFile(file));
+63:       return;
+64:     }
+65:     response.writeHead(404, { 'Content-Type': types['.html'] });
+66:     response.end(request.method === 'HEAD' ? undefined : renderPage('/404'));
+67:   } catch {
+68:     response.writeHead(400, { 'Content-Type': 'text/plain; charset=utf-8' });
+69:     response.end('Pedido inválido.');
+70:   }
+71: });
+72: server.listen(port, host, () => console.log(`Dipanda: http://${host}:${port}${production ? ' (production)' : ''}`));
+73:
+
+FILE scripts/contact.mjs
+1: import { site } from '../src/site.mjs';
+2:
+3: export function validateContact(body, now = Date.now()) {
+4:   if (!body || typeof body !== 'object' || Array.isArray(body)) return { error: 'Pedido inválido.' };
+5:   if (body.website) return { error: 'Não foi possível validar o pedido.' };
+6:   const name = typeof body.name === 'string' ? body.name.trim() : '';
+7:   const email = typeof body.email === 'string' ? body.email.trim() : '';
+8:   const message = typeof body.message === 'string' ? body.message.trim() : '';
+9:   if (name.length < 2 || name.length > 120 || /[\r\n]/.test(name)) return { error: 'Indique um nome válido.' };
+10:   if (email.length > 254 || !/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email)) return { error: 'Indique um e-mail válido.' };
+11:   if (message.length < 10 || message.length > 5000) return { error: 'A mensagem deve ter entre 10 e 5000 caracteres.' };
+12:   if (!Number.isFinite(Number(body.startedAt)) || Number(body.startedAt) > now - 1200 || Number(body.startedAt) < now - 86400000) return { error: 'Atualize a página e tente novamente.' };
+13:   return { value: { name, email, message } };
+14: }
+15:
+16: export async function sendContact(data, options = {}) {
+17:   const environment = options.environment || process.env;
+18:   const fetcher = options.fetcher || fetch;
+19:   if (!environment.RESEND_API_KEY || !environment.CONTACT_FROM_EMAIL) return { status: 503, message: 'O envio pelo formulário ainda não está disponível.' };
+20:   try {
+21:     const response = await fetcher('https://api.resend.com/emails', {
+22:       method: 'POST', headers: { Authorization: `Bearer ${environment.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+23:       body: JSON.stringify({ from: environment.CONTACT_FROM_EMAIL, to: [environment.CONTACT_TO_EMAIL || site.email], reply_to: data.email, subject: `Contacto Dipanda — ${data.name}`, text: `Nome: ${data.name}\nE-mail: ${data.email}\n\n${data.message}` }), signal: AbortSignal.timeout(15000)
+24:     });
+25:     const result = await response.json().catch(() => ({}));
+26:     if (!response.ok || typeof result.id !== 'string') return { status: 502, message: 'Não foi possível confirmar o envio da mensagem. Tente mais tarde ou contacte-nos por e-mail.' };
+27:     return { status: 200, message: 'A sua mensagem foi enviada. A equipa Dipanda entrará em contacto consigo.' };
+28:   } catch { return { status: 502, message: 'Não foi possível confirmar o envio da mensagem. Contacte-nos por e-mail antes de repetir o pedido.' }; }
+29: }
+30:
+
+FILE src/site.mjs
+1: export const site = {
+2:   name: 'Dipanda',
+3:   email: 'comercial@grupodipanda.com',
+4:   phone: '+351 924 697 507',
+5:   phoneHref: '+351924697507',
+6:   hours: 'Seg. - Sex. 09h - 18h, Lisboa',
+7:   legalName: 'Grupo Dipanda',
+8:   taxId: '',
+9:   address: '',
+10:   updatedAt: '1 de outubro de 2026',
+11:   socials: { instagram: '', facebook: '', linkedin: '', x: '' },
+12: };
+13:
+
+FILE src/policies.mjs
+1: import { site } from './site.mjs';
+2:
+3: const contact = `Para qualquer questão, escreva para ${site.email} ou contacte ${site.phone}.`;
+4: const identity = `O site Dipanda é apresentado pela marca ${site.legalName}.${site.taxId ? ` NIF: ${site.taxId}.` : ''}${site.address ? ` Morada: ${site.address}.` : ''} ${contact}`;
+5:
+6: export function legalContent(type) {
+7:   if (type === 'cookies') return {
+8:     title: 'Política de Cookies',
+9:     sections: [
+10:       { title: '1. O que são cookies?', body: 'Cookies são pequenos ficheiros que o navegador guarda no seu dispositivo. Neste site, servem para registar a sua escolha de privacidade e, se autorizar, lembrar a sua preferência de animações.' },
+11:       { title: '2. Cookies utilizados', html: '<div class="table-scroll"><table class="policy-table"><thead><tr><th>Nome</th><th>Finalidade</th><th>Categoria</th><th>Duração</th></tr></thead><tbody><tr><td><code>dipanda_consent</code></td><td>Regista a escolha de cookies, a data e a versão do consentimento.</td><td>Essencial</td><td>180 dias</td></tr><tr><td><code>dipanda_preferences</code></td><td>Lembra se escolheu pausar as animações.</td><td>Funcional, opcional</td><td>180 dias</td></tr></tbody></table></div><p>São cookies próprios, aplicáveis a todo o site. O cookie funcional só é criado depois de aceitar esta categoria. O site não instala cookies de publicidade nem ferramentas de análise de terceiros.</p>' },
+12:       { title: '3. Escolher e retirar o consentimento', body: 'Na primeira visita, pode aceitar todos os cookies, rejeitar os opcionais ou personalizar a escolha. Os cookies opcionais estão desativados por defeito. Rejeitar não impede a navegação, a consulta de demonstrações ou o contacto com a equipa.\n\nPode abrir “Gerir cookies” no rodapé e alterar a escolha a qualquer momento. Ao desativar os cookies funcionais, o respetivo cookie é eliminado. A escolha essencial é conservada para respeitar a sua decisão. Quando expirar, pedimos uma nova escolha.' },
+13:       { title: '4. Definições do navegador', body: 'Também pode bloquear ou apagar cookies nas definições do navegador. Se bloquear todos os cookies, o site não conseguirá lembrar a sua escolha e poderá voltar a mostrar o pedido de consentimento. As funcionalidades opcionais permanecem desativadas quando não existe uma escolha válida.' },
+14:       { title: '5. Contactos e alterações', body: `${identity}\n\nSe forem acrescentadas outras tecnologias ou alteradas as finalidades, esta política e o pedido de consentimento devem ser atualizados antes da sua ativação. Consulte também a Política de Privacidade.` }
+15:     ]
+16:   };
+17:   if (type === 'privacy') return {
+18:     title: 'Política de Privacidade',
+19:     sections: [
+20:       { title: '1. Quem trata os dados', body: identity },
+21:       { title: '2. Dados e finalidades', body: 'Quando nos contacta, recebemos o nome, o endereço de e-mail e a mensagem que decide enviar. Utilizamos estes dados para responder ao seu pedido, compreender as necessidades do projeto e preparar uma proposta quando a solicitar. Evite incluir na mensagem informação sensível ou dados pessoais de terceiros que não sejam necessários.\n\nO servidor de alojamento pode tratar dados técnicos necessários à comunicação, como endereço IP e informação do navegador, para disponibilizar e proteger o site. As escolhas de cookies e de animações são guardadas no seu navegador, segundo a Política de Cookies. As demonstrações apresentam dados fictícios e não pedem acesso aos seus sistemas.' },
+22:       { title: '3. Fundamentos do tratamento', body: 'O tratamento de pedidos de proposta e de informações sobre serviços assenta nas diligências pré-contratuais que solicita. A resposta a outros contactos e a proteção do site assentam no interesse legítimo em gerir a comunicação e manter o serviço seguro. O cumprimento de obrigações legais pode exigir tratamentos adicionais. Os cookies funcionais dependem do seu consentimento, que pode retirar a qualquer momento.' },
+23:       { title: '4. Conservação', body: 'Os contactos sem contratação são conservados apenas pelo tempo necessário para responder e acompanhar o pedido, com revisão ao fim de 12 meses após a última interação. Se existir uma relação contratual, os dados necessários ao contrato e à faturação seguem os prazos legais aplicáveis. Pedidos de eliminação são avaliados à luz das obrigações legais e da necessidade de defesa de direitos.\n\nOs cookies indicados na Política de Cookies expiram ao fim de 180 dias, podendo ser eliminados antes nas definições de privacidade.' },
+24:       { title: '5. Prestadores e transferências', body: 'Podemos recorrer a prestadores de alojamento e de correio eletrónico para disponibilizar o site e responder aos contactos. O acesso deve limitar-se às finalidades acordadas e estar sujeito a obrigações de proteção de dados. Não vendemos os seus dados pessoais nem usamos este formulário para subscrever automaticamente comunicações comerciais.\n\nSe um prestador implicar transferências para fora do Espaço Económico Europeu, devem ser aplicadas as garantias exigidas pela legislação de proteção de dados, como decisões de adequação ou cláusulas contratuais-tipo, quando aplicáveis. Pode pedir informações sobre os prestadores e as garantias através do contacto acima.' },
+25:       { title: '6. Os seus direitos', body: `Pode solicitar acesso, retificação, apagamento, limitação, portabilidade ou oposição ao tratamento, quando aplicáveis, através de ${site.email}. Pode ser necessária informação proporcional para confirmar a identidade. Pode retirar o consentimento dos cookies em “Gerir cookies”, sem afetar a licitude do tratamento anterior.\n\nTem também o direito de apresentar uma reclamação à autoridade de controlo competente. Em Portugal, pode contactar a Comissão Nacional de Proteção de Dados.` },
+26:       { title: '7. Segurança e ligações externas', body: 'Aplicamos medidas proporcionais para limitar o acesso à informação e proteger a comunicação. Nenhum sistema elimina todos os riscos. Os links para páginas externas estão sujeitos às políticas dessas páginas. O site não toma decisões automatizadas com efeitos jurídicos sobre os visitantes nem cria perfis de publicidade.' },
+27:       { title: '8. Atualizações', body: 'Esta política pode ser atualizada para refletir alterações no funcionamento do site, nos prestadores ou nas obrigações aplicáveis. A data da versão aparece no início da página. Alterações que dependam de consentimento serão apresentadas antes de ativar o tratamento correspondente.' }
+28:     ]
+29:   };
+30:   return {
+31:     title: 'Termos e Condições',
+32:     sections: [
+33:       { title: '1. Identificação e âmbito', body: `${identity}\n\nEstes termos regulam a utilização do site. A contratação de serviços é regulada pela proposta e pelo contrato específico aceites pelas partes, incluindo âmbito, preço, prazos e responsabilidades.` },
+34:       { title: '2. Utilização do site', body: 'Pode consultar as informações e demonstrações para conhecer as soluções Dipanda. Deve utilizar o site de forma lícita, sem interferir no funcionamento, tentar aceder a áreas não autorizadas, introduzir código malicioso ou submeter conteúdos fraudulentos. Os pedidos enviados devem conter informação verdadeira e pertinente.' },
+35:       { title: '3. Conteúdos e demonstrações', body: 'Os conteúdos apresentam os serviços de forma geral. As demonstrações utilizam dados fictícios e servem para ilustrar possibilidades de análise; não constituem aconselhamento financeiro nem previsões sobre os resultados do seu negócio. Os valores apresentados não são preços ou compromissos de desempenho.\n\nAs tecnologias, integrações e funcionalidades de cada projeto são confirmadas na proposta técnica. Um pedido de contacto ou de demonstração não constitui um contrato.' },
+36:       { title: '4. Propostas e contratação', body: 'Os serviços indicados como “Sob consulta” são avaliados de acordo com a necessidade, o âmbito e a complexidade do projeto. A proposta deve identificar as entregas, os prazos, o investimento, os impostos aplicáveis, as condições de pagamento e os termos de suporte. A contratação só ocorre após a aceitação das condições acordadas.\n\nEventuais direitos imperativos de consumidores, incluindo informação pré-contratual e livre resolução quando aplicável, não são limitados por estes termos.' },
+37:       { title: '5. Propriedade intelectual', body: 'A marca, o design, os textos e os restantes conteúdos pertencem aos respetivos titulares. Pode consultá-los e partilhar ligações ao site. A reprodução ou utilização comercial dos conteúdos exige autorização, salvo nos casos legalmente permitidos. Os direitos sobre entregas de projetos, licenças de software e materiais de terceiros são definidos no respetivo contrato.' },
+38:       { title: '6. Disponibilidade e responsabilidade', body: 'Procuramos manter a informação atualizada e o site disponível. Podem ocorrer interrupções por manutenção, falhas técnicas ou circunstâncias externas. Não garantimos a disponibilidade contínua nem resultados comerciais concretos a partir da utilização das demonstrações. Nenhuma disposição exclui responsabilidades que a lei não permita excluir.' },
+39:       { title: '7. Privacidade e cookies', body: 'O tratamento de dados pessoais está descrito na Política de Privacidade. Os cookies e as formas de aceitar, rejeitar e alterar a escolha estão descritos na Política de Cookies. A consulta do site não obriga a aceitar cookies opcionais.' },
+40:       { title: '8. Contactos, alterações e lei aplicável', body: `${contact}\n\nPodemos atualizar estes termos, indicando a data da nova versão. As condições já acordadas em contrato não são alteradas automaticamente por uma atualização do site. A legislação portuguesa aplica-se à utilização deste site, sem prejuízo de normas imperativas aplicáveis e dos direitos dos consumidores. Em caso de conflito, procuramos uma solução através de contacto direto, preservando o recurso às entidades e aos tribunais competentes.` }
+41:     ]
+42:   };
+43: }
+44:

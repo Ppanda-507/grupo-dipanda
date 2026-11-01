@@ -1,0 +1,122 @@
+{
+  "date": "2026-10-29",
+  "phase": "Executor correction; prior approved tests, not rerun during consolidation",
+  "command": "node --test tests/*.test.mjs",
+  "runtime": "v24.22.1",
+  "summary": {
+    "tests": 32,
+    "passed": 32,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "provenance": "32-test result and parent exit 0 were observed in the previous task tool output (duration_ms 18517.2711). Full stdout was not saved then; this is an explicit summary, not reconstructed TAP. Nine subprocess fixture logs/reports are preserved separately. No tests were rerun to create this record.",
+  "runnerTestedSnapshot": "fd3031562fa9442aed2a9d0bfd991477a5469f9263d176fcb281614f37dd22e8",
+  "browserTestedSnapshot": "448cb3b0c7e9aa7128780e3af54ab19dc22f5d42c01ff6d1754be872ad4dd899",
+  "changedFiles": [
+    "scripts/run-local-consent-audit.mjs",
+    "tests/consent-audit-runner.test.mjs"
+  ],
+  "browserResults": {
+    "scenarios": 90,
+    "passed": 86,
+    "failed": 0,
+    "unverified": 1,
+    "notApplicable": 3,
+    "status": "Historical browser run; not rerun after executor correction"
+  },
+  "knownLimitation": "SameSite in WebKit/Windows remains UNVERIFIED; synthetic regression evidence is not a new browser measurement.",
+  "regressions": [
+    {
+      "mode": "crash",
+      "source": "C:\\Users\\DELL\\AppData\\Local\\Temp\\dipanda-runner-regression-gnE73x",
+      "evidence": "runner-regression/crash",
+      "startedAt": "2026-10-29T15:47:52.301Z",
+      "finishedAt": "2026-10-29T15:47:52.432Z",
+      "recordedStatus": "ERROR",
+      "childExit": 17,
+      "snapshot": "fd3031562fa9442aed2a9d0bfd991477a5469f9263d176fcb281614f37dd22e8"
+    },
+    {
+      "mode": "missing",
+      "source": "C:\\Users\\DELL\\AppData\\Local\\Temp\\dipanda-runner-regression-H4Z4bZ",
+      "evidence": "runner-regression/missing",
+      "startedAt": "2026-10-29T15:47:54.071Z",
+      "finishedAt": "2026-10-29T15:47:54.196Z",
+      "recordedStatus": "ERROR",
+      "childExit": 0,
+      "snapshot": "fd3031562fa9442aed2a9d0bfd991477a5469f9263d176fcb281614f37dd22e8"
+    },
+    {
+      "mode": "malformed",
+      "source": "C:\\Users\\DELL\\AppData\\Local\\Temp\\dipanda-runner-regression-nKS6ru",
+      "evidence": "runner-regression/malformed",
+      "startedAt": "2026-10-29T15:47:55.924Z",
+      "finishedAt": "2026-10-29T15:47:56.058Z",
+      "recordedStatus": "ERROR",
+      "childExit": 0,
+      "snapshot": "fd3031562fa9442aed2a9d0bfd991477a5469f9263d176fcb281614f37dd22e8"
+    },
+    {
+      "mode": "invalid",
+      "source": "C:\\Users\\DELL\\AppData\\Local\\Temp\\dipanda-runner-regression-QlZSLr",
+      "evidence": "runner-regression/invalid",
+      "startedAt": "2026-10-29T15:47:57.954Z",
+      "finishedAt": "2026-10-29T15:47:58.102Z",
+      "recordedStatus": "ERROR",
+      "childExit": 0,
+      "snapshot": "fd3031562fa9442aed2a9d0bfd991477a5469f9263d176fcb281614f37dd22e8"
+    },
+    {
+      "mode": "fail",
+      "source": "C:\\Users\\DELL\\AppData\\Local\\Temp\\dipanda-runner-regression-sg8Vb9",
+      "evidence": "runner-regression/fail",
+      "startedAt": "2026-10-29T15:48:00.467Z",
+      "finishedAt": "2026-10-29T15:48:00.685Z",
+      "recordedStatus": "FAIL",
+      "childExit": 0,
+      "snapshot": "fd3031562fa9442aed2a9d0bfd991477a5469f9263d176fcb281614f37dd22e8"
+    },
+    {
+      "mode": "valid-but-crash",
+      "source": "C:\\Users\\DELL\\AppData\\Local\\Temp\\dipanda-runner-regression-I8hLKX",
+      "evidence": "runner-regression/valid-but-crash",
+      "startedAt": "2026-10-29T15:48:02.627Z",
+      "finishedAt": "2026-10-29T15:48:02.815Z",
+      "recordedStatus": "ERROR",
+      "childExit": 17,
+      "snapshot": "fd3031562fa9442aed2a9d0bfd991477a5469f9263d176fcb281614f37dd22e8"
+    },
+    {
+      "mode": "spawn-error",
+      "source": "C:\\Users\\DELL\\AppData\\Local\\Temp\\dipanda-runner-regression-4QMpSo",
+      "evidence": "runner-regression/spawn-error",
+      "startedAt": "2026-10-29T15:48:04.570Z",
+      "finishedAt": "2026-10-29T15:48:04.580Z",
+      "recordedStatus": "ERROR",
+      "childExit": -4058,
+      "snapshot": "fd3031562fa9442aed2a9d0bfd991477a5469f9263d176fcb281614f37dd22e8"
+    },
+    {
+      "mode": "unverified",
+      "source": "C:\\Users\\DELL\\AppData\\Local\\Temp\\dipanda-runner-regression-NZpzIr",
+      "evidence": "runner-regression/unverified",
+      "startedAt": "2026-10-29T15:48:06.306Z",
+      "finishedAt": "2026-10-29T15:48:06.467Z",
+      "recordedStatus": "UNVERIFIED",
+      "childExit": 0,
+      "snapshot": "fd3031562fa9442aed2a9d0bfd991477a5469f9263d176fcb281614f37dd22e8"
+    },
+    {
+      "mode": "pass",
+      "source": "C:\\Users\\DELL\\AppData\\Local\\Temp\\dipanda-runner-regression-xr9HRl",
+      "evidence": "runner-regression/pass",
+      "startedAt": "2026-10-29T15:48:08.243Z",
+      "finishedAt": "2026-10-29T15:48:08.395Z",
+      "recordedStatus": "PASS",
+      "childExit": 0,
+      "snapshot": "fd3031562fa9442aed2a9d0bfd991477a5469f9263d176fcb281614f37dd22e8"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "label": "webkit-https",
+    "origin": "https://127.0.0.1:4443",
+    "engine": "webkit",
+    "startedAt": "2026-10-29T15:48:00.467Z",
+    "finishedAt": "2026-10-29T15:48:00.685Z",
+    "exit": 0,
+    "signal": null,
+    "timedOut": false,
+    "summary": {
+      "scenarios": 1,
+      "passed": 0,
+      "failed": 1,
+      "unverified": 0,
+      "notApplicable": 0
+    },
+    "status": "FAIL",
+    "errors": [],
+    "reportPath": "C:\\Users\\DELL\\AppData\\Local\\Temp\\dipanda-runner-regression-sg8Vb9\\webkit-https.json",
+    "temporary": "C:\\Users\\DELL\\AppData\\Local\\Temp\\dipanda-consent-run-CVZa1s\\webkit-https.json",
+    "snapshot": "fd3031562fa9442aed2a9d0bfd991477a5469f9263d176fcb281614f37dd22e8"
+  }
+]

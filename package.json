@@ -7,12 +7,21 @@
     "dev": "node scripts/serve.mjs",
     "build": "node scripts/build.mjs",
     "preview": "node scripts/serve.mjs --production",
-    "build:production": "node scripts/build.mjs --production"
+    "build:production": "node scripts/build.mjs --production",
+    "test": "node --test tests/unit/*.test.mjs tests/integration/*.test.mjs",
+    "test:consent-storage": "node scripts/audit/check-consent-storage.mjs",
+    "audit:consent": "node scripts/audit/run-local-consent-audit.mjs",
+    "audit:snapshot": "node scripts/audit/audit-code-version.mjs",
+    "audit:capture": "node scripts/audit/capture-local-audit-evidence.mjs",
+    "test:e2e": "node scripts/audit/check-production-browser.mjs"
   },
   "engines": {
     "node": "24.x"
   },
   "dependencies": {
     "nodemailer": "10.3.1"
+  },
+  "devDependencies": {
+    "playwright-core": "1.58.0"
   }
 }

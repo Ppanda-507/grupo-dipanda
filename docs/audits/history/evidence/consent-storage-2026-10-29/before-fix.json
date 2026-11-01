@@ -1,0 +1,14 @@
+[
+  {
+    "scenario": "other-tab-reject",
+    "optionalCookiePresent": true,
+    "expected": false,
+    "passed": false
+  },
+  {
+    "scenario": "expired-consent",
+    "optionalCookiePresent": true,
+    "expected": false,
+    "passed": false
+  }
+]

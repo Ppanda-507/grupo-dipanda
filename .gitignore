@@ -8,6 +8,8 @@ playwright-report/
 .vercel/
 .cache/
 .references/
+coverage/
+reports/
 
 # Independent project; do not track it as a submodule of Dipanda.
 /casaspanda/

@@ -1,0 +1,32 @@
+Runtime 24.22.1
+✔ contact success and provider errors remain no-store without reflecting submitted data (103.3816ms)
+✔ consent defaults to essential cookies and stores an explicit choice (5.4729ms)
+✔ expired, malformed, future or obsolete consent is rejected (1.7664ms)
+✔ cookie names cannot match a suffix or another cookie (1.6309ms)
+✔ secure cookies on HTTPS, available for local preview on HTTP (0.6422ms)
+✔ contact CTAs, navigation and footer use the form on the current page (52.2332ms)
+✔ pages without a form link directly to the contact page (2.6387ms)
+✔ contact rejects invalid fields, bots and implausible submission times (4.5231ms)
+✔ contact never reports success without a configured service or a delivery acknowledgement (6.5755ms)
+✔ demo catalogue shows an honest empty state and no individual demo pages (3.7707ms)
+✔ published demos link directly to their analytics platform (1.289ms)
+✔ solution pages select Nossa solução and only show the real web project (3.7807ms)
+✔ packaging requires local fonts and every responsive image, including empty files (76.9363ms)
+✔ contact rejects cross origins, schemes, null origin, wrong methods, types and oversized bodies without sending (58.006ms)
+✔ form schema rejects unexpected fields, arrays, controls, duplicates and invalid UTF-8 (2.6499ms)
+✔ concurrent requests reserve quotas before provider work; invalid forms consume quota (31.6982ms)
+✔ memory limiter expires and bounds memory; IPv6 /64 shares quota (8.4561ms)
+✔ durable quota uses an atomic script and pseudonymous keys, fails closed on outages (6.1397ms)
+✔ production/preview form is disabled by default and responses never cache (1.3453ms)
+✔ production cannot build without confirmed identity, policies and valid configuration (4.7718ms)
+✔ consumer notices escape HTML and omit unsafe complaints links (2.0363ms)
+✔ production rejects unpatched Node runtimes (0.2803ms)
+✔ Vercel and local server use the same CSP; output escapes HTML, cookies are not sessions (1.7752ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1397.1369

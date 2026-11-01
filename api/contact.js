@@ -1,6 +1,6 @@
-import { createContactHandler } from '../scripts/contact-handler.mjs';
-import { runtimeIsPatched } from '../scripts/runtime-version.mjs';
-import { securityHeaders } from '../scripts/security.mjs';
+import { createContactHandler } from '../server/contact/handler.mjs';
+import { runtimeIsPatched } from '../server/runtime-version.mjs';
+import { securityHeaders } from '../server/security.mjs';
 
 // Web Request/Response signature supported by Vercel's Node.js runtime.
 const handle = createContactHandler();
