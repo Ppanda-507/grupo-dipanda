@@ -10,7 +10,12 @@ function toolIcon(tool) {
  return '<span class="integration-icon '+(tool.asset ? 'integration-icon--crop' : 'integration-icon--logo')+'" aria-hidden="true"><img src="'+source+'" alt="" width="32" height="32" loading="eager"></span>';
 }
 export function integrationStrip() {
- return '<div class="integration-strip integration-strip--selector" data-tool-selector><ul class="integration-group" aria-label="Ferramentas e fontes de dados">'+tools.map((tool,index)=>'<li class="integration-tool'+(index===0?' is-active':'')+'" aria-label="'+escape(tool.name)+'">'+toolIcon(tool)+'<span class="integration-name" aria-hidden="true"><span>'+escape(tool.name)+'</span></span></li>').join('')+'</ul></div>';
+ const card = tool => '<span class="tool-card">'+toolIcon(tool)+'<span>'+escape(tool.name)+'</span></span>';
+ return '<div class="tools-marquee" data-tool-marquee role="img" aria-label="Ferramentas: Power BI, Microsoft, Azure e Python">'+[0,1].map(row => {
+  const ordered = row ? [...tools].reverse() : tools;
+  const group = '<div class="tools-marquee-group">'+[0,1].map(()=>ordered.map(card).join('')).join('')+'</div>';
+  return '<div class="tools-marquee-row'+(row ? ' tools-marquee-row--reverse' : '')+'" aria-hidden="true"><div class="tools-marquee-track">'+group+group+'</div></div>';
+ }).join('')+'</div>';
 }
 
 export function biToolsMarquee() {

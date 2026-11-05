@@ -17,7 +17,7 @@ test('preserves original pages and public assets except explicitly approved visu
     for(const file of manifest.files){
       const bytes=fs.readFileSync(new URL('../../public/'+file,import.meta.url));
       const approvedHash=approved.publicHashes['public/'+file];
-      // Approved CSS hashes use LF so Git's Windows checkout conversion is harmless.
+      // Approved text hashes use LF so Git's Windows checkout conversion is harmless.
       assert.equal(digest(approvedHash ? bytes.toString('utf8').replace(/\r\n/g,'\n') : bytes),approvedHash || baseline.publicHashes['public/'+file],file);
     }
   }finally{if(old===undefined)delete process.env.SITE_URL;else process.env.SITE_URL=old;}

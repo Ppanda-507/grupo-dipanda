@@ -276,7 +276,7 @@ void main() {
 }
 `;
 
-const palette = ['#062b5c', '#004cd3', '#6ba5ef', '#a8d0f3'];
+const palette = ['#08265b', '#0645c5', '#548de2', '#8ab8e7'];
 // The supplied recipe disables these builder features. Compile their values
 // as constants so drivers can eliminate unused noise, blur and cursor work.
 // The original GLSL stays above. Grain is now a cached CSS texture so the

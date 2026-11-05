@@ -5,7 +5,7 @@
 .site-header>.mobile-navigation{pointer-events:auto}
 .site-header--hero{position:fixed;top:16px;left:12px;right:12px;max-width:1280px;height:64px;padding:12px 24px;margin-inline:auto}
 .site-header--inner{position:sticky;top:16px;height:64px;padding:12px 24px;margin:16px 12px;background:transparent}
-.site-header>.header-shell>.brand{font-size:21px;line-height:28px;gap:8px}
+.site-header>.header-shell>.brand{font-size:21px;line-height:28px;gap:8px;color:var(--ink);background:#ffffffde;border-radius:999px;padding:8px 12px;margin-left:-12px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
 .site-header>.header-shell>.brand img{width:32px;height:24px}
 .site-header--inner>.header-shell>.brand{color:var(--ink)}
 .site-header--inner>.header-shell>.brand img{filter:brightness(0)}
@@ -29,3 +29,33 @@ html[data-motion-paused] .site-header,html[data-motion-paused] .desktop-nav,html
 
 /* Keep the longer main menu clear of the brand on narrower screens. */
 @media(min-width:1024px) and (max-width:1199px){.site-header .desktop-nav{display:none}.site-header .menu-toggle{display:flex}}
+
+/* Compact only the floating controls; the open menu keeps its full size. */
+.site-header>.header-shell>.brand{transform-origin:left center;transition:transform 550ms cubic-bezier(.22,1,.36,1)}
+.site-header .desktop-nav{transition:transform 550ms cubic-bezier(.22,1,.36,1),background-color 600ms var(--ease),color 600ms var(--ease),border-color 600ms var(--ease),box-shadow 600ms var(--ease)}
+.site-header .menu-toggle{transition:padding 550ms cubic-bezier(.22,1,.36,1),font-size 550ms cubic-bezier(.22,1,.36,1),background-color 600ms var(--ease),color 600ms var(--ease)}
+.site-header[data-scrolled]>.header-shell>.brand{transform:scale(.86)}
+.site-header[data-scrolled] .desktop-nav{transform:translate(-50%,-50%) scale(.89)}
+.site-header[data-scrolled] .menu-toggle{font-size:12px;padding:8px 10px;min-height:44px}
+html[data-motion-paused] .site-header>.header-shell>.brand,html[data-motion-paused] .site-header .desktop-nav,html[data-motion-paused] .site-header .menu-toggle{transition:none}
+@media(prefers-reduced-motion:reduce){.site-header>.header-shell>.brand,.site-header .desktop-nav,.site-header .menu-toggle{transition:none}}
+
+/* Use geometric strokes so font baselines cannot displace the close icon. */
+.close-button{position:relative;padding:0;font-size:0;line-height:1;letter-spacing:0}
+.close-button::before,.close-button::after{content:'';position:absolute;left:50%;top:50%;width:16px;height:2px;border-radius:1px;background:currentColor;transform:translate(-50%,-50%) rotate(45deg);pointer-events:none}
+.close-button::after{transform:translate(-50%,-50%) rotate(-45deg)}
+
+/* Controls respond to touch without selecting their labels or images. */
+@media(any-pointer:coarse){
+  :is(a,button,[role="button"]),:is(a,button,[role="button"]) *{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+  :is(a,button) img{-webkit-user-drag:none}
+}
+html[data-touch-input] :is(a,button):focus-visible{outline:none}
+
+.mobile-navigation nav>.button{font-size:16px;line-height:24px;min-height:56px}
+.mobile-navigation nav>.button .button-inner{min-height:48px}
+.mobile-navigation nav>.button .button-arrow{margin-left:auto}
+.mobile-navigation nav>.button .button-label{position:absolute;left:16px;top:50%;translate:0 -50%;transform:none;transition:left 240ms var(--ease),translate 240ms var(--ease),color 240ms var(--ease)}
+.mobile-navigation nav>.button:is(.is-touch-pressed,:active,:focus-visible) .button-label{left:50%;translate:-50% -50%;transform:none}
+@media(hover:hover) and (pointer:fine){.mobile-navigation nav>.button:hover .button-label{left:50%;translate:-50% -50%;transform:none}}
+@media(prefers-reduced-motion:reduce){.mobile-navigation nav>.button .button-label{transition:none}}

@@ -6,6 +6,18 @@ const motionAllowed = () => !reduced.matches && !document.hidden && !document.do
 export function initHeroMotion() {
   const hero = document.querySelector('.hero-surface');
   if (!hero) return;
+  const actions = hero.querySelector('[data-hero-buttons]');
+  const demo = actions?.querySelector('a[href="#demonstracao"],a[href="/#demonstracao"]');
+  if (actions && demo) {
+    const mobile = matchMedia('(max-width:640px)');
+    const arrange = () => {
+      if (mobile.matches) actions.prepend(demo);
+      else actions.append(demo);
+      actions.toggleAttribute('data-mobile-order', mobile.matches);
+    };
+    arrange();
+    mobile.addEventListener('change', arrange);
+  }
   let visible = true;
   const controllers = [];
   let entrance = [];
@@ -20,9 +32,10 @@ export function initHeroMotion() {
         { fill: 'backwards', duration: 1000, delay, easing: 'ease-in-out' }
       ));
     };
-    hero.querySelectorAll('[data-hero-text]').forEach((element, index) => animate(element, index * 100));
-    animate(hero.querySelector('[data-hero-buttons]'), 200);
-    const strip = document.querySelector('.integration-strip');
+    animate(hero.querySelector('.hero-badge'), 0);
+    hero.querySelectorAll('[data-hero-text]').forEach((element, index) => animate(element, (index + 1) * 100));
+    animate(hero.querySelector('[data-hero-buttons]'), 300);
+    const strip = document.querySelector('[data-tool-marquee]');
     if (strip && 'IntersectionObserver' in window) {
       const observer = new IntersectionObserver(entries => {
         if (!entries[0].isIntersecting) return;

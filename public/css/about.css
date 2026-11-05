@@ -1,4 +1,5 @@
 /* Align the rotating word with the phrase's baseline. */
+.about-card::selection,.about-card ::selection{background:var(--ink);color:#fff}
 .about-statement [data-whisper-word]{display:inline-block;position:relative;white-space:nowrap}
 .about-statement .word-rotator{height:1.17em;line-height:1.17;vertical-align:bottom;overflow:hidden;text-align:center}
 .about-statement [data-word-fit] .word-current,.about-statement [data-word-fit] .word-next{justify-content:flex-start;text-align:left}
@@ -6,6 +7,36 @@
 .word-current,.word-next{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;line-height:1.17;text-align:center}
 .word-next{opacity:0}
 .about-statement .inline-symbol{transform:none;vertical-align:middle}
+.about-section .section-heading{max-width:1040px}
+.about-section .about-statement{display:flex;flex-direction:column;gap:.1em;font-size:clamp(22px,7.3vw,60px);line-height:1.17;letter-spacing:-.06em}
+.about-statement .about-line{display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;gap:.16em;white-space:nowrap}
+.about-statement .about-line>[data-whisper-word]{flex:none;line-height:1.17}
+.about-statement .inline-symbol{flex:none}
+.about-statement .inline-symbol .icon-tile{width:1em;height:1em}
+.about-statement .inline-symbol img{width:.42em;height:.42em}
 .about-statement[data-whisper-state="pending"] [data-whisper-word],.about-statement[data-whisper-state="pending"] [data-whisper-icon]{opacity:0}
 html[data-motion-paused] [data-whisper-word],html[data-motion-paused] [data-whisper-icon]{opacity:1!important;transform:none!important}
 @media(prefers-reduced-motion:reduce){[data-whisper-word],[data-whisper-icon]{opacity:1!important;transform:none!important}}
+
+/* Compact technology rows between the introduction and the about cards. */
+.about-section .section-heading{margin-bottom:28px}
+.tools-marquee{display:grid;gap:8px;max-width:1000px;margin:0 auto 36px;padding:6px 0;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.tools-marquee-row{overflow:hidden;padding:5px 0}
+.tools-marquee-track{display:flex;width:max-content;animation:tools-card-scroll 40s linear infinite;animation-play-state:paused}
+.tools-marquee[data-in-view] .tools-marquee-track{animation-play-state:running}
+.tools-marquee-row--reverse .tools-marquee-track{animation-direction:reverse;animation-duration:46s}
+.tools-marquee-group{display:flex;align-items:center;gap:12px;padding-right:12px;flex:none}
+.tool-card{display:flex;align-items:center;justify-content:center;gap:10px;width:136px;min-height:44px;flex:none;padding:10px 14px;border:1px solid #e6e6e6;border-radius:14px;background:#fff;box-shadow:0 3px 10px #13131306;font-size:13px;font-weight:500;line-height:20px;color:var(--ink);white-space:nowrap}
+.tool-card .integration-icon{width:22px;height:22px}
+.tool-card .integration-icon img{width:20px;height:20px;object-fit:contain}
+@keyframes tools-card-scroll{to{transform:translateX(-50%)}}
+html[data-page-hidden] .tools-marquee-track,html[data-motion-paused] .tools-marquee-track{animation-play-state:paused!important}
+@media(hover:hover) and (pointer:fine){.tools-marquee:hover .tools-marquee-track{animation-play-state:paused}}
+@media(prefers-reduced-motion:reduce){.tools-marquee-track{animation:none}}
+@media(max-width:640px){
+  .about-section .section-heading{margin-bottom:20px}
+  .tools-marquee{gap:4px;margin-bottom:24px}
+  .tools-marquee-group{gap:8px;padding-right:8px}
+  .tool-card{width:112px;min-height:40px;padding:8px 10px;gap:8px;border-radius:12px;font-size:12px}
+  .tool-card .integration-icon,.tool-card .integration-icon img{width:18px;height:18px}
+}

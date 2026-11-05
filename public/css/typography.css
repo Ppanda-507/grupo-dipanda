@@ -1,6 +1,6 @@
 /* One description scale across pages; labels and controls keep their hierarchy. */
-:root{--hero-description-size:18px;--hero-description-line:28px}
-@media(max-width:640px){:root{--hero-description-size:16px;--hero-description-line:24px}}
+:root{--hero-description-size:16px;--hero-description-line:24px}
+@media(max-width:767px){:root{--hero-description-size:14px;--hero-description-line:20px}}
 .hero-copy>p,.section-heading>p:not(.eyebrow),.inner-description p,
 .about-grid .about-card p,.problem-content .problem-description p,
 .process-section .solution-description,.workflow-description,

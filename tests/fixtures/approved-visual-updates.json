@@ -1,5 +1,5 @@
 {
-  "reason": "Alterações visuais pedidas após a refatoração: os cartões de Continue a explorar mostram os banners completos da Home, com o mesmo formato. O botão Contacto do menu móvel mantém o texto visível ao limitar a cor verde às setas dos restantes links. A seta da política de cookies usa o SVG existente para evitar a apresentação como emoji no telefone. O baseline histórico da refatoração fica intacto.",
+  "reason": "Alterações visuais pedidas após a refatoração: banners completos nos cartões, contraste do Contacto no menu móvel e seta SVG na política de cookies. Hero com enquadramento inspirado na Quorvex, descrição atualizada e CTA Agendar consultoria. No mobile, título em três linhas e botões compactos com largura natural: Ver demo acima de Agendar consultoria, também na ordem do teclado. Indicador de scroll animado no centro inferior, respeitando as preferências de movimento. As ferramentas ficam em duas filas próprias abaixo da hero. O baseline histórico da refatoração fica intacto. Descri??es e etiqueta da hero alinhadas com o tamanho anterior da descri??o da hero (16 px no computador / 14 px no telefone); sele??o leg?vel nos cart?es verdes. Etiqueta Consultoria ? Tecnologia reduzida para 12 px a pedido do utilizador. Componente Consultoria ? Tecnologia mais compacta: letra de 10 px e menor espa?amento interno. Azul da hero ligeiramente mais intenso e zonas claras mais subtis, preservando a anima??o. Bot?o Ver demo com feedback de toque equivalente ao hover, cancelado ao deslocar a p?gina. Etiqueta da hero inclu?da na sequ?ncia de entrada em cada carregamento e textura de gr?o mais vis?vel numa camada pr?pria. Controlos sem sele??o involunt?ria no toque, ?cones de fechar centrados e Contacto do menu com texto maior que se centra durante a press?o e regressa ao soltar; sele??o dos par?grafos preservada. Recorte arredondado expl?cito da hero para os navegadores m?veis e fundo branco do log?tipo presente antes e depois do scroll, sem salto de dimens?es. Cabe?alho ligeiramente mais compacto ao descer a p?gina, com transi??o suave e reposi??o do tamanho no topo; menu aberto mant?m o tamanho completo. Redu??o do cabe?alho refor?ada e transi??o de 550 ms com desacelera??o suave. No telefone, bot?es novamente em mai?sculas lado a lado, Agendar consultoria ? esquerda, mais espa?o acima dos bot?es e abaixo da etiqueta, e decis?es com inicial min?scula. Bot?es da hero novamente empilhados no telefone, Ver demo acima de Agendar consultoria, mantendo mai?sculas. Letras dos bot?es da hero iguais em tamanho ao CTA da conversa: 12 px no computador e 10 px no telefone. Frase Sobre a Dipanda: Aproximamos [pessoas, neg?cios, empresas] e conectamos aos dados; palavra din?mica laranja seguida da l?mpada e ?cone de dados depois de dados. Titulo Sobre em exatamente duas linhas em todos os tamanhos de ecra, com palavra dinamica e simbolos alinhados. Lampada removida do titulo Sobre e titulo ampliado, mantendo duas linhas. Ferramentas movidas para entre o titulo Sobre e os cartoes, em duas filas compactas; removido o titulo separado das ferramentas e atualizado o destino do scroll da hero.",
   "pageHashes": {
     "/servicos/consultoria-bi": "d1c5576faef045ce7b8f868675dadbacdd2927a8378932371b5e8ccd43646b3a",
     "/servicos/solucoes-analytics": "9fc5521cc9705f57e0129a17b63325b47df42073523b8ff4ac2ac942b12ece12",
@@ -11,8 +11,8 @@
     "/503": "d638abdd3aec56ab25e96a957231599194030d59a0a14b1a125de4d5fec8d370",
     "/solucoes": "cd56681dccaee416308892870b5fcc5c4cfb0b5654d76a4353fe8171526c5fb2",
     "/demos": "f19a73ddcaf28f7ae929cd2ffb6d108bd002ad23470017106e44887af01d98df",
-    "/": "831ab0b379469c7e68bc4ef79bafd2e8bd205b77ca0736947201c5e26dd76cd6",
-    "/sobre": "b0c21783395ca42f1996793c4cc65c0dfbfa3cb9646ac74c1385748f50dd6eb3",
+    "/": "6d39dd24b0708db63f6a0e01aad7b5bf5e2c381ed1304ebf255e0d4bb8d39325",
+    "/sobre": "aa2a3f48285b24244a5525cf3690565c70da76534d5c58fbbe90ec3f6814b95b",
     "/servicos": "e741486c308c0bd8179d16a21b0901211e7e40855a42e7bfdd58a7ad7d9cddfd",
     "/contacto": "fed53d1b361570e72b2b103df813ddc221574dcfb17a9b52603cc1c76d25c38f",
     "/termos-e-condicoes": "8aaeb0bef4985610208060ff08b80e064313913a95a015e27a7e5904a76c8c49",
@@ -28,6 +28,14 @@
   "publicHashes": {
     "public/css/service-detail.css": "54b8837bd2f3d9e2c9fc22413a7e34c4d79a2a59a9b0efff45d78f64c434a788",
     "public/css/site.css": "0f2f9ad6a020afd95f4818563c7c3de650f818e5e69ed129b9dc822feb7057c5",
-    "public/css/refinements.css": "bd1c10d119fe6b84df8e0c1ea87a3daa3d72ba5c5e0fae5aceda63bd3e55b945"
+    "public/css/refinements.css": "bd1c10d119fe6b84df8e0c1ea87a3daa3d72ba5c5e0fae5aceda63bd3e55b945",
+    "public/css/hero-refresh.css": "ed6854d81eea85ada08c524ff86d6d7f84b7662754c6073ea7d5c32d3a76e82c",
+    "public/js/hero-motion.js": "079fe47ef6341a67446330608c8967c8e1fa057f1d10968f726ae3ce46c0d780",
+    "public/js/integration-motion.js": "08f4ab6d2200444d36d41f32c2cd994b7b6ba72fa06dadadee50df4109e366ec",
+    "public/css/about.css": "b790bfe93a04f18efae96b7173c1175fc83940e21ead34419250eeaba9e73cef",
+    "public/css/typography.css": "0c51782ce761080153d7ea0e051818cd69f022c04a83387b6e3566a183f9b39b",
+    "public/js/hero-shader.js": "852dc8a9d071f976911d9c4ddcd0b0c9d6388900a49abfb09b3ac3fdb97ea0b1",
+    "public/js/touch-feedback.js": "a3d5a33f8baba2560c5b54a8f13d7a207d45a842e6edfbe3a2cb2ed4de002f83",
+    "public/css/navigation.css": "b72c9da96dd697ba47ce54c7ab98f089a96c4ab8e0156381003b21ef3b30821b"
   }
 }
